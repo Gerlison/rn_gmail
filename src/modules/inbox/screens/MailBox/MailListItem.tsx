@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext, useCallback } from 'react';
 import { Pressable, Platform } from 'react-native';
-import styled from 'styled-components/native';
+import styled, { ThemeContext } from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Text from '@core/Text';
@@ -9,59 +9,86 @@ import { spacing } from '@styles/metrics';
 import { sizing } from '@styles/fonts';
 
 import { Styled } from '@core/types';
+import { Mail } from '@modules/inbox/types';
 
-const MailListItem = () => {
+interface Props {
+  mail: Mail;
+  isSelected: boolean;
+  setSelectedMails: React.Dispatch<React.SetStateAction<{}>>;
+}
+
+const MailListItem = ({
+  mail: { id, labelIds, payload, date },
+  isSelected,
+  setSelectedMails,
+}: Props) => {
+  const theme = useContext(ThemeContext);
+
+  const toggleMailSelection = useCallback(() => {
+    setSelectedMails((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  }, []);
+
   return (
-    <Pressable>
-      {({ pressed }) => (
-        <S.Container pressed={pressed}>
-          <S.Badge>
-            <S.VerticalCenteredText
-              size="LARGEST"
-              weight="ROBOTO_REGULAR"
-              color="WHITE"
-            >
-              U
-            </S.VerticalCenteredText>
+    <Pressable onLongPress={toggleMailSelection}>
+      <S.Container isSelected={isSelected}>
+        <Pressable onPress={toggleMailSelection}>
+          <S.Badge isSelected={isSelected}>
+            {isSelected ? (
+              <Icon name="check" size={sizing.icon.LARGE} color={theme.WHITE} />
+            ) : (
+              <S.VerticalCenteredText size="LARGEST" color="WHITE">
+                {payload.from.name.charAt(0)}
+              </S.VerticalCenteredText>
+            )}
           </S.Badge>
+        </Pressable>
 
-          <S.View>
-            <S.TitleRow>
-              <Icon name="label-variant" size={sizing.icon.LARGE} />
-              <S.Text style={{ flex: 1 }} type="title">
-                This is the mail author
-              </S.Text>
-              <Text size="SMALL">12 Jul</Text>
-            </S.TitleRow>
+        <S.View>
+          <S.TitleRow>
+            {labelIds.includes('2') && (
+              <Icon
+                name="label-variant"
+                size={sizing.icon.LARGE}
+                color={theme.QUATERNARY}
+              />
+            )}
+            <S.Text style={{ flex: 1 }} type="title">
+              {payload.from.name}
+            </S.Text>
+            <Text size="SMALL">{date.toLocaleDateString()}</Text>
+          </S.TitleRow>
 
-            <S.DescriptionRow>
-              <S.View>
-                <S.Text weight="ROBOTO_REGULAR">
-                  This is my mail huge, big, enormous mail title
-                </S.Text>
-                <S.Text weight="ROBOTO_REGULAR">
-                  This is my mail huge, big, enormous mail description
-                </S.Text>
-              </S.View>
-              <Icon name="star" size={sizing.icon.LARGE} />
-            </S.DescriptionRow>
-          </S.View>
-        </S.Container>
-      )}
+          <S.DescriptionRow>
+            <S.View>
+              <S.Text>{payload.subject}</S.Text>
+              <S.Text>{payload.body}</S.Text>
+            </S.View>
+            <Icon
+              name={`star${labelIds.includes('1') ? '' : '-outline'}`}
+              size={sizing.icon.LARGE}
+              color={labelIds.includes('1') ? theme.QUATERNARY : theme.REGULAR}
+            />
+          </S.DescriptionRow>
+        </S.View>
+      </S.Container>
     </Pressable>
   );
 };
 
 const S = {
-  Container: styled.View<Styled<{ pressed: boolean }>>`
+  Container: styled.View<Styled<{ isSelected: boolean }>>`
     width: 100%;
     flex-direction: row;
-    margin-left: ${spacing.SMALLEST / 2}px;
-    margin-bottom: ${spacing.SMALLEST / 2}px;
+    margin-left: ${spacing.SMALLEST}px;
+    margin-bottom: ${spacing.SMALLEST}px;
     padding: ${spacing.MEDIUM}px;
+    padding-left: ${spacing.MEDIUM - spacing.SMALLEST}px;
     border-radius: 10px;
-    opacity: ${({ pressed }) => (pressed ? 0.5 : 1)};
-    background-color: ${({ theme }) => theme.WHITE};
+    background-color: ${({ theme, isSelected }) =>
+      isSelected ? `${theme.PRIMARY}20` : theme.WHITE};
   `,
   TitleRow: styled.View`
     flex-direction: row;
@@ -78,20 +105,21 @@ const S = {
   })`
     margin-right: ${spacing.SMALLER}px;
   `,
-  Badge: styled.View`
+  Badge: styled.View<Styled<{ isSelected: boolean }>>`
     width: 42px;
     height: 42px;
     align-items: center;
     justify-content: center;
     margin-right: ${spacing.MEDIUM}px;
     border-radius: 20px;
-    background-color: lightcoral;
+    background-color: ${({ isSelected, theme }) =>
+      isSelected ? theme.PRIMARY : 'lightcoral'};
   `,
   View: styled.View`
     flex: 1;
   `,
   VerticalCenteredText: styled(Text)`
-    bottom: ${Platform.OS === 'ios' ? -1.5 : 0};
+    bottom: ${Platform.OS === 'ios' ? -1.5 : 0}px;
   `,
 };
 

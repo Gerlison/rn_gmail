@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 import { sizing, styling } from '@styles/fonts';
 
@@ -17,13 +17,13 @@ const Text = ({ children, type, ...props }: TextProps) => {
     case 'label':
       return renderComponent({
         size: 'SMALL',
-        color: 'DARK',
-        weight: 'ROBOTO_LIGHT',
+        color: 'DARKER',
+        weight: 'ROBOTO_MEDIUM',
+        type,
       });
     case 'title':
       return renderComponent({
         color: 'DARKEST',
-        weight: 'ROBOTO_REGULAR',
         size: 'LARGE',
       });
 
@@ -36,7 +36,13 @@ const StyledText = styled.Text<Styled<TextProps>>`
   color: ${({ theme, color }) => theme[color || 'DARKEST']};
   font-size: ${({ size }) =>
     (typeof size === 'string' ? sizing[size] : size) || sizing.MEDIUM}px;
-  font-family: ${({ weight }) => styling[weight || 'ROBOTO_LIGHT']};
+  font-family: ${({ weight }) => styling[weight || 'ROBOTO_REGULAR']};
+  ${({ type }) =>
+    type === 'label' &&
+    css`
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    `}
 `;
 
 export default Text;
