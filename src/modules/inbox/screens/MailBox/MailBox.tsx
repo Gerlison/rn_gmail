@@ -8,21 +8,23 @@ import { Styled } from '@core/types';
 
 const MailBox = () => {
   return (
-    <S.Container>
+    <>
       <S.SafeArea />
-      <SearchBar />
-      <MailList />
-    </S.Container>
+      <S.Container>
+        <SearchBar />
+        <MailList />
+      </S.Container>
+    </>
   );
 };
 
 const S = {
   SafeArea: styled.SafeAreaView<Styled>`
-    background-color: ${({ theme }) => theme.WHITE};
+    background-color: ${({ theme }) => theme.BACKGROUND};
   `,
   Container: styled.View<Styled>`
     flex: 1;
-    background-color: ${({ theme }) => theme.WHITE};
+    background-color: ${({ theme }) => theme.BACKGROUND};
   `,
 };
 

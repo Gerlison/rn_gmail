@@ -69,6 +69,7 @@ const MailList = () => {
       <FlatList<Mail>
         data={MAIL_LIST}
         keyExtractor={({ id }) => id}
+        contentContainerStyle={{ paddingTop: 50 + spacing.MEDIUM * 2 }}
         ListHeaderComponent={<S.Text type="label">{selectedLabel.name}</S.Text>}
         renderItem={({ item }) => (
           <MailListItem
