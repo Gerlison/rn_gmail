@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/core';
 import Animated, { Easing } from 'react-native-reanimated';
 import { useTimingTransition, interpolateColor } from 'react-native-redash';
 
+import SearchBarResults from './SearchBarResults';
+
 import { spacing } from '@styles/metrics';
 import { sizing, styling } from '@styles/fonts';
 
@@ -25,7 +27,7 @@ const SearchBar = () => {
   const [focused, setFocused] = useState(0);
 
   const animation = useTimingTransition(focused, {
-    duration: 250,
+    duration: 200,
     easing: Easing.linear,
   });
   const interpolation = useInterpolation(animation);
@@ -100,6 +102,7 @@ const SearchBar = () => {
             }}
           />
         </S.Row>
+        {!!focused && <SearchBarResults animation={animation} />}
       </S.Container>
     </>
   );
@@ -108,14 +111,10 @@ const SearchBar = () => {
 const S = {
   Container: styled(Animated.View)<Styled>`
     height: 50px;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-
-    padding: ${spacing.SMALL}px;
 
     background-color: ${({ theme }) => theme.BACKGROUND};
     box-shadow: 0px 0px 2px #0003;
+    elevation: 2;
     position: absolute;
 
     z-index: 2;
@@ -131,8 +130,11 @@ const S = {
     font-family: ${styling.ROBOTO_REGULAR};
   `,
   Row: styled.View`
+    height: 50px;
     flex-direction: row;
     align-items: center;
+
+    margin-horizontal: ${spacing.SMALL}px;
   `,
   Icon: styled(Animated.createAnimatedComponent(Icon))`
     margin-right: ${spacing.SMALL}px;

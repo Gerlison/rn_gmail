@@ -17,7 +17,7 @@ const Text = ({ children, type, ...props }: TextProps) => {
     case 'label':
       return renderComponent({
         size: 'SMALL',
-        color: 'DARKER',
+        color: 'DARK',
         weight: 'ROBOTO_MEDIUM',
         type,
       });
