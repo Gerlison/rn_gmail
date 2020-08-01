@@ -1,22 +1,27 @@
+import { Platform, PixelRatio } from 'react-native';
+
 const iconMultiplier = 1.3;
+const fontMultiplier = Platform.OS === 'ios' ? PixelRatio.get() : 0;
 
 export const sizing = {
-  SMALLEST: 8,
-  SMALLER: 11,
-  SMALL: 14,
-  MEDIUM: 16,
-  LARGE: 18,
-  LARGER: 22,
-  LARGEST: 24,
+  SMALLEST: 8 + fontMultiplier,
+  SMALLER: 10 + fontMultiplier,
+  SMALL: 12 + fontMultiplier,
+  MEDIUM: 14 + fontMultiplier,
+  LARGE: 16 + fontMultiplier,
+  LARGER: 18 + fontMultiplier,
+  LARGEST: 22 + fontMultiplier,
 
-  icon: {
-    SMALLEST: 8 * iconMultiplier,
-    SMALLER: 11 * iconMultiplier,
-    SMALL: 14 * iconMultiplier,
-    MEDIUM: 16 * iconMultiplier,
-    LARGE: 18 * iconMultiplier,
-    LARGER: 22 * iconMultiplier,
-    LARGEST: 24 * iconMultiplier,
+  get icon() {
+    return {
+      SMALLEST: this.SMALLEST * iconMultiplier,
+      SMALLER: this.SMALLER * iconMultiplier,
+      SMALL: this.SMALL * iconMultiplier,
+      MEDIUM: this.MEDIUM * iconMultiplier,
+      LARGE: this.LARGE * iconMultiplier,
+      LARGER: this.LARGER * iconMultiplier,
+      LARGEST: this.LARGEST * iconMultiplier,
+    };
   },
 };
 

@@ -55,6 +55,7 @@ const SearchBar = () => {
     return (
       <S.Icon
         name={icon}
+        size={sizing.icon.LARGER}
         style={{
           transform: [
             {
@@ -85,11 +86,14 @@ const SearchBar = () => {
           shadowOpacity: interpolation([0, 0.999, 1], [1, 1, 0]),
           left: interpolation([0, 1], [spacing.MEDIUM, 0]),
           right: interpolation([0, 1], [spacing.MEDIUM, 0]),
-          top: interpolation([0, 1], [spacing.MEDIUM, 0]),
+          top: interpolation([0, 1], [spacing.SMALLER, 0]),
         }}
       >
         <S.Row>
-          <Pressable onPress={onPressLeftButton}>
+          <Pressable
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            onPress={onPressLeftButton}
+          >
             {renderIcon('menu')}
             {renderIcon('arrow-right')}
           </Pressable>
@@ -99,10 +103,11 @@ const SearchBar = () => {
             placeholder="Search on mail"
             style={{
               left: interpolation([0, 1], [0, spacing.MEDIUM]),
+              marginTop: interpolation([0, 1], [0, spacing.SMALLEST]),
             }}
           />
         </S.Row>
-        {!!focused && <SearchBarResults animation={animation} />}
+        <SearchBarResults focused={!!focused} animation={animation} />
       </S.Container>
     </>
   );
@@ -138,7 +143,6 @@ const S = {
   `,
   Icon: styled(Animated.createAnimatedComponent(Icon))`
     margin-right: ${spacing.SMALL}px;
-    font-size: ${sizing.icon.LARGE}px;
     color: ${({ theme }) => theme.DARK};
   `,
   Backdrop: styled(Animated.View)<Styled>`

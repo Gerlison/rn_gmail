@@ -9,14 +9,19 @@ import { spacing } from '@styles/metrics';
 import { Styled } from '@core/types';
 
 interface Props {
+  focused: boolean;
   animation: Animated.Node<number>;
 }
 
-const SearchBarResults = ({ animation }: Props) => {
+const SearchBarResults = ({ animation, focused }: Props) => {
   return (
-    <S.Container style={{ opacity: animation }}>
+    <S.Container
+      style={{
+        opacity: animation,
+      }}
+    >
       <Text type="label">Recent mail searches</Text>
-      <Text type="label">Suggested mail searches</Text>
+      {/* #TODO while is not @focused, does not render any results  */}
     </S.Container>
   );
 };
