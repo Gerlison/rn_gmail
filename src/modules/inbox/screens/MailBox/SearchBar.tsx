@@ -1,10 +1,11 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { Pressable, useWindowDimensions, TextInput } from 'react-native';
+import { Pressable, TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 import Animated, { Easing } from 'react-native-reanimated';
 import { useTimingTransition, interpolateColor } from 'react-native-redash';
+import ExtraDimensions from 'react-native-extra-dimensions-android';
 
 import SearchBarResults from './SearchBarResults';
 
@@ -22,7 +23,7 @@ type Navigation = DrawerNavigationProp<DrawerParamList, 'Home'>;
 const SearchBar = () => {
   const inputRef = useRef<{ getNode: () => TextInput }>(null);
   const navigation = useNavigation<Navigation>();
-  const { height } = useWindowDimensions();
+  const height = ExtraDimensions.getRealWindowHeight();
 
   const [focused, setFocused] = useState(0);
 
