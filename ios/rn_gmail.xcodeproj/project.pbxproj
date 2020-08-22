@@ -8,38 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* rn_gmailTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* rn_gmailTests.m */; };
-		0BBE51B224C3C503002EB915 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00BCBA5B73F644A0A52E43B4 /* Roboto-Bold.ttf */; };
-		0BBE51B324C3C503002EB915 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB2D89B34EF842F78519EE4A /* Roboto-Light.ttf */; };
-		0BBE51B424C3C503002EB915 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3C6A3DFA51842C491D2CF75 /* Roboto-Medium.ttf */; };
-		0BBE51B524C3C503002EB915 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD118A01B3D744C08EFF63B9 /* Roboto-Regular.ttf */; };
-		0BBE51B624C3C503002EB915 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A15057FF433C4542B0F53E17 /* AntDesign.ttf */; };
-		0BBE51B724C3C503002EB915 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4B9A23E990E348F7BE92E7B3 /* Entypo.ttf */; };
-		0BBE51B824C3C503002EB915 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BD566BF50A342D5B2EADA60 /* EvilIcons.ttf */; };
-		0BBE51B924C3C503002EB915 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3956163FA5548688D470F2C /* Feather.ttf */; };
-		0BBE51BA24C3C503002EB915 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04183E7A4FBC4C79B11694D3 /* FontAwesome.ttf */; };
-		0BBE51BB24C3C503002EB915 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EB63FD88216A424FBA23451A /* FontAwesome5_Brands.ttf */; };
-		0BBE51BC24C3C503002EB915 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90E22B93FC694DC798944964 /* FontAwesome5_Regular.ttf */; };
-		0BBE51BD24C3C503002EB915 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B27BA278E03E4BF5B480CBD8 /* FontAwesome5_Solid.ttf */; };
-		0BBE51BE24C3C503002EB915 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FD333A679B54A29AD0A92A3 /* Fontisto.ttf */; };
-		0BBE51BF24C3C503002EB915 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9115CDBECB34BB7BD8A6EC7 /* Foundation.ttf */; };
-		0BBE51C024C3C503002EB915 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 074D95D1BB9847ED951869EB /* Ionicons.ttf */; };
-		0BBE51C124C3C503002EB915 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6EE12C3B2D04F6FBDDB9A9F /* MaterialCommunityIcons.ttf */; };
-		0BBE51C224C3C503002EB915 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35EAF64C46D144C2924C4093 /* MaterialIcons.ttf */; };
-		0BBE51C324C3C503002EB915 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D34D7E0B078544A98C253692 /* Octicons.ttf */; };
-		0BBE51C424C3C503002EB915 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B455A5ADE5F46948417D2EF /* SimpleLineIcons.ttf */; };
-		0BBE51C524C3C503002EB915 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D91FB24E2AE481C8A107889 /* Zocial.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2B6C0B861E600580DFCB3E96 /* libPods-rn_gmail.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA609BB977472123D874529 /* libPods-rn_gmail.a */; };
+		2C054C2F7BA3064580B3B9C7 /* libPods-rn_gmail-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CEDB4E6C90AD171793598A /* libPods-rn_gmail-tvOSTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* rn_gmailTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* rn_gmailTests.m */; };
-		6DE1035BF7DE317FE9E328C2 /* libPods-rn_gmail.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B32E30124374EF66F22F144 /* libPods-rn_gmail.a */; };
+		541812BF7AAC07D44927F869 /* libPods-rn_gmail-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B52AAB26128DFF813D61AEA /* libPods-rn_gmail-tvOS.a */; };
+		7F1CEB5A11364391B51BC9A6 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FD67D4E6B494FD08E9D12EA /* Roboto-Regular.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		C5A2E9E15985BB9A5A338FCD /* libPods-rn_gmail-rn_gmailTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F36FD6641BD6D81442298FE /* libPods-rn_gmail-rn_gmailTests.a */; };
-		D661D060C3F808F4D682CEBA /* libPods-rn_gmail-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8010B05BCFEEF7B2DE0098FC /* libPods-rn_gmail-tvOSTests.a */; };
-		D9D043758AFC733BDBB3991E /* libPods-rn_gmail-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC3286782267089D12A053B /* libPods-rn_gmail-tvOS.a */; };
+		84A5EB13224D5D36B41933C8 /* libPods-rn_gmail-rn_gmailTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB01135A7A8D3A752056416 /* libPods-rn_gmail-rn_gmailTests.a */; };
+		9F81845D27944D7ABC1AFC5D /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDB7D0BF37FD4DB1B6315439 /* Roboto-Light.ttf */; };
+		E6AC65BCF7DE4821AD2D112B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D57CFBFCB3F4C048445A838 /* Roboto-Medium.ttf */; };
+		E8553FE0C658412797EC3222 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E86AB8B895F541E4A48269E0 /* Roboto-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,52 +45,52 @@
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00BCBA5B73F644A0A52E43B4 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* rn_gmailTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rn_gmailTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* rn_gmailTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rn_gmailTests.m; sourceTree = "<group>"; };
-		04183E7A4FBC4C79B11694D3 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		074D95D1BB9847ED951869EB /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		0B32E30124374EF66F22F144 /* libPods-rn_gmail.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rn_gmail.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BD566BF50A342D5B2EADA60 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		0F36FD6641BD6D81442298FE /* libPods-rn_gmail-rn_gmailTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rn_gmail-rn_gmailTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		047323FA45303AA51770067C /* Pods-rn_gmail-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-rn_gmail-tvOSTests/Pods-rn_gmail-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		047F1C0B5F755C7E0EEC4300 /* Pods-rn_gmail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail.release.xcconfig"; path = "Target Support Files/Pods-rn_gmail/Pods-rn_gmail.release.xcconfig"; sourceTree = "<group>"; };
+		0A2977645AF6DEFABD1C06A6 /* Pods-rn_gmail-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-rn_gmail-tvOSTests/Pods-rn_gmail-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		0ACD86D116D4400185422415 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		0FB01135A7A8D3A752056416 /* libPods-rn_gmail-rn_gmailTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rn_gmail-rn_gmailTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* rn_gmail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rn_gmail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = rn_gmail/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = rn_gmail/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = rn_gmail/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = rn_gmail/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = rn_gmail/main.m; sourceTree = "<group>"; };
-		1B455A5ADE5F46948417D2EF /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		1EC9B4799015ACEFB8685569 /* Pods-rn_gmail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail.debug.xcconfig"; path = "Target Support Files/Pods-rn_gmail/Pods-rn_gmail.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* rn_gmail-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rn_gmail-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* rn_gmail-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rn_gmail-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DAE40E563D5409120515C05 /* Pods-rn_gmail-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-rn_gmail-tvOS/Pods-rn_gmail-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		35EAF64C46D144C2924C4093 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		4B9A23E990E348F7BE92E7B3 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		4DC3286782267089D12A053B /* libPods-rn_gmail-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rn_gmail-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6FD333A679B54A29AD0A92A3 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
-		8010B05BCFEEF7B2DE0098FC /* libPods-rn_gmail-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rn_gmail-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32F4F3867E1243CA95EE78C1 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		392EAF60D45B4D469BDD32B5 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		441D125355744C3CB1CE3059 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		4B52AAB26128DFF813D61AEA /* libPods-rn_gmail-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rn_gmail-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5089586C0497455E93E163BC /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		554F235D08A743D5930C584F /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		5F4FCBE82F384CCC85DE1E43 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		6453AA9BB120BDBD2AB0F1FD /* Pods-rn_gmail-rn_gmailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-rn_gmailTests.release.xcconfig"; path = "Target Support Files/Pods-rn_gmail-rn_gmailTests/Pods-rn_gmail-rn_gmailTests.release.xcconfig"; sourceTree = "<group>"; };
+		6B64CAC35AB4471DB7C1FF0B /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		6D57CFBFCB3F4C048445A838 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		70BF8A97D932462FA7FF0CC5 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		75ACD628ECCCDB6A9CAAACCA /* Pods-rn_gmail-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-tvOS.release.xcconfig"; path = "Target Support Files/Pods-rn_gmail-tvOS/Pods-rn_gmail-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		7FD67D4E6B494FD08E9D12EA /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = rn_gmail/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8D91FB24E2AE481C8A107889 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		90E22B93FC694DC798944964 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
-		920AE01196CF291853BA329C /* Pods-rn_gmail-rn_gmailTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-rn_gmailTests.release.xcconfig"; path = "Target Support Files/Pods-rn_gmail-rn_gmailTests/Pods-rn_gmail-rn_gmailTests.release.xcconfig"; sourceTree = "<group>"; };
-		A15057FF433C4542B0F53E17 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
-		A3956163FA5548688D470F2C /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		A4096936F8A21A29A78A2722 /* Pods-rn_gmail-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-rn_gmail-tvOSTests/Pods-rn_gmail-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		A6EE12C3B2D04F6FBDDB9A9F /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		A73D6623F5213E78782B8867 /* Pods-rn_gmail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail.release.xcconfig"; path = "Target Support Files/Pods-rn_gmail/Pods-rn_gmail.release.xcconfig"; sourceTree = "<group>"; };
-		B27BA278E03E4BF5B480CBD8 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
-		BCCF69254288BC7566338DA6 /* Pods-rn_gmail-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-tvOS.release.xcconfig"; path = "Target Support Files/Pods-rn_gmail-tvOS/Pods-rn_gmail-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		C08C308E478E4A49AB617A33 /* Pods-rn_gmail-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-rn_gmail-tvOSTests/Pods-rn_gmail-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		CB2D89B34EF842F78519EE4A /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../src/assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
-		D34D7E0B078544A98C253692 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		D5B2C53165757B8DB1E88994 /* Pods-rn_gmail-rn_gmailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-rn_gmailTests.debug.xcconfig"; path = "Target Support Files/Pods-rn_gmail-rn_gmailTests/Pods-rn_gmail-rn_gmailTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D9115CDBECB34BB7BD8A6EC7 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		DD118A01B3D744C08EFF63B9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		EB63FD88216A424FBA23451A /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		8242531AB34C4D75998FE96D /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		82E77F2B529846EB86C0DA5A /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		8E24FEF8198740E1844C4275 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		90E3D2B0D2E543C09EDEA0AF /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		9F25C225FEE2DF5F9BE1B54E /* Pods-rn_gmail-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-rn_gmail-tvOS/Pods-rn_gmail-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		A66894DDCA81426489640CBA /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		B6A67DAE2BEF4FD2A608D87D /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		BF0CCDC9362B4C4C9C1F7C4C /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		D9CEDB4E6C90AD171793598A /* libPods-rn_gmail-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rn_gmail-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDB7D0BF37FD4DB1B6315439 /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../src/assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
+		E86AB8B895F541E4A48269E0 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F3C6A3DFA51842C491D2CF75 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		F3E913972B31574447799D3B /* Pods-rn_gmail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail.debug.xcconfig"; path = "Target Support Files/Pods-rn_gmail/Pods-rn_gmail.debug.xcconfig"; sourceTree = "<group>"; };
+		EE878E0A8E5BAC47B54DBFF6 /* Pods-rn_gmail-rn_gmailTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_gmail-rn_gmailTests.debug.xcconfig"; path = "Target Support Files/Pods-rn_gmail-rn_gmailTests/Pods-rn_gmail-rn_gmailTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FCA609BB977472123D874529 /* libPods-rn_gmail.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rn_gmail.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5A2E9E15985BB9A5A338FCD /* libPods-rn_gmail-rn_gmailTests.a in Frameworks */,
+				84A5EB13224D5D36B41933C8 /* libPods-rn_gmail-rn_gmailTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DE1035BF7DE317FE9E328C2 /* libPods-rn_gmail.a in Frameworks */,
+				2B6C0B861E600580DFCB3E96 /* libPods-rn_gmail.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9D043758AFC733BDBB3991E /* libPods-rn_gmail-tvOS.a in Frameworks */,
+				541812BF7AAC07D44927F869 /* libPods-rn_gmail-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D661D060C3F808F4D682CEBA /* libPods-rn_gmail-tvOSTests.a in Frameworks */,
+				2C054C2F7BA3064580B3B9C7 /* libPods-rn_gmail-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,39 +165,12 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				0B32E30124374EF66F22F144 /* libPods-rn_gmail.a */,
-				0F36FD6641BD6D81442298FE /* libPods-rn_gmail-rn_gmailTests.a */,
-				4DC3286782267089D12A053B /* libPods-rn_gmail-tvOS.a */,
-				8010B05BCFEEF7B2DE0098FC /* libPods-rn_gmail-tvOSTests.a */,
+				FCA609BB977472123D874529 /* libPods-rn_gmail.a */,
+				0FB01135A7A8D3A752056416 /* libPods-rn_gmail-rn_gmailTests.a */,
+				4B52AAB26128DFF813D61AEA /* libPods-rn_gmail-tvOS.a */,
+				D9CEDB4E6C90AD171793598A /* libPods-rn_gmail-tvOSTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5B6015C1C1C649D0A19577CA /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				00BCBA5B73F644A0A52E43B4 /* Roboto-Bold.ttf */,
-				CB2D89B34EF842F78519EE4A /* Roboto-Light.ttf */,
-				F3C6A3DFA51842C491D2CF75 /* Roboto-Medium.ttf */,
-				DD118A01B3D744C08EFF63B9 /* Roboto-Regular.ttf */,
-				A15057FF433C4542B0F53E17 /* AntDesign.ttf */,
-				4B9A23E990E348F7BE92E7B3 /* Entypo.ttf */,
-				0BD566BF50A342D5B2EADA60 /* EvilIcons.ttf */,
-				A3956163FA5548688D470F2C /* Feather.ttf */,
-				04183E7A4FBC4C79B11694D3 /* FontAwesome.ttf */,
-				EB63FD88216A424FBA23451A /* FontAwesome5_Brands.ttf */,
-				90E22B93FC694DC798944964 /* FontAwesome5_Regular.ttf */,
-				B27BA278E03E4BF5B480CBD8 /* FontAwesome5_Solid.ttf */,
-				6FD333A679B54A29AD0A92A3 /* Fontisto.ttf */,
-				D9115CDBECB34BB7BD8A6EC7 /* Foundation.ttf */,
-				074D95D1BB9847ED951869EB /* Ionicons.ttf */,
-				A6EE12C3B2D04F6FBDDB9A9F /* MaterialCommunityIcons.ttf */,
-				35EAF64C46D144C2924C4093 /* MaterialIcons.ttf */,
-				D34D7E0B078544A98C253692 /* Octicons.ttf */,
-				1B455A5ADE5F46948417D2EF /* SimpleLineIcons.ttf */,
-				8D91FB24E2AE481C8A107889 /* Zocial.ttf */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -231,8 +188,8 @@
 				00E356EF1AD99517003FC87E /* rn_gmailTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				896751923113820FB4EA36BE /* Pods */,
-				5B6015C1C1C649D0A19577CA /* Resources */,
+				E4E3E91B8E6109579DAF5B3B /* Pods */,
+				F222DEDE6BFA44EC891E771A /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -250,19 +207,46 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		896751923113820FB4EA36BE /* Pods */ = {
+		E4E3E91B8E6109579DAF5B3B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F3E913972B31574447799D3B /* Pods-rn_gmail.debug.xcconfig */,
-				A73D6623F5213E78782B8867 /* Pods-rn_gmail.release.xcconfig */,
-				D5B2C53165757B8DB1E88994 /* Pods-rn_gmail-rn_gmailTests.debug.xcconfig */,
-				920AE01196CF291853BA329C /* Pods-rn_gmail-rn_gmailTests.release.xcconfig */,
-				2DAE40E563D5409120515C05 /* Pods-rn_gmail-tvOS.debug.xcconfig */,
-				BCCF69254288BC7566338DA6 /* Pods-rn_gmail-tvOS.release.xcconfig */,
-				C08C308E478E4A49AB617A33 /* Pods-rn_gmail-tvOSTests.debug.xcconfig */,
-				A4096936F8A21A29A78A2722 /* Pods-rn_gmail-tvOSTests.release.xcconfig */,
+				1EC9B4799015ACEFB8685569 /* Pods-rn_gmail.debug.xcconfig */,
+				047F1C0B5F755C7E0EEC4300 /* Pods-rn_gmail.release.xcconfig */,
+				EE878E0A8E5BAC47B54DBFF6 /* Pods-rn_gmail-rn_gmailTests.debug.xcconfig */,
+				6453AA9BB120BDBD2AB0F1FD /* Pods-rn_gmail-rn_gmailTests.release.xcconfig */,
+				9F25C225FEE2DF5F9BE1B54E /* Pods-rn_gmail-tvOS.debug.xcconfig */,
+				75ACD628ECCCDB6A9CAAACCA /* Pods-rn_gmail-tvOS.release.xcconfig */,
+				047323FA45303AA51770067C /* Pods-rn_gmail-tvOSTests.debug.xcconfig */,
+				0A2977645AF6DEFABD1C06A6 /* Pods-rn_gmail-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F222DEDE6BFA44EC891E771A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E86AB8B895F541E4A48269E0 /* Roboto-Bold.ttf */,
+				DDB7D0BF37FD4DB1B6315439 /* Roboto-Light.ttf */,
+				6D57CFBFCB3F4C048445A838 /* Roboto-Medium.ttf */,
+				7FD67D4E6B494FD08E9D12EA /* Roboto-Regular.ttf */,
+				70BF8A97D932462FA7FF0CC5 /* AntDesign.ttf */,
+				8E24FEF8198740E1844C4275 /* Entypo.ttf */,
+				392EAF60D45B4D469BDD32B5 /* EvilIcons.ttf */,
+				A66894DDCA81426489640CBA /* Feather.ttf */,
+				554F235D08A743D5930C584F /* FontAwesome.ttf */,
+				BF0CCDC9362B4C4C9C1F7C4C /* FontAwesome5_Brands.ttf */,
+				90E3D2B0D2E543C09EDEA0AF /* FontAwesome5_Regular.ttf */,
+				441D125355744C3CB1CE3059 /* FontAwesome5_Solid.ttf */,
+				32F4F3867E1243CA95EE78C1 /* Fontisto.ttf */,
+				8242531AB34C4D75998FE96D /* Foundation.ttf */,
+				5F4FCBE82F384CCC85DE1E43 /* Ionicons.ttf */,
+				82E77F2B529846EB86C0DA5A /* MaterialCommunityIcons.ttf */,
+				6B64CAC35AB4471DB7C1FF0B /* MaterialIcons.ttf */,
+				5089586C0497455E93E163BC /* Octicons.ttf */,
+				0ACD86D116D4400185422415 /* SimpleLineIcons.ttf */,
+				B6A67DAE2BEF4FD2A608D87D /* Zocial.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,11 +256,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "rn_gmailTests" */;
 			buildPhases = (
-				99B57772D4E3BBB71ECEB08D /* [CP] Check Pods Manifest.lock */,
+				08FE9056CEE61C8A2784074B /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				4DF74E02309D0674CD39F2F6 /* [CP] Copy Pods Resources */,
+				CD5429092F3931803A8C186C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -292,12 +276,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "rn_gmail" */;
 			buildPhases = (
-				0420A8CB575674623975BAD1 /* [CP] Check Pods Manifest.lock */,
+				444CEFEF80DAD2A44DA5BA00 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				4412F77E77790600C3A1BEDC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -312,7 +297,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "rn_gmail-tvOS" */;
 			buildPhases = (
-				CA2691919A07F07A150F36BC /* [CP] Check Pods Manifest.lock */,
+				4FBBE42063FCA1374065D062 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -332,7 +317,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "rn_gmail-tvOSTests" */;
 			buildPhases = (
-				30F0657714A30065FBB70FBB /* [CP] Check Pods Manifest.lock */,
+				13C65F9F23C9E28A8BB5AD9A /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -406,28 +391,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BBE51B524C3C503002EB915 /* Roboto-Regular.ttf in Resources */,
-				0BBE51BF24C3C503002EB915 /* Foundation.ttf in Resources */,
-				0BBE51BA24C3C503002EB915 /* FontAwesome.ttf in Resources */,
-				0BBE51BC24C3C503002EB915 /* FontAwesome5_Regular.ttf in Resources */,
-				0BBE51C224C3C503002EB915 /* MaterialIcons.ttf in Resources */,
-				0BBE51C424C3C503002EB915 /* SimpleLineIcons.ttf in Resources */,
-				0BBE51C524C3C503002EB915 /* Zocial.ttf in Resources */,
-				0BBE51C024C3C503002EB915 /* Ionicons.ttf in Resources */,
-				0BBE51B424C3C503002EB915 /* Roboto-Medium.ttf in Resources */,
-				0BBE51B924C3C503002EB915 /* Feather.ttf in Resources */,
-				0BBE51B624C3C503002EB915 /* AntDesign.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				0BBE51C324C3C503002EB915 /* Octicons.ttf in Resources */,
-				0BBE51BD24C3C503002EB915 /* FontAwesome5_Solid.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				0BBE51B724C3C503002EB915 /* Entypo.ttf in Resources */,
-				0BBE51B324C3C503002EB915 /* Roboto-Light.ttf in Resources */,
-				0BBE51BB24C3C503002EB915 /* FontAwesome5_Brands.ttf in Resources */,
-				0BBE51BE24C3C503002EB915 /* Fontisto.ttf in Resources */,
-				0BBE51B824C3C503002EB915 /* EvilIcons.ttf in Resources */,
-				0BBE51C124C3C503002EB915 /* MaterialCommunityIcons.ttf in Resources */,
-				0BBE51B224C3C503002EB915 /* Roboto-Bold.ttf in Resources */,
+				E8553FE0C658412797EC3222 /* Roboto-Bold.ttf in Resources */,
+				9F81845D27944D7ABC1AFC5D /* Roboto-Light.ttf in Resources */,
+				E6AC65BCF7DE4821AD2D112B /* Roboto-Medium.ttf in Resources */,
+				7F1CEB5A11364391B51BC9A6 /* Roboto-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +432,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		0420A8CB575674623975BAD1 /* [CP] Check Pods Manifest.lock */ = {
+		08FE9056CEE61C8A2784074B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -478,28 +447,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-rn_gmail-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-rn_gmail-rn_gmailTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		30F0657714A30065FBB70FBB /* [CP] Check Pods Manifest.lock */ = {
+		13C65F9F23C9E28A8BB5AD9A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -521,7 +476,115 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4DF74E02309D0674CD39F2F6 /* [CP] Copy Pods Resources */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		4412F77E77790600C3A1BEDC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rn_gmail/Pods-rn_gmail-resources.sh",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rn_gmail/Pods-rn_gmail-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		444CEFEF80DAD2A44DA5BA00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-rn_gmail-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FBBE42063FCA1374065D062 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-rn_gmail-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD5429092F3931803A8C186C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -569,50 +632,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rn_gmail-rn_gmailTests/Pods-rn_gmail-rn_gmailTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		99B57772D4E3BBB71ECEB08D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-rn_gmail-rn_gmailTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CA2691919A07F07A150F36BC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-rn_gmail-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -708,7 +727,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D5B2C53165757B8DB1E88994 /* Pods-rn_gmail-rn_gmailTests.debug.xcconfig */;
+			baseConfigurationReference = EE878E0A8E5BAC47B54DBFF6 /* Pods-rn_gmail-rn_gmailTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -731,7 +750,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 920AE01196CF291853BA329C /* Pods-rn_gmail-rn_gmailTests.release.xcconfig */;
+			baseConfigurationReference = 6453AA9BB120BDBD2AB0F1FD /* Pods-rn_gmail-rn_gmailTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -751,7 +770,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3E913972B31574447799D3B /* Pods-rn_gmail.debug.xcconfig */;
+			baseConfigurationReference = 1EC9B4799015ACEFB8685569 /* Pods-rn_gmail.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -774,7 +793,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A73D6623F5213E78782B8867 /* Pods-rn_gmail.release.xcconfig */;
+			baseConfigurationReference = 047F1C0B5F755C7E0EEC4300 /* Pods-rn_gmail.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -795,7 +814,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DAE40E563D5409120515C05 /* Pods-rn_gmail-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 9F25C225FEE2DF5F9BE1B54E /* Pods-rn_gmail-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -823,7 +842,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCCF69254288BC7566338DA6 /* Pods-rn_gmail-tvOS.release.xcconfig */;
+			baseConfigurationReference = 75ACD628ECCCDB6A9CAAACCA /* Pods-rn_gmail-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -851,7 +870,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C08C308E478E4A49AB617A33 /* Pods-rn_gmail-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 047323FA45303AA51770067C /* Pods-rn_gmail-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -878,7 +897,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4096936F8A21A29A78A2722 /* Pods-rn_gmail-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 0A2977645AF6DEFABD1C06A6 /* Pods-rn_gmail-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
