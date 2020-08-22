@@ -28,6 +28,7 @@ const SearchBarProfile = () => {
         <S.Container>
           {Array.from({ length: 3 }).map((_, index) => (
             <S.Profile
+              key={index}
               style={
                 index === selectedProfile
                   ? { transform: [{ translateY: translationY }] }

@@ -5,14 +5,19 @@ import MailList from './MailList';
 import SearchBar from './SearchBar';
 
 import { Styled } from '@core/types';
+import { MailLabel } from '@modules/inbox/types';
 
-const MailBox = () => {
+interface Props {
+  selectedLabel: MailLabel;
+}
+
+const MailBox = ({ selectedLabel }: Props) => {
   return (
     <>
       <S.SafeArea />
       <S.Container>
         <SearchBar />
-        <MailList />
+        <MailList selectedLabel={selectedLabel} />
       </S.Container>
     </>
   );

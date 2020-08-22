@@ -1,6 +1,7 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext, useCallback, memo } from 'react';
 import { Pressable, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
+import { useNavigation } from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Text from '@core/Text';
@@ -23,6 +24,7 @@ const MailListItem = ({
   setSelectedMails,
 }: Props) => {
   const theme = useContext(ThemeContext);
+  const navigation = useNavigation();
 
   const toggleMailSelection = useCallback(() => {
     setSelectedMails((prev) => ({
@@ -32,7 +34,10 @@ const MailListItem = ({
   }, []);
 
   return (
-    <Pressable onLongPress={toggleMailSelection}>
+    <Pressable
+      onPress={() => navigation.navigate('MailView')}
+      onLongPress={toggleMailSelection}
+    >
       <S.Container isSelected={isSelected}>
         <Pressable onPress={toggleMailSelection}>
           <S.Badge isSelected={isSelected}>
@@ -123,4 +128,4 @@ const S = {
   `,
 };
 
-export default MailListItem;
+export default memo(MailListItem);

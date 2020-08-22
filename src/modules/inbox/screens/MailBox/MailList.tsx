@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FlatList } from 'react-native';
 import styled from 'styled-components';
-import { RouteProp, useRoute } from '@react-navigation/core';
 
 import MailListItem from './MailListItem';
 
@@ -9,10 +8,11 @@ import Text from '@core/Text';
 
 import { spacing } from '@styles/metrics';
 
-import { Mail } from '@modules/inbox/types';
-import { DrawerParamList } from '@navigation/types';
+import { Mail, MailLabel } from '@modules/inbox/types';
 
-type Route = RouteProp<DrawerParamList, 'Home'>;
+interface Props {
+  selectedLabel: MailLabel;
+}
 
 const MAIL_LIST: Mail[] = [
   {
@@ -57,11 +57,7 @@ const MAIL_LIST: Mail[] = [
   },
 ];
 
-const MailList = () => {
-  const {
-    params: { selectedLabel },
-  } = useRoute<Route>();
-
+const MailList = ({ selectedLabel }: Props) => {
   const [selectedMails, setSelectedMails] = useState({});
 
   return (

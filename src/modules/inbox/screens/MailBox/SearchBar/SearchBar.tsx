@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, memo } from 'react';
 import { Pressable, TextInput, Dimensions, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -178,4 +178,4 @@ const S = {
   `,
 };
 
-export default SearchBar;
+export default memo(SearchBar);

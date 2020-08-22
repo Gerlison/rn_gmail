@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import styled, { css } from 'styled-components/native';
 
@@ -45,4 +45,4 @@ const StyledText = styled.Text<Styled<TextProps>>`
     `}
 `;
 
-export default Text;
+export default memo(Text);
