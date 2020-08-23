@@ -90,10 +90,10 @@ const S = {
     margin-left: ${spacing.SMALLEST}px;
     margin-bottom: ${spacing.SMALLEST}px;
     padding: ${spacing.MEDIUM}px;
-    padding-left: ${spacing.MEDIUM - spacing.SMALLEST}px;
+    padding-left: ${spacing.SMALL}px;
     border-radius: 10px;
     background-color: ${({ theme, isSelected }) =>
-      isSelected ? `${theme.PRIMARY}20` : theme.WHITE};
+      isSelected ? `${theme.PRIMARY}20` : theme.BACKGROUND};
   `,
   TitleRow: styled.View`
     flex-direction: row;
