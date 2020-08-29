@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback, memo } from 'react';
 import { Pressable, TextInput, Dimensions, Platform } from 'react-native';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 import Animated, { Easing } from 'react-native-reanimated';
@@ -8,16 +8,12 @@ import { useTimingTransition, interpolateColor } from 'react-native-redash';
 import ExtraDimensions from 'react-native-extra-dimensions-android';
 
 import SearchBarResults from './SearchBarResults';
-
-import { spacing } from '@styles/metrics';
-import { sizing, styling } from '@styles/fonts';
+import SearchBarProfile from './SearchBarProfile';
 
 import { useInterpolation } from '@helpers/hooks';
 
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { DrawerParamList } from '@navigation/types';
-import { Styled } from '@core/types';
-import SearchBarProfile from './SearchBarProfile';
 
 type Navigation = DrawerNavigationProp<DrawerParamList, 'Home'>;
 
@@ -62,7 +58,6 @@ const SearchBar = () => {
     return (
       <S.Icon
         name={icon}
-        size={sizing.icon.LARGE}
         style={{
           transform: [
             {
@@ -91,9 +86,9 @@ const SearchBar = () => {
           height: interpolation([0, 1], [SEARCH_BAR_HEIGHT, height]),
           borderRadius: interpolation([0, 1], [8, 0]),
           shadowOpacity: interpolation([0, 0.999, 1], [1, 1, 0]),
-          left: interpolation([0, 1], [spacing.MEDIUM, 0]),
-          right: interpolation([0, 1], [spacing.MEDIUM, 0]),
-          top: interpolation([0, 1], [spacing.SMALLER, 0]),
+          left: interpolation([0, 1], [16, 0]),
+          right: interpolation([0, 1], [16, 0]),
+          top: interpolation([0, 1], [4, 0]),
         }}
       >
         <S.Content>
@@ -111,8 +106,8 @@ const SearchBar = () => {
               onFocus={() => setFocused(1)}
               placeholder="Search on mail"
               style={{
-                left: interpolation([0, 1], [0, spacing.MEDIUM]),
-                marginTop: interpolation([0, 1], [0, spacing.SMALLEST]),
+                left: interpolation([0, 1], [0, 16]),
+                marginTop: interpolation([0, 1], [0, 4]),
               }}
             />
           </S.Row>
@@ -125,10 +120,10 @@ const SearchBar = () => {
 };
 
 const S = {
-  Container: styled(Animated.View)<Styled>`
+  Container: styled(Animated.View)`
     height: ${SEARCH_BAR_HEIGHT}px;
 
-    background-color: ${({ theme }) => theme.BACKGROUND};
+    background-color: ${({ theme: { colors } }) => colors.BACKGROUND};
     box-shadow: 0px 0px 2px #0003;
     elevation: 2;
     position: absolute;
@@ -142,20 +137,22 @@ const S = {
     justify-content: space-between;
     align-items: center;
 
-    margin-right: ${spacing.SMALL}px;
+    margin-right: ${({ theme: { metrics } }) => metrics.SMALL}px;
   `,
   TextInput: styled(Animated.createAnimatedComponent(TextInput)).attrs(
-    ({ theme }: Styled) => ({
-      placeholderTextColor: theme.DARK,
+    ({ theme: { colors } }) => ({
+      placeholderTextColor: colors.DARK,
     }),
-  )<Styled>`
-    flex: 1;
+  )`
+    ${({ theme: { metrics, colors, fonts } }) => css`
+      flex: 1;
 
-    margin-left: ${spacing.SMALLER}px;
+      margin-left: ${metrics.SMALLER}px;
 
-    font-size: ${sizing.LARGE}px;
-    color: ${({ theme }) => theme.DARK};
-    font-family: ${styling.ROBOTO_REGULAR};
+      font-size: ${fonts.sizing.LARGE}px;
+      color: ${colors.DARK};
+      font-family: ${fonts.styling.ROBOTO_REGULAR};
+    `}
   `,
   Row: styled.View`
     height: ${SEARCH_BAR_HEIGHT}px;
@@ -164,12 +161,15 @@ const S = {
     flex-direction: row;
     align-items: center;
 
-    margin-horizontal: ${spacing.SMALL}px;
+    margin-horizontal: ${({ theme: { metrics } }) => metrics.SMALL}px;
   `,
   Icon: styled(Animated.createAnimatedComponent(Icon))`
-    color: ${({ theme }) => theme.DARK};
+    ${({ theme: { colors, fonts } }) => css`
+      color: ${colors.DARK};
+      font-size: ${fonts.icon.LARGE}px;
+    `};
   `,
-  Backdrop: styled(Animated.View)<Styled>`
+  Backdrop: styled(Animated.View)`
     position: absolute;
     top: 0;
     bottom: 0;

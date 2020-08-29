@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
-import { Styled } from '@core/types';
-
 const MailView = () => {
   return (
     <S.Container>
@@ -12,9 +10,9 @@ const MailView = () => {
 };
 
 const S = {
-  Container: styled.View<Styled>`
+  Container: styled.View`
     flex: 1;
-    background-color: ${({ theme }) => theme.BACKGROUND};
+    background-color: ${({ theme: { colors } }) => colors.BACKGROUND};
   `,
 };
 

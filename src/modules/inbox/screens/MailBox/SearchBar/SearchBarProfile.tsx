@@ -7,7 +7,6 @@ import { PanGestureHandler } from 'react-native-gesture-handler';
 
 import Text from '@core/Text';
 
-import { Styled } from '@core/types';
 import { useInterpolation } from '@helpers/hooks';
 
 const PROFILE_SIZE = 30;
@@ -70,7 +69,7 @@ const S = {
 
     overflow: hidden;
   `,
-  Profile: styled(Animated.View)<Styled>`
+  Profile: styled(Animated.View)`
     width: ${PROFILE_SIZE}px;
     height: ${PROFILE_SIZE}px;
 
@@ -78,7 +77,7 @@ const S = {
     align-items: center;
 
     border-radius: 20px;
-    background-color: ${({ theme }) => theme.TERTIARY};
+    background-color: ${({ theme: { colors } }) => colors.TERTIARY};
 
     position: absolute;
   `,

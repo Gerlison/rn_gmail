@@ -1,15 +1,12 @@
 import React, { useContext, useCallback, memo } from 'react';
 import { Pressable, Platform } from 'react-native';
-import styled, { ThemeContext } from 'styled-components/native';
+import styled, { ThemeContext, css } from 'styled-components/native';
 import { useNavigation } from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Text from '@core/Text';
 
-import { spacing } from '@styles/metrics';
-import { sizing } from '@styles/fonts';
-
-import { Styled, Mail } from '@core/types';
+import { Mail } from '@core/types';
 
 interface Props {
   mail: Mail;
@@ -20,7 +17,10 @@ interface Props {
 }
 
 const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
-  const theme = useContext(ThemeContext);
+  const {
+    colors,
+    fonts: { icon },
+  } = useContext(ThemeContext);
   const navigation = useNavigation();
 
   const toggleMailSelection = useCallback(() => {
@@ -39,7 +39,7 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
         <Pressable onPress={toggleMailSelection}>
           <S.Badge isSelected={isSelected}>
             {isSelected ? (
-              <Icon name="check" size={sizing.icon.LARGE} color={theme.WHITE} />
+              <Icon name="check" size={icon.LARGE} color={colors.WHITE} />
             ) : (
               <S.VerticalCenteredText size="LARGEST" color="WHITE">
                 {mail.from.name.charAt(0)}
@@ -53,8 +53,8 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
             {mail.labelIds.includes('2') && (
               <Icon
                 name="label-variant"
-                size={sizing.icon.LARGE}
-                color={theme.QUATERNARY}
+                size={icon.LARGE}
+                color={colors.QUATERNARY}
               />
             )}
             <S.Text style={{ flex: 1 }} type="title">
@@ -72,9 +72,9 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
             </S.View>
             <Icon
               name={`star${mail.labelIds.includes('1') ? '' : '-outline'}`}
-              size={sizing.icon.LARGE}
+              size={icon.LARGE}
               color={
-                mail.labelIds.includes('1') ? theme.QUATERNARY : theme.REGULAR
+                mail.labelIds.includes('1') ? colors.QUATERNARY : colors.REGULAR
               }
             />
           </S.Row>
@@ -85,15 +85,18 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
 };
 
 const S = {
-  Container: styled.View<Styled<{ isSelected: boolean }>>`
-    width: 100%;
-    flex-direction: row;
-    margin-left: ${spacing.SMALLEST}px;
-    margin-bottom: ${spacing.SMALLEST}px;
-    padding: ${spacing.SMALL}px;
-    border-radius: 10px;
-    background-color: ${({ theme, isSelected }) =>
-      isSelected ? `${theme.PRIMARY}20` : theme.BACKGROUND};
+  Container: styled.View<{ isSelected: boolean }>`
+    ${({ theme: { colors, metrics }, isSelected }) => css`
+      width: 100%;
+      flex-direction: row;
+      margin-left: ${metrics.SMALLEST}px;
+      margin-bottom: ${metrics.SMALLEST}px;
+      padding: ${metrics.SMALL}px;
+      border-radius: 10px;
+      background-color: ${isSelected
+        ? `${colors.PRIMARY}20`
+        : colors.BACKGROUND};
+    `}
   `,
   Row: styled.View`
     flex-direction: row;
@@ -103,17 +106,18 @@ const S = {
     numberOfLines: 1,
     color: 'DARK',
   })`
-    margin-right: ${spacing.SMALLER}px;
+    margin-right: ${({ theme: { metrics } }) => metrics.SMALLER}px;
   `,
-  Badge: styled.View<Styled<{ isSelected: boolean }>>`
-    width: 40px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    margin-right: ${spacing.MEDIUM}px;
-    border-radius: 20px;
-    background-color: ${({ isSelected, theme }) =>
-      isSelected ? theme.PRIMARY : 'lightcoral'};
+  Badge: styled.View<{ isSelected: boolean }>`
+    ${({ theme: { colors, metrics }, isSelected }) => css`
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      margin-right: ${metrics.MEDIUM}px;
+      border-radius: 20px;
+      background-color: ${isSelected ? colors.PRIMARY : 'lightcoral'};
+    `}
   `,
   View: styled.View`
     flex: 1;

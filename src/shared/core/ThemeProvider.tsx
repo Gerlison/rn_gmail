@@ -1,22 +1,22 @@
 import React from 'react';
 
-import { ThemeProvider as StyledComponentsProvider } from 'styled-components';
+import StyledComponentsProvider from '@services/styledComponents';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '@store/index';
+import fonts from '@styles/fonts';
+import metrics from '@styles/metrics';
 
-interface Props {
-  children: React.ReactElement;
-}
-
-const ThemeProvider = ({ children }: Props) => {
+const ThemeProvider: React.FC = ({ children }) => {
   const {
     theme: { currentTheme, theme },
   } = useSelector((state: RootState) => state);
 
   return (
-    <StyledComponentsProvider theme={{ ...theme, currentTheme }}>
-      {React.cloneElement(React.Children.only(children))}
+    <StyledComponentsProvider
+      theme={{ fonts, metrics, colors: theme, currentTheme }}
+    >
+      {children}
     </StyledComponentsProvider>
   );
 };
