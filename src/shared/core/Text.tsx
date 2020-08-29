@@ -11,7 +11,7 @@ const Text = ({ children, type, ...props }: TextProps) => {
         return {
           size: 'SMALL',
           color: 'DARK',
-          weight: 'MEDIUM',
+          family: 'MEDIUM',
           type,
         };
       case 'title':
@@ -24,8 +24,6 @@ const Text = ({ children, type, ...props }: TextProps) => {
         return {
           color: 'DARKEST',
           size: 'MEDIUM',
-          family: 'REGULAR',
-          weight: 400,
         };
     }
   }, []);
@@ -41,10 +39,10 @@ const StyledText = styled.Text<TextProps>`
   ${({ theme: { colors, fonts }, color, size, weight, type, family }) => css`
     color: ${colors[color]};
 
-    font-size: ${typeof size === 'number' ? size : fonts.sizing[size]};
+    font-size: ${typeof size === 'number' ? size : fonts.sizing[size]}px;
 
-    font-family: ${fonts.styling[family]};
-    font-weight: ${weight}px;
+    font-family: ${fonts.styling[family || 'REGULAR']};
+    font-weight: ${weight || '400'};
 
     ${type === 'label' &&
     css`

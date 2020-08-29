@@ -151,7 +151,7 @@ const S = {
 
       font-size: ${fonts.sizing.LARGE}px;
       color: ${colors.DARK};
-      font-family: ${fonts.styling.ROBOTO_REGULAR};
+      font-family: ${fonts.styling.REGULAR};
     `}
   `,
   Row: styled.View`
