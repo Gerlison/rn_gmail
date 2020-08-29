@@ -20,9 +20,9 @@ interface Props {
 }
 
 const Drawer = ({ navigation }: Props) => {
-  const labels = useTypedSelector((state) => state.labels);
+  const { labels } = useTypedSelector((state) => state.labels);
 
-  const [selectedOption, setSelectedOption] = useState(labels[0].id);
+  const [selectedOption, setSelectedOption] = useState(labels?.[0].id);
 
   const onPressOption = useCallback(
     (label: MailLabel) => () => {
@@ -42,7 +42,7 @@ const Drawer = ({ navigation }: Props) => {
           Gmail
         </Text>
       </S.Title>
-      {labels.map((label) => (
+      {labels?.map((label) => (
         <DrawerOption
           key={label.id}
           label={label}
