@@ -1,6 +1,7 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext, useCallback, memo } from 'react';
 import { Pressable, Platform } from 'react-native';
 import styled, { ThemeContext } from 'styled-components/native';
+import { useNavigation } from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Text from '@core/Text';
@@ -8,31 +9,32 @@ import Text from '@core/Text';
 import { spacing } from '@styles/metrics';
 import { sizing } from '@styles/fonts';
 
-import { Styled } from '@core/types';
-import { Mail } from '@modules/inbox/types';
+import { Styled, Mail } from '@core/types';
 
 interface Props {
   mail: Mail;
   isSelected: boolean;
-  setSelectedMails: React.Dispatch<React.SetStateAction<{}>>;
+  setSelectedMails: React.Dispatch<
+    React.SetStateAction<{ [key: string]: boolean }>
+  >;
 }
 
-const MailListItem = ({
-  mail: { id, labelIds, payload, date },
-  isSelected,
-  setSelectedMails,
-}: Props) => {
+const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
   const theme = useContext(ThemeContext);
+  const navigation = useNavigation();
 
   const toggleMailSelection = useCallback(() => {
     setSelectedMails((prev) => ({
       ...prev,
-      [id]: !prev[id],
+      [mail.id]: !prev[mail.id],
     }));
   }, []);
 
   return (
-    <Pressable onLongPress={toggleMailSelection}>
+    <Pressable
+      onPress={() => navigation.navigate('MailView')}
+      onLongPress={toggleMailSelection}
+    >
       <S.Container isSelected={isSelected}>
         <Pressable onPress={toggleMailSelection}>
           <S.Badge isSelected={isSelected}>
@@ -40,7 +42,7 @@ const MailListItem = ({
               <Icon name="check" size={sizing.icon.LARGE} color={theme.WHITE} />
             ) : (
               <S.VerticalCenteredText size="LARGEST" color="WHITE">
-                {payload.from.name.charAt(0)}
+                {mail.from.name.charAt(0)}
               </S.VerticalCenteredText>
             )}
           </S.Badge>
@@ -48,7 +50,7 @@ const MailListItem = ({
 
         <S.View>
           <S.TitleRow>
-            {labelIds.includes('2') && (
+            {mail.labelIds.includes('2') && (
               <Icon
                 name="label-variant"
                 size={sizing.icon.LARGE}
@@ -56,20 +58,22 @@ const MailListItem = ({
               />
             )}
             <S.Text style={{ flex: 1 }} type="title">
-              {payload.from.name}
+              {mail.from.name}
             </S.Text>
-            <Text size="SMALL">{date.toLocaleDateString()}</Text>
+            <Text size="SMALL">{mail.date.toLocaleDateString()}</Text>
           </S.TitleRow>
 
           <S.DescriptionRow>
             <S.View>
-              <S.Text>{payload.subject}</S.Text>
-              <S.Text>{payload.body}</S.Text>
+              <S.Text>{mail.subject}</S.Text>
+              <S.Text>{mail.body}</S.Text>
             </S.View>
             <Icon
-              name={`star${labelIds.includes('1') ? '' : '-outline'}`}
+              name={`star${mail.labelIds.includes('1') ? '' : '-outline'}`}
               size={sizing.icon.LARGE}
-              color={labelIds.includes('1') ? theme.QUATERNARY : theme.REGULAR}
+              color={
+                mail.labelIds.includes('1') ? theme.QUATERNARY : theme.REGULAR
+              }
             />
           </S.DescriptionRow>
         </S.View>
@@ -85,10 +89,10 @@ const S = {
     margin-left: ${spacing.SMALLEST}px;
     margin-bottom: ${spacing.SMALLEST}px;
     padding: ${spacing.MEDIUM}px;
-    padding-left: ${spacing.MEDIUM - spacing.SMALLEST}px;
+    padding-left: ${spacing.SMALL}px;
     border-radius: 10px;
     background-color: ${({ theme, isSelected }) =>
-      isSelected ? `${theme.PRIMARY}20` : theme.WHITE};
+      isSelected ? `${theme.PRIMARY}20` : theme.BACKGROUND};
   `,
   TitleRow: styled.View`
     flex-direction: row;
@@ -123,4 +127,4 @@ const S = {
   `,
 };
 
-export default MailListItem;
+export default memo(MailListItem);

@@ -1,24 +1,17 @@
-import {
-  createStore,
-  combineReducers,
-  applyMiddleware,
-  compose,
-  StoreEnhancer,
-} from 'redux';
-import thunk from 'redux-thunk';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 import reactotron from '@services/reactotron';
 
-import globalDucks from './ducks';
+import globalSlices from './slices';
+import inboxSlices from '@modules/inbox/store';
 
-const reducers = combineReducers({ ...globalDucks });
-export type RootState = ReturnType<typeof reducers>;
+const reducer = combineReducers({ ...globalSlices, ...inboxSlices });
+export type RootState = ReturnType<typeof reducer>;
 
-const middlewares: StoreEnhancer<{}, RootState> = compose(
-  applyMiddleware(thunk),
-  __DEV__ && reactotron?.createEnhancer
-    ? reactotron?.createEnhancer()
-    : () => {},
-);
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-export default createStore(reducers, middlewares);
+export default configureStore({
+  reducer,
+  enhancers: __DEV__ ? [reactotron?.createEnhancer?.() as any] : undefined,
+});
