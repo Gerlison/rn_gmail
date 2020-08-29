@@ -62,7 +62,7 @@ const SearchBar = () => {
     return (
       <S.Icon
         name={icon}
-        size={sizing.icon.LARGER}
+        size={sizing.icon.LARGE}
         style={{
           transform: [
             {

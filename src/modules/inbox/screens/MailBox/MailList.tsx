@@ -44,7 +44,7 @@ const MailList = ({ selectedLabel }: Props) => {
 const S = {
   Text: styled(Text)`
     margin-left: ${spacing.MEDIUM}px;
-    margin-bottom: ${spacing.SMALLER}px;
+    margin-bottom: ${spacing.SMALLEST}px;
   `,
 };
 

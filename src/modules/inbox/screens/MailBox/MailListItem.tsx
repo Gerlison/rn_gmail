@@ -49,7 +49,7 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
         </Pressable>
 
         <S.View>
-          <S.TitleRow>
+          <S.Row>
             {mail.labelIds.includes('2') && (
               <Icon
                 name="label-variant"
@@ -60,10 +60,12 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
             <S.Text style={{ flex: 1 }} type="title">
               {mail.from.name}
             </S.Text>
-            <Text size="SMALL">{mail.date.toLocaleDateString()}</Text>
-          </S.TitleRow>
+            <Text color="DARK" size="SMALL">
+              {mail.date.toLocaleDateString()}
+            </Text>
+          </S.Row>
 
-          <S.DescriptionRow>
+          <S.Row>
             <S.View>
               <S.Text>{mail.subject}</S.Text>
               <S.Text>{mail.body}</S.Text>
@@ -75,7 +77,7 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
                 mail.labelIds.includes('1') ? theme.QUATERNARY : theme.REGULAR
               }
             />
-          </S.DescriptionRow>
+          </S.Row>
         </S.View>
       </S.Container>
     </Pressable>
@@ -88,18 +90,12 @@ const S = {
     flex-direction: row;
     margin-left: ${spacing.SMALLEST}px;
     margin-bottom: ${spacing.SMALLEST}px;
-    padding: ${spacing.MEDIUM}px;
-    padding-left: ${spacing.SMALL}px;
+    padding: ${spacing.SMALL}px;
     border-radius: 10px;
     background-color: ${({ theme, isSelected }) =>
       isSelected ? `${theme.PRIMARY}20` : theme.BACKGROUND};
   `,
-  TitleRow: styled.View`
-    flex-direction: row;
-    align-items: flex-end;
-    margin-bottom: ${spacing.SMALLEST}px;
-  `,
-  DescriptionRow: styled.View`
+  Row: styled.View`
     flex-direction: row;
     align-items: flex-end;
   `,
@@ -110,8 +106,8 @@ const S = {
     margin-right: ${spacing.SMALLER}px;
   `,
   Badge: styled.View<Styled<{ isSelected: boolean }>>`
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     align-items: center;
     justify-content: center;
     margin-right: ${spacing.MEDIUM}px;
@@ -123,7 +119,7 @@ const S = {
     flex: 1;
   `,
   VerticalCenteredText: styled(Text)`
-    bottom: ${Platform.OS === 'ios' ? -1.5 : 0}px;
+    bottom: ${Platform.OS === 'ios' ? -1.5 : 1}px;
   `,
 };
 

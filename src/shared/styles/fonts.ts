@@ -1,7 +1,7 @@
 import { Platform, PixelRatio } from 'react-native';
 
 const iconMultiplier = 1.3;
-const fontMultiplier = Platform.OS === 'ios' ? PixelRatio.get() : 0;
+const fontMultiplier = PixelRatio.get();
 
 export const sizing = {
   SMALLEST: 8 + fontMultiplier,
