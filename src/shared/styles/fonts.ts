@@ -1,9 +1,9 @@
-import { Platform, PixelRatio } from 'react-native';
+import { PixelRatio } from 'react-native';
 
 const iconMultiplier = 1.3;
-const fontMultiplier = Platform.OS === 'ios' ? PixelRatio.get() : 0;
+const fontMultiplier = PixelRatio.get();
 
-export const sizing = {
+const sizing = {
   SMALLEST: 8 + fontMultiplier,
   SMALLER: 10 + fontMultiplier,
   SMALL: 12 + fontMultiplier,
@@ -11,23 +11,23 @@ export const sizing = {
   LARGE: 16 + fontMultiplier,
   LARGER: 18 + fontMultiplier,
   LARGEST: 22 + fontMultiplier,
-
-  get icon() {
-    return {
-      SMALLEST: this.SMALLEST * iconMultiplier,
-      SMALLER: this.SMALLER * iconMultiplier,
-      SMALL: this.SMALL * iconMultiplier,
-      MEDIUM: this.MEDIUM * iconMultiplier,
-      LARGE: this.LARGE * iconMultiplier,
-      LARGER: this.LARGER * iconMultiplier,
-      LARGEST: this.LARGEST * iconMultiplier,
-    };
-  },
 };
 
-export const styling = {
-  ROBOTO_LIGHT: 'Roboto-Light',
-  ROBOTO_REGULAR: 'Roboto-Regular',
-  ROBOTO_MEDIUM: 'Roboto-Medium',
-  ROBOTO_BOLD: 'Roboto-Bold',
+const icon = {
+  SMALLEST: (8 + fontMultiplier) * iconMultiplier,
+  SMALLER: (10 + fontMultiplier) * iconMultiplier,
+  SMALL: (12 + fontMultiplier) * iconMultiplier,
+  MEDIUM: (14 + fontMultiplier) * iconMultiplier,
+  LARGE: (16 + fontMultiplier) * iconMultiplier,
+  LARGER: (18 + fontMultiplier) * iconMultiplier,
+  LARGEST: (22 + fontMultiplier) * iconMultiplier,
 };
+
+const styling = {
+  LIGHT: 'Roboto-Light',
+  REGULAR: 'Roboto-Regular',
+  MEDIUM: 'Roboto-Medium',
+  BOLD: 'Roboto-Bold',
+};
+
+export default { sizing, icon, styling };

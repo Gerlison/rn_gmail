@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { LIGHT_THEME, DARK_THEME } from '@styles/colors';
+import colors from '@styles/colors';
+
+const { LIGHT_THEME, DARK_THEME } = colors;
 
 export default createSlice({
   name: 'theme',

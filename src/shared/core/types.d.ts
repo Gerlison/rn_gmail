@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextProps as DefaultTextProps } from 'react-native';
-import { styling, sizing } from '@styles/fonts';
-import { LIGHT_THEME } from '@styles/colors';
+import fonts from '@styles/fonts';
+import colors from '@styles/colors';
 
 /**
  *
@@ -9,24 +9,21 @@ import { LIGHT_THEME } from '@styles/colors';
  * Typing for core components
  */
 
-export type Theme = typeof LIGHT_THEME;
-
-export type Styled<T = {}> = T & {
-  theme: Theme & { currentTheme: string };
-};
+export type Theme = typeof colors.LIGHT_THEME;
 
 export interface TextProps extends DefaultTextProps {
   color?: keyof Theme;
-  type?: 'text' | 'label' | 'title';
-  size?: keyof typeof sizing | number;
-  weight?: keyof typeof styling;
-  children?: React.ReactNode;
+  type?: 'label' | 'title';
+  size?: keyof typeof fonts.sizing | number;
+  weight?: 'normal' | 'bold' | '200' | '400' | '500' | '600' | '700' | '800';
+  family?: keyof typeof fonts.styling;
+  children: React.ReactNode;
 }
 
 /**
  *
  * @Types
- * Types for data structures
+ * Types for data
  */
 
 export interface User {

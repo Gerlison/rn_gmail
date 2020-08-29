@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import {
   DrawerContentScrollView,
   DrawerNavigationProp,
@@ -11,8 +11,7 @@ import Text from '@core/Text';
 
 import { useTypedSelector } from '@store/index';
 
-import { Styled, MailLabel } from '@core/types';
-import { spacing } from '@styles/metrics';
+import { MailLabel } from '@core/types';
 import { DrawerParamList } from '@navigation/types';
 
 interface Props {
@@ -55,16 +54,18 @@ const Drawer = ({ navigation }: Props) => {
 };
 
 const S = {
-  SafeArea: styled.SafeAreaView<Styled>`
-    background-color: ${({ theme }) => theme.WHITE};
+  SafeArea: styled.SafeAreaView`
+    background-color: ${({ theme: { colors } }) => colors.WHITE};
   `,
-  Title: styled.View<Styled>`
-    width: 100%;
-    color: #e04444;
-    padding: ${spacing.MEDIUM}px;
-    margin-bottom: ${spacing.MEDIUM}px;
-    border-bottom-width: 0.5px;
-    border-color: ${({ theme }) => theme.LIGHT};
+  Title: styled.View`
+    ${({ theme: { metrics, colors } }) => css`
+      width: 100%;
+      color: #e04444;
+      padding: ${metrics.MEDIUM}px;
+      margin-bottom: ${metrics.MEDIUM}px;
+      border-bottom-width: 0.5px;
+      border-color: ${colors.LIGHT};
+    `}
   `,
 };
 

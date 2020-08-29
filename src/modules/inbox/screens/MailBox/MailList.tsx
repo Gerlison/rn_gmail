@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { FlatList } from 'react-native';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import MailListItem from './MailListItem';
 
 import Text from '@core/Text';
 
-import { spacing } from '@styles/metrics';
-
 import { useTypedSelector } from '@store/index';
+
 import { MailLabel, Mail } from '@core/types';
 
 interface Props {
@@ -28,7 +27,7 @@ const MailList = ({ selectedLabel }: Props) => {
         labelIds.includes(selectedLabel.id),
       )}
       keyExtractor={({ id }) => id}
-      contentContainerStyle={{ paddingTop: 50 + spacing.LARGER }}
+      contentContainerStyle={{ paddingTop: 77 }}
       ListHeaderComponent={<S.Text type="label">{selectedLabel.name}</S.Text>}
       renderItem={({ item }) => (
         <MailListItem
@@ -43,8 +42,10 @@ const MailList = ({ selectedLabel }: Props) => {
 
 const S = {
   Text: styled(Text)`
-    margin-left: ${spacing.MEDIUM}px;
-    margin-bottom: ${spacing.SMALLER}px;
+    ${({ theme: { metrics } }) => css`
+      margin-left: ${metrics.MEDIUM}px;
+      margin-bottom: ${metrics.SMALLEST}px;
+    `}
   `,
 };
 

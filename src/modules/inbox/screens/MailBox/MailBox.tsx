@@ -4,8 +4,7 @@ import styled from 'styled-components/native';
 import MailList from './MailList';
 import SearchBar from './SearchBar';
 
-import { Styled } from '@core/types';
-import { MailLabel } from '@modules/inbox/types';
+import { MailLabel } from '@core/types';
 
 interface Props {
   selectedLabel: MailLabel;
@@ -24,12 +23,12 @@ const MailBox = ({ selectedLabel }: Props) => {
 };
 
 const S = {
-  SafeArea: styled.SafeAreaView<Styled>`
-    background-color: ${({ theme }) => theme.BACKGROUND};
+  SafeArea: styled.SafeAreaView`
+    background-color: ${({ theme: { colors } }) => colors.BACKGROUND};
   `,
-  Container: styled.View<Styled>`
+  Container: styled.View`
     flex: 1;
-    background-color: ${({ theme }) => theme.BACKGROUND};
+    background-color: ${({ theme: { colors } }) => colors.BACKGROUND};
   `,
 };
 

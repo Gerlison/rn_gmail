@@ -1,12 +1,8 @@
 import React from 'react';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import Animated from 'react-native-reanimated';
 
 import Text from '@core/Text';
-
-import { spacing } from '@styles/metrics';
-
-import { Styled } from '@core/types';
 
 interface Props {
   focused: boolean;
@@ -27,12 +23,14 @@ const SearchBarResults = ({ animation, focused }: Props) => {
 };
 
 const S = {
-  Container: styled(Animated.View)<Styled>`
-    width: 100%;
-    padding: ${spacing.SMALL}px;
-    border-top-width: 1px;
-    border-color: ${({ theme }) => theme.LIGHT};
-    background-color: ${({ theme }) => theme.BACKGROUND};
+  Container: styled(Animated.View)`
+    ${({ theme: { metrics, colors } }) => css`
+      width: 100%;
+      padding: ${metrics.SMALL}px;
+      border-top-width: 1px;
+      border-color: ${colors.LIGHT};
+      background-color: ${colors.BACKGROUND};
+    `}
   `,
 };
 
