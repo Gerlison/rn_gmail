@@ -9,9 +9,10 @@ interface Props {
   justify: 'flex-start' | 'flex-end' | 'center';
   align: 'flex-start' | 'flex-end' | 'center';
   background: keyof Theme;
+  children: React.ReactNode;
 }
 
-const Header: React.FC<Partial<Props>> = ({ children, ...props }) => (
+const Flex: React.FC<Partial<Props>> = ({ children, ...props }) => (
   <S.Container {...props}>{children}</S.Container>
 );
 
@@ -27,7 +28,7 @@ const S = {
   `,
 };
 
-Header.defaultProps = {
+Flex.defaultProps = {
   flex: 1,
   direction: 'column',
   justify: 'flex-start',
@@ -35,4 +36,4 @@ Header.defaultProps = {
   background: 'BACKGROUND',
 };
 
-export default memo(Header);
+export default memo(Flex);

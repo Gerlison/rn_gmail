@@ -1,19 +1,16 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
+import Flex from '@core/Flex';
+
 const MailView = () => {
   return (
-    <S.Container>
+    <Flex>
       <></>
-    </S.Container>
+    </Flex>
   );
 };
 
-const S = {
-  Container: styled.View`
-    flex: 1;
-    background-color: ${({ theme: { colors } }) => colors.BACKGROUND};
-  `,
-};
+const S = {};
 
 export default MailView;
