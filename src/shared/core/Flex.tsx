@@ -1,12 +1,17 @@
 import React, { memo } from 'react';
 import styled, { css } from 'styled-components/native';
 
-import { Theme } from './types';
+import { Theme } from '@core/types';
 
 interface Props {
   flex: number;
-  direction: 'column' | 'row';
-  justify: 'flex-start' | 'flex-end' | 'center';
+  flexDirection: 'column' | 'row';
+  justify:
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around';
   align: 'flex-start' | 'flex-end' | 'center';
   background: keyof Theme;
   children: React.ReactNode;
@@ -18,22 +23,21 @@ const Flex: React.FC<Partial<Props>> = ({ children, ...props }) => (
 
 const S = {
   Container: styled.View<Partial<Props>>`
-    ${(props) => css`
+    ${({ theme, ...props }) => css`
       flex: ${props.flex};
-      direction: ${props.direction};
-      justify: ${props.justify};
-      align: ${props.align};
-      background: ${props.background};
+      flex-direction: ${props.flexDirection};
+      justify-content: ${props.justify};
+      align-items: ${props.align};
+      background: ${theme.colors[props.background || 'BACKGROUND']};
     `}
   `,
 };
 
 Flex.defaultProps = {
   flex: 1,
-  direction: 'column',
+  flexDirection: 'column',
   justify: 'flex-start',
   align: 'flex-start',
-  background: 'BACKGROUND',
 };
 
 export default memo(Flex);
