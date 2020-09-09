@@ -1,16 +1,24 @@
 import React from 'react';
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 import Flex from '@core/Flex';
+import Header from '@core/Header';
 
-const MailView = () => {
-  return (
-    <Flex>
-      <></>
+const MailView = () => (
+  <>
+    <S.SafeArea />
+    <Flex flex={1}>
+      <Header />
     </Flex>
-  );
-};
+  </>
+);
 
-const S = {};
+const S = {
+  SafeArea: styled.SafeAreaView`
+    ${({ theme: { colors } }) => css`
+      background-color: ${colors.BACKGROUND};
+    `}
+  `,
+};
 
 export default MailView;
