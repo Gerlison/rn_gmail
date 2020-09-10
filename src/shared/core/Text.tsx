@@ -2,6 +2,8 @@ import React, { memo, useMemo } from 'react';
 
 import styled, { css } from 'styled-components/native';
 
+import fonts from '@styles/fonts';
+
 import { TextProps } from '@core/types';
 
 const Text: React.FC<TextProps> = ({ children, type, ...props }) => {
@@ -36,7 +38,7 @@ const Text: React.FC<TextProps> = ({ children, type, ...props }) => {
 };
 
 const StyledText = styled.Text<TextProps>`
-  ${({ theme: { colors, fonts }, color, size, weight, type, family }) => css`
+  ${({ theme: { colors }, color, size, weight, type, family }) => css`
     color: ${colors[color || 'DARKEST']};
 
     font-size: ${typeof size === 'number'

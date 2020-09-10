@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Text from '@core/Text';
 
+import fonts from '@styles/fonts';
+
 import { MailLabel } from '@core/types';
 
 interface Props {
@@ -18,7 +20,7 @@ const DrawerOption = ({
   focused,
   onPress,
 }: Props) => {
-  const { fonts, colors } = useContext(ThemeContext);
+  const { colors } = useContext(ThemeContext);
 
   return (
     <S.Container

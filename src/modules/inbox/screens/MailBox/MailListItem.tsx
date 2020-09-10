@@ -6,6 +6,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Text from '@core/Text';
 
+import fonts from '@styles/fonts';
+
 import { Mail } from '@core/types';
 
 interface Props {
@@ -17,10 +19,7 @@ interface Props {
 }
 
 const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
-  const {
-    colors,
-    fonts: { icon },
-  } = useContext(ThemeContext);
+  const { colors } = useContext(ThemeContext);
   const navigation = useNavigation();
 
   const toggleMailSelection = useCallback(() => {
@@ -39,7 +38,7 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
         <Pressable onPress={toggleMailSelection}>
           <S.Badge isSelected={isSelected}>
             {isSelected ? (
-              <Icon name="check" size={icon.LARGE} color={colors.WHITE} />
+              <Icon name="check" size={fonts.icon.LARGE} color={colors.WHITE} />
             ) : (
               <S.VerticalCenteredText size="LARGEST" color="WHITE">
                 {mail.from.name.charAt(0)}
@@ -53,7 +52,7 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
             {mail.labelIds.includes('2') && (
               <Icon
                 name="label-variant"
-                size={icon.LARGE}
+                size={fonts.icon.LARGE}
                 color={colors.QUATERNARY}
               />
             )}
@@ -72,7 +71,7 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
             </S.View>
             <Icon
               name={`star${mail.labelIds.includes('1') ? '' : '-outline'}`}
-              size={icon.LARGE}
+              size={fonts.icon.LARGE}
               color={
                 mail.labelIds.includes('1') ? colors.QUATERNARY : colors.REGULAR
               }

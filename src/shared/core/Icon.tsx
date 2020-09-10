@@ -2,10 +2,12 @@ import React, { memo, useContext } from 'react';
 import { ThemeContext } from 'styled-components/native';
 import VIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import fonts from '@styles/fonts';
+
 import { IconProps } from '@core/types';
 
 const Icon: React.FC<IconProps> = ({ name, size, color }) => {
-  const { fonts, colors } = useContext(ThemeContext);
+  const { colors } = useContext(ThemeContext);
 
   return (
     <VIcon
