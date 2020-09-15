@@ -7,7 +7,16 @@ import Icon from '@core/Icon';
 import Flex from '@core/Flex';
 import Text from '@core/Text';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  title?: string;
+  buttons?: {
+    icon: string;
+    onPress: () => void;
+    disabled: boolean;
+  }[];
+}
+
+const Header: React.FC<HeaderProps> = ({ buttons, title }) => {
   const { goBack } = useNavigation();
 
   return (
@@ -16,18 +25,14 @@ const Header: React.FC = () => {
         <Icon name="arrow-left" size="LARGE" />
       </Pressable>
 
-      <S.Text type="title">Title</S.Text>
+      <S.Text type="title">{title}</S.Text>
 
       <Flex flexDirection="row" justify="flex-end">
-        <S.Touchable onPress={goBack}>
-          <Icon name="archive" size="LARGE" />
-        </S.Touchable>
-        <S.Touchable onPress={goBack}>
-          <Icon name="archive" size="LARGE" />
-        </S.Touchable>
-        <S.Touchable onPress={goBack}>
-          <Icon name="archive" size="LARGE" />
-        </S.Touchable>
+        {buttons?.map((button) => (
+          <S.Touchable onPress={button.onPress}>
+            <Icon name={button.icon} size="LARGE" />
+          </S.Touchable>
+        ))}
       </Flex>
     </S.Container>
   );
