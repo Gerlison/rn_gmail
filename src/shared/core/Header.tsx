@@ -7,16 +7,16 @@ import Icon from '@core/Icon';
 import Flex from '@core/Flex';
 import Text from '@core/Text';
 
-interface HeaderProps {
+interface Props {
   title?: string;
   buttons?: {
     icon: string;
     onPress: () => void;
-    disabled: boolean;
+    disabled?: boolean;
   }[];
 }
 
-const Header: React.FC<HeaderProps> = ({ buttons, title }) => {
+const Header: React.FC<Props> = ({ buttons, title }) => {
   const { goBack } = useNavigation();
 
   return (
@@ -27,9 +27,13 @@ const Header: React.FC<HeaderProps> = ({ buttons, title }) => {
 
       <S.Text type="title">{title}</S.Text>
 
-      <Flex flexDirection="row" justify="flex-end">
-        {buttons?.map((button) => (
-          <S.Touchable onPress={button.onPress}>
+      <Flex flex={1} flexDirection="row" justify="flex-end">
+        {buttons?.map((button, index) => (
+          <S.Touchable
+            key={index}
+            onPress={button.onPress}
+            disabled={button.disabled}
+          >
             <Icon name={button.icon} size="LARGE" />
           </S.Touchable>
         ))}
@@ -41,8 +45,8 @@ const Header: React.FC<HeaderProps> = ({ buttons, title }) => {
 const S = {
   Container: styled.View`
     width: 100%;
-
     flex-direction: row;
+    box-shadow: 0px 1px 0px #0002;
 
     ${({ theme: { colors, metrics } }) => css`
       padding: ${metrics.MEDIUM}px;
@@ -51,7 +55,7 @@ const S = {
   `,
   Touchable: styled(Pressable)`
     ${({ theme: { metrics } }) => css`
-      padding-left: ${metrics.MEDIUM}px;
+      margin-left: ${metrics.LARGER}px;
     `}
   `,
   Text: styled(Text)`

@@ -4,6 +4,8 @@ import styled, { css } from 'styled-components/native';
 import { Theme } from '@core/types';
 
 interface Props {
+  width: number | string;
+  height: number | string;
   flex: number;
   flexDirection: 'column' | 'row';
   justify:
@@ -24,7 +26,9 @@ const Flex: React.FC<Partial<Props>> = ({ children, ...props }) => (
 const S = {
   Container: styled.View<Partial<Props>>`
     ${({ theme, ...props }) => css`
-      flex: ${props.flex};
+      width: ${props.width || 'auto'};
+      height: ${props.height || 'auto'};
+      flex: ${props.flex || '0 1 auto'};
       flex-direction: ${props.flexDirection};
       justify-content: ${props.justify};
       align-items: ${props.align};
@@ -34,7 +38,6 @@ const S = {
 };
 
 Flex.defaultProps = {
-  flex: 1,
   flexDirection: 'column',
   justify: 'flex-start',
   align: 'flex-start',

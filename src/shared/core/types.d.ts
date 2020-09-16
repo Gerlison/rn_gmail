@@ -11,7 +11,7 @@ import colors from '@styles/colors';
 
 export type Theme = typeof colors.LIGHT_THEME;
 
-export interface TextProps {
+export interface TextProps extends DefaultTextProps {
   color?: keyof Theme;
   type?: 'label' | 'title';
   size?: keyof typeof fonts.sizing | number;
