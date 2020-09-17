@@ -1,14 +1,13 @@
-import React, { useContext, useCallback, memo } from 'react';
-import { Pressable, Platform } from 'react-native';
-import styled, { ThemeContext, css } from 'styled-components/native';
+import React, { useCallback, memo } from 'react';
+import { Pressable } from 'react-native';
+import styled, { css } from 'styled-components/native';
 import { useNavigation } from '@react-navigation/core';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Text from '@core/Text';
-
-import fonts from '@styles/fonts';
+import Icon from '@core/Icon';
 
 import { Mail } from '@core/types';
+import AuthorBadge from '@modules/inbox/components/AuthorBadge';
 
 interface Props {
   mail: Mail;
@@ -19,7 +18,6 @@ interface Props {
 }
 
 const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
-  const { colors } = useContext(ThemeContext);
   const navigation = useNavigation();
 
   const toggleMailSelection = useCallback(() => {
@@ -36,25 +34,16 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
     >
       <S.Container isSelected={isSelected}>
         <Pressable onPress={toggleMailSelection}>
-          <S.Badge isSelected={isSelected}>
-            {isSelected ? (
-              <Icon name="check" size={fonts.icon.LARGE} color={colors.WHITE} />
-            ) : (
-              <S.VerticalCenteredText size="LARGEST" color="WHITE">
-                {mail.from.name.charAt(0)}
-              </S.VerticalCenteredText>
-            )}
-          </S.Badge>
+          <AuthorBadge
+            isSelected={isSelected}
+            char={mail.from.name.charAt(0)}
+          />
         </Pressable>
 
         <S.View>
           <S.Row>
             {mail.labelIds.includes('2') && (
-              <Icon
-                name="label-variant"
-                size={fonts.icon.LARGE}
-                color={colors.QUATERNARY}
-              />
+              <Icon name="label-variant" size="LARGE" color="QUATERNARY" />
             )}
             <S.Text style={{ flex: 1 }} type="title">
               {mail.from.name}
@@ -71,10 +60,8 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
             </S.View>
             <Icon
               name={`star${mail.labelIds.includes('1') ? '' : '-outline'}`}
-              size={fonts.icon.LARGE}
-              color={
-                mail.labelIds.includes('1') ? colors.QUATERNARY : colors.REGULAR
-              }
+              size="LARGE"
+              color={mail.labelIds.includes('1') ? 'QUATERNARY' : 'REGULAR'}
             />
           </S.Row>
         </S.View>
@@ -107,22 +94,8 @@ const S = {
   })`
     margin-right: ${({ theme: { metrics } }) => metrics.SMALLER}px;
   `,
-  Badge: styled.View<{ isSelected: boolean }>`
-    ${({ theme: { colors, metrics }, isSelected }) => css`
-      width: 40px;
-      height: 40px;
-      align-items: center;
-      justify-content: center;
-      margin-right: ${metrics.MEDIUM}px;
-      border-radius: 20px;
-      background-color: ${isSelected ? colors.PRIMARY : 'lightcoral'};
-    `}
-  `,
   View: styled.View`
     flex: 1;
-  `,
-  VerticalCenteredText: styled(Text)`
-    bottom: ${Platform.OS === 'ios' ? -1.5 : 1}px;
   `,
 };
 
