@@ -10,7 +10,7 @@ interface Props {
 const LabelBadge: React.FC<Props> = ({ children }) => {
   return (
     <S.Container>
-      <Text size="SMALL" color="DARKER">
+      <Text size="SMALLER" color="DARKER">
         {children}
       </Text>
     </S.Container>
@@ -22,8 +22,8 @@ const S = {
     border-radius: 4px;
 
     ${({ theme: { colors, metrics } }) => css`
-      padding: ${metrics.SMALLEST / 2}px ${metrics.SMALLER}px;
-      background-color: ${colors.LIGHT};
+      padding: 0px ${metrics.SMALLER}px;
+      background-color: ${colors.LIGHTER};
     `};
   `,
 };
