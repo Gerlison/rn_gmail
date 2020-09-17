@@ -10,6 +10,8 @@ import ExtraDimensions from 'react-native-extra-dimensions-android';
 import SearchBarResults from './SearchBarResults';
 import SearchBarProfile from './SearchBarProfile';
 
+import fonts from '@styles/fonts';
+
 import { useInterpolation } from '@helpers/hooks';
 
 import { DrawerNavigationProp } from '@react-navigation/drawer';
@@ -144,7 +146,7 @@ const S = {
       placeholderTextColor: colors.DARK,
     }),
   )`
-    ${({ theme: { metrics, colors, fonts } }) => css`
+    ${({ theme: { metrics, colors } }) => css`
       flex: 1;
 
       margin-left: ${metrics.SMALLER}px;
@@ -164,7 +166,7 @@ const S = {
     margin-horizontal: ${({ theme: { metrics } }) => metrics.SMALL}px;
   `,
   Icon: styled(Animated.createAnimatedComponent(Icon))`
-    ${({ theme: { colors, fonts } }) => css`
+    ${({ theme: { colors } }) => css`
       color: ${colors.DARK};
       font-size: ${fonts.icon.LARGE}px;
     `};

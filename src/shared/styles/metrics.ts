@@ -1,4 +1,4 @@
-export default {
+const metrics = {
   SMALLEST: 4,
   SMALLER: 8,
   SMALL: 12,
@@ -7,3 +7,7 @@ export default {
   LARGER: 22,
   LARGEST: 28,
 };
+
+export type Metrics = typeof metrics;
+
+export default metrics;

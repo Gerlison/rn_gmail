@@ -20,6 +20,12 @@ export interface TextProps extends DefaultTextProps {
   children: React.ReactNode;
 }
 
+export interface IconProps {
+  color?: keyof Theme;
+  name: string;
+  size?: keyof typeof fonts.sizing | number;
+}
+
 /**
  *
  * @Types
