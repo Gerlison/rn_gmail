@@ -30,4 +30,8 @@ const styling = {
   BOLD: 'Roboto-Bold',
 };
 
+export type Sizing = typeof sizing;
+export type Icon = typeof sizing;
+export type Styling = typeof sizing;
+
 export default { sizing, icon, styling };

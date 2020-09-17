@@ -1,11 +1,11 @@
 import * as styledComponents from 'styled-components/native';
 
 import colors from '@styles/colors';
-import metrics from '@styles/metrics';
+import { Metrics } from '@styles/metrics';
 
 interface ThemeInterface {
   colors: typeof colors.LIGHT_THEME;
-  metrics: typeof metrics;
+  metrics: Metrics;
   currentTheme: string;
 }
 
