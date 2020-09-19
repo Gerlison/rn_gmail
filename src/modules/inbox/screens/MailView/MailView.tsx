@@ -1,5 +1,10 @@
-import React, { useMemo } from 'react';
-import { Pressable, Platform } from 'react-native';
+import React, { useCallback, useMemo, useState } from 'react';
+import {
+  Pressable,
+  Platform,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+} from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 import Author from './Author';
@@ -13,6 +18,8 @@ import Icon from '@core/Icon';
 import LabelBadge from '@modules/inbox/components/LabelBadge';
 
 const MailView = () => {
+  const [scrollState, setScrollState] = useState(0);
+
   const headerButtons = useMemo(
     () => [
       {
@@ -27,13 +34,24 @@ const MailView = () => {
     [],
   );
 
+  const onScroll = useCallback(
+    ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+      if (nativeEvent.contentOffset.y > 0 && scrollState === 0) {
+        setScrollState(1);
+      } else if (nativeEvent.contentOffset.y === 0 && scrollState > 0) {
+        setScrollState(0);
+      }
+    },
+    [scrollState],
+  );
+
   return (
     <>
       <S.SafeArea />
       <Flex flex={1}>
-        <Header buttons={headerButtons} />
-        <S.Container>
-          <Flex>
+        <Header buttons={headerButtons} scrollState={scrollState} />
+        <S.Container onScroll={onScroll} scrollEventThrottle={8}>
+          <Flex height={1000}>
             <S.Title>
               <S.Subject size="LARGEST">
                 Assunto urgentíssimo! <LabelBadge>Inbox</LabelBadge>

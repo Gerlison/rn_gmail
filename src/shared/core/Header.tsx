@@ -2,6 +2,8 @@ import React, { memo } from 'react';
 import { Pressable } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { useNavigation } from '@react-navigation/core';
+import Animated from 'react-native-reanimated';
+import { useTransition } from 'react-native-redash';
 
 import Icon from '@core/Icon';
 import Flex from '@core/Flex';
@@ -14,13 +16,20 @@ interface Props {
     onPress: () => void;
     disabled?: boolean;
   }[];
+  scrollState?: number;
 }
 
-const Header: React.FC<Props> = ({ buttons, title }) => {
+const Header: React.FC<Props> = ({ buttons, title, scrollState }) => {
   const { goBack } = useNavigation();
+  const elevation = useTransition(scrollState ?? 0, { duration: 200 });
 
   return (
-    <S.Container>
+    <S.Container
+      style={{
+        elevation: elevation,
+        shadowOpacity: elevation,
+      }}
+    >
       <Pressable onPress={goBack}>
         <Icon name="arrow-left" size="LARGE" />
       </Pressable>
@@ -43,10 +52,11 @@ const Header: React.FC<Props> = ({ buttons, title }) => {
 };
 
 const S = {
-  Container: styled.View`
+  Container: styled(Animated.View)`
     width: 100%;
     flex-direction: row;
-    box-shadow: 0px 1px 0px #0002;
+    box-shadow: 0px 1px 1px #0002;
+    z-index: 2;
 
     ${({ theme: { colors, metrics } }) => css`
       padding: ${metrics.MEDIUM}px;
