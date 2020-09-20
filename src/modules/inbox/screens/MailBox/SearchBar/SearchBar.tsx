@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, memo } from 'react';
-import { Pressable, TextInput, Dimensions, Platform } from 'react-native';
+import { TextInput, Dimensions, Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
@@ -9,6 +9,8 @@ import ExtraDimensions from 'react-native-extra-dimensions-android';
 
 import SearchBarResults from './SearchBarResults';
 import SearchBarProfile from './SearchBarProfile';
+
+import Pressable from '@core/Pressable';
 
 import fonts from '@styles/fonts';
 

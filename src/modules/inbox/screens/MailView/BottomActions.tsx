@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
-import { Pressable } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 import Flex from '@core/Flex';
 import Text from '@core/Text';
 import Icon from '@core/Icon';
+import Pressable from '@core/Pressable';
 
 const BottomActions: React.FC = () => {
   return (

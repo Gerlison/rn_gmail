@@ -1,10 +1,11 @@
 import React, { useCallback, memo } from 'react';
-import { Pressable } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import { useNavigation } from '@react-navigation/core';
 
 import Text from '@core/Text';
 import Icon from '@core/Icon';
+import Pressable from '@core/Pressable';
+import Flex from '@core/Flex';
 
 import { Mail } from '@core/types';
 import AuthorBadge from '@modules/inbox/components/AuthorBadge';
@@ -28,50 +29,49 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
   }, []);
 
   return (
-    <Pressable
+    <S.Container
+      isSelected={isSelected}
       onPress={() => navigation.navigate('MailView')}
       onLongPress={toggleMailSelection}
     >
-      <S.Container isSelected={isSelected}>
-        <Pressable onPress={toggleMailSelection}>
-          <AuthorBadge
-            isSelected={isSelected}
-            char={mail.from.name.charAt(0)}
+      <AuthorBadge
+        onPress={toggleMailSelection}
+        isSelected={isSelected}
+        char={mail.from.name.charAt(0)}
+      />
+
+      <Flex flex={1}>
+        <S.Row>
+          {mail.labelIds.includes('2') && (
+            <Icon name="label-variant" size="LARGE" color="QUATERNARY" />
+          )}
+          <S.Text style={{ flex: 1 }} type="title">
+            {mail.from.name}
+          </S.Text>
+          <Text color="DARK" size="SMALL">
+            {mail.date.toLocaleDateString()}
+          </Text>
+        </S.Row>
+
+        <S.Row>
+          <Flex flex={1}>
+            <S.Text>{mail.subject}</S.Text>
+            <S.Text>{mail.body}</S.Text>
+          </Flex>
+          <Icon
+            onPress={() => {}}
+            name={`star${mail.labelIds.includes('1') ? '' : '-outline'}`}
+            size="LARGE"
+            color={mail.labelIds.includes('1') ? 'QUATERNARY' : 'REGULAR'}
           />
-        </Pressable>
-
-        <S.View>
-          <S.Row>
-            {mail.labelIds.includes('2') && (
-              <Icon name="label-variant" size="LARGE" color="QUATERNARY" />
-            )}
-            <S.Text style={{ flex: 1 }} type="title">
-              {mail.from.name}
-            </S.Text>
-            <Text color="DARK" size="SMALL">
-              {mail.date.toLocaleDateString()}
-            </Text>
-          </S.Row>
-
-          <S.Row>
-            <S.View>
-              <S.Text>{mail.subject}</S.Text>
-              <S.Text>{mail.body}</S.Text>
-            </S.View>
-            <Icon
-              name={`star${mail.labelIds.includes('1') ? '' : '-outline'}`}
-              size="LARGE"
-              color={mail.labelIds.includes('1') ? 'QUATERNARY' : 'REGULAR'}
-            />
-          </S.Row>
-        </S.View>
-      </S.Container>
-    </Pressable>
+        </S.Row>
+      </Flex>
+    </S.Container>
   );
 };
 
 const S = {
-  Container: styled.View<{ isSelected: boolean }>`
+  Container: styled(Pressable)<{ isSelected: boolean }>`
     ${({ theme: { colors, metrics }, isSelected }) => css`
       width: 100%;
       flex-direction: row;
@@ -93,9 +93,6 @@ const S = {
     color: 'DARK',
   })`
     margin-right: ${({ theme: { metrics } }) => metrics.SMALLER}px;
-  `,
-  View: styled.View`
-    flex: 1;
   `,
 };
 
