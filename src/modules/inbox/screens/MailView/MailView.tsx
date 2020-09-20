@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import {
-  Pressable,
   Platform,
   NativeSyntheticEvent,
   NativeScrollEvent,
@@ -14,6 +13,7 @@ import Flex from '@core/Flex';
 import Header from '@core/Header';
 import Text from '@core/Text';
 import Icon from '@core/Icon';
+import Pressable from '@core/Pressable';
 
 import LabelBadge from '@modules/inbox/components/LabelBadge';
 
@@ -51,13 +51,13 @@ const MailView = () => {
       <Flex flex={1}>
         <Header buttons={headerButtons} scrollState={scrollState} />
         <S.Container onScroll={onScroll} scrollEventThrottle={8}>
-          <Flex height={1000}>
+          <Flex>
             <S.Title>
               <S.Subject size="LARGEST">
                 Assunto urgentíssimo! <LabelBadge>Inbox</LabelBadge>
               </S.Subject>
 
-              <Pressable>
+              <Pressable android_ripple={{}}>
                 <Icon name="star-outline" size="LARGE" color="REGULAR" />
               </Pressable>
             </S.Title>

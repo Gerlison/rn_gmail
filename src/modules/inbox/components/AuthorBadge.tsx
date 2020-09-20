@@ -4,15 +4,17 @@ import styled, { css } from 'styled-components/native';
 
 import Icon from '@core/Icon';
 import Text from '@core/Text';
+import Pressable from '@core/Pressable';
 
 interface Props {
   isSelected?: boolean;
   char: string;
+  onPress?: () => void;
 }
 
-const AuthorBadge: React.FC<Props> = ({ isSelected, char }) => {
+const AuthorBadge: React.FC<Props> = ({ isSelected, char, onPress }) => {
   return (
-    <S.Container isSelected={isSelected}>
+    <S.Container disabled={!onPress} onPress={onPress} isSelected={isSelected}>
       {isSelected ? (
         <Icon name="check" size="LARGE" color="WHITE" />
       ) : (
@@ -25,7 +27,7 @@ const AuthorBadge: React.FC<Props> = ({ isSelected, char }) => {
 };
 
 const S = {
-  Container: styled.View<{ isSelected?: boolean }>`
+  Container: styled(Pressable)<{ isSelected?: boolean }>`
     ${({ theme: { colors, metrics }, isSelected }) => css`
       width: 40px;
       height: 40px;

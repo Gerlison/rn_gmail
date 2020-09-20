@@ -1,9 +1,9 @@
 import React, { useContext, memo } from 'react';
-import { Pressable } from 'react-native';
 import styled, { ThemeContext, css } from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Text from '@core/Text';
+import Pressable from '@core/Pressable';
 
 import fonts from '@styles/fonts';
 

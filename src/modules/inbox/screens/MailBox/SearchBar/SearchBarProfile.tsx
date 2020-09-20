@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Pressable } from 'react-native';
 import styled from 'styled-components/native';
 import Animated, { Extrapolate } from 'react-native-reanimated';
 import { usePanGestureHandler } from 'react-native-redash';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 
 import Text from '@core/Text';
+import Pressable from '@core/Pressable';
 
 import { useInterpolation } from '@helpers/hooks';
 
