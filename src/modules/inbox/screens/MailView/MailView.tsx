@@ -5,6 +5,7 @@ import {
   NativeScrollEvent,
 } from 'react-native';
 import styled, { css } from 'styled-components/native';
+import { RouteProp, useRoute } from '@react-navigation/core';
 
 import Author from './Author';
 import BottomActions from './BottomActions';
@@ -17,7 +18,11 @@ import Pressable from '@core/Pressable';
 
 import LabelBadge from '@modules/inbox/components/LabelBadge';
 
+import { InboxParamList } from '@modules/inbox';
+
 const MailView = () => {
+  const { params } = useRoute<RouteProp<InboxParamList, 'MailView'>>();
+
   const [scrollState, setScrollState] = useState(0);
 
   const headerButtons = useMemo(
@@ -51,13 +56,16 @@ const MailView = () => {
       <Flex flex={1}>
         <Header buttons={headerButtons} scrollState={scrollState} />
         <S.Container onScroll={onScroll} scrollEventThrottle={8}>
-          <Flex>
+          <Flex background="TRANSPARENT">
             <S.Title>
               <S.Subject size="LARGEST">
                 Assunto urgentíssimo! <LabelBadge>Inbox</LabelBadge>
               </S.Subject>
 
-              <Pressable android_ripple={{}}>
+              <Pressable
+                android_ripple={{ borderless: true, radius: 30 }}
+                onPress={() => {}}
+              >
                 <Icon name="star-outline" size="LARGE" color="REGULAR" />
               </Pressable>
             </S.Title>

@@ -9,38 +9,49 @@ import Pressable from '@core/Pressable';
 const BottomActions: React.FC = () => {
   return (
     <Flex width="100%" flexDirection="row">
-      <S.Button>
-        <Icon color="DARK" name="reply" />
-        <S.Text color="DARK">Reply</S.Text>
-      </S.Button>
+      <S.ButtonContainer>
+        <S.Button onPress={() => {}}>
+          <Icon color="DARK" name="reply" />
+          <S.Text color="DARK">Reply</S.Text>
+        </S.Button>
+      </S.ButtonContainer>
 
-      <S.Button hasMargin>
-        <Icon color="DARK" name="reply-all" />
-        <S.Text color="DARK">Reply all</S.Text>
-      </S.Button>
+      <S.ButtonContainer hasMargin>
+        <S.Button onPress={() => {}}>
+          <Icon color="DARK" name="reply-all" />
+          <S.Text color="DARK">Reply all</S.Text>
+        </S.Button>
+      </S.ButtonContainer>
 
-      <S.Button>
-        <Icon color="DARK" name="share" />
-        <S.Text color="DARK">Forward</S.Text>
-      </S.Button>
+      <S.ButtonContainer>
+        <S.Button onPress={() => {}}>
+          <Icon color="DARK" name="share" />
+          <S.Text color="DARK">Forward</S.Text>
+        </S.Button>
+      </S.ButtonContainer>
     </Flex>
   );
 };
 
 const S = {
-  Button: styled(Pressable)<{ hasMargin?: boolean }>`
+  ButtonContainer: styled.View<{ hasMargin?: boolean }>`
     flex: 1;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     border-width: 1px;
     border-radius: 4px;
 
     ${({ theme: { colors, metrics }, hasMargin }) => css`
-      padding: ${metrics.SMALL}px 0px;
       margin: 0px ${hasMargin ? metrics.SMALLER : 0}px;
       border-color: ${colors.LIGHT};
       background-color: ${colors.BACKGROUND};
+    `}
+  `,
+  Button: styled(Pressable)`
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    ${({ theme: { metrics } }) => css`
+      padding: ${metrics.SMALL}px 0px;
     `}
   `,
   Text: styled(Text)`
