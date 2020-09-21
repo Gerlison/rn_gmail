@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components/native';
 import Flex from '@core/Flex';
 import Text from '@core/Text';
 import Icon from '@core/Icon';
+import Pressable from '@core/Pressable';
 
 import AuthorBadge from '@modules/inbox/components/AuthorBadge';
 
@@ -45,14 +46,14 @@ const Author: React.FC<Props> = ({ from, to, date }) => {
           </Text>
         </S.AuthorName>
 
-        <Flex width="100%" flexDirection="row" align="flex-end">
-          <Flex>
+        <S.Touchable onPress={() => {}}>
+          <Flex background="TRANSPARENT">
             <Text color="DARK" numberOfLines={1}>
               to {to}
             </Text>
           </Flex>
           <Icon name="chevron-down" size="SMALL" />
-        </Flex>
+        </S.Touchable>
       </Flex>
     </S.Container>
   );
@@ -69,6 +70,10 @@ const S = {
     width: 100%;
     flex-direction: row;
     align-items: flex-end;
+  `,
+  Touchable: styled(Pressable)`
+    flex-direction: row;
+    align-items: center;
   `,
 };
 

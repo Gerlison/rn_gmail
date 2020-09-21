@@ -29,59 +29,67 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
   }, []);
 
   return (
-    <S.Container
-      isSelected={isSelected}
-      onPress={() => navigation.navigate('MailView')}
-      onLongPress={toggleMailSelection}
-    >
-      <AuthorBadge
-        onPress={toggleMailSelection}
-        isSelected={isSelected}
-        char={mail.from.name.charAt(0)}
-      />
+    <S.Container isSelected={isSelected}>
+      <S.Touchable
+        onPress={() => navigation.navigate('MailView')}
+        onLongPress={toggleMailSelection}
+      >
+        <AuthorBadge
+          onPress={toggleMailSelection}
+          isSelected={isSelected}
+          char={mail.from.name.charAt(0)}
+        />
 
-      <Flex flex={1} background="TRANSPARENT">
-        <S.Row>
-          {mail.labelIds.includes('2') && (
-            <Icon name="label-variant" size="LARGE" color="QUATERNARY" />
-          )}
-          <S.Text style={{ flex: 1 }} type="title">
-            {mail.from.name}
-          </S.Text>
-          <Text color="DARK" size="SMALL">
-            {mail.date.toLocaleDateString()}
-          </Text>
-        </S.Row>
+        <Flex flex={1} background="TRANSPARENT">
+          <S.Row>
+            {mail.labelIds.includes('2') && (
+              <Icon name="label-variant" size="LARGE" color="QUATERNARY" />
+            )}
+            <S.Text style={{ flex: 1 }} type="title">
+              {mail.from.name}
+            </S.Text>
+            <Text color="DARK" size="SMALL">
+              {mail.date.toLocaleDateString()}
+            </Text>
+          </S.Row>
 
-        <S.Row>
-          <Flex flex={1} background="TRANSPARENT">
-            <S.Text>{mail.subject}</S.Text>
-            <S.Text>{mail.body}</S.Text>
-          </Flex>
-          <Icon
-            onPress={() => {}}
-            name={`star${mail.labelIds.includes('1') ? '' : '-outline'}`}
-            size="LARGE"
-            color={mail.labelIds.includes('1') ? 'QUATERNARY' : 'REGULAR'}
-          />
-        </S.Row>
-      </Flex>
+          <S.Row>
+            <Flex flex={1} background="TRANSPARENT">
+              <S.Text>{mail.subject}</S.Text>
+              <S.Text>{mail.body}</S.Text>
+            </Flex>
+            <Icon
+              onPress={() => {}}
+              name={`star${mail.labelIds.includes('1') ? '' : '-outline'}`}
+              size="LARGE"
+              color={mail.labelIds.includes('1') ? 'QUATERNARY' : 'REGULAR'}
+            />
+          </S.Row>
+        </Flex>
+      </S.Touchable>
     </S.Container>
   );
 };
 
 const S = {
-  Container: styled(Pressable)<{ isSelected: boolean }>`
+  Container: styled.View<{ isSelected: boolean }>`
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+
     ${({ theme: { colors, metrics }, isSelected }) => css`
-      width: 100%;
-      flex-direction: row;
       margin-left: ${metrics.SMALLEST}px;
       margin-bottom: ${metrics.SMALLEST}px;
-      padding: ${metrics.SMALL}px;
-      border-radius: 10px;
       background-color: ${isSelected
         ? `${colors.PRIMARY}20`
         : colors.BACKGROUND};
+    `}
+  `,
+  Touchable: styled(Pressable)`
+    flex-direction: row;
+
+    ${({ theme: { metrics } }) => css`
+      padding: ${metrics.SMALL}px;
     `}
   `,
   Row: styled.View`

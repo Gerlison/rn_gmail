@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import { Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 import Icon from '@core/Icon';
@@ -14,7 +13,12 @@ interface Props {
 
 const AuthorBadge: React.FC<Props> = ({ isSelected, char, onPress }) => {
   return (
-    <S.Container disabled={!onPress} onPress={onPress} isSelected={isSelected}>
+    <S.Container
+      android_ripple={null}
+      disabled={!onPress}
+      onPress={onPress}
+      isSelected={isSelected}
+    >
       {isSelected ? (
         <Icon name="check" size="LARGE" color="WHITE" />
       ) : (

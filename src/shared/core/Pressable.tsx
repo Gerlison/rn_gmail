@@ -14,7 +14,9 @@ const Pressable: React.FC<PressableProps & TouchableOpacityProps> = ({
 }) => {
   const { colors } = useContext(ThemeContext);
 
-  const DefaultTapHandler = useMemo(
+  const DefaultTapHandler = useMemo<
+    typeof DefaultPressable | typeof TouchableOpacity
+  >(
     () =>
       Platform.select<any>({
         android: DefaultPressable,
