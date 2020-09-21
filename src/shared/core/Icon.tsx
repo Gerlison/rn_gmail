@@ -28,7 +28,7 @@ const Icon: React.FC<IconProps> = ({
     return (
       <Pressable
         hitSlop={{ left: 10, top: 10, right: 10, bottom: 10 }}
-        android_ripple={{ borderless: true, radius: 18, color: colors.LIGHT }}
+        android_ripple={{ borderless: true, radius: 20, color: colors.LIGHT }}
         onPress={onPress}
         {...props}
       >

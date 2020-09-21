@@ -40,7 +40,7 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
         char={mail.from.name.charAt(0)}
       />
 
-      <Flex flex={1}>
+      <Flex flex={1} background="TRANSPARENT">
         <S.Row>
           {mail.labelIds.includes('2') && (
             <Icon name="label-variant" size="LARGE" color="QUATERNARY" />
@@ -54,7 +54,7 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
         </S.Row>
 
         <S.Row>
-          <Flex flex={1}>
+          <Flex flex={1} background="TRANSPARENT">
             <S.Text>{mail.subject}</S.Text>
             <S.Text>{mail.body}</S.Text>
           </Flex>
