@@ -1,17 +1,25 @@
 import React, { memo, useMemo } from 'react';
-
+import { TextProps } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
-import fonts from '@styles/fonts';
+import { Theme } from '@core/types';
+import fonts, { Sizing, Styling } from '@styles/fonts';
 
-import { TextProps } from '@core/types';
+interface Props extends TextProps {
+  color?: keyof Theme;
+  type?: 'label' | 'title';
+  size?: keyof Sizing | number;
+  weight?: 'normal' | 'bold' | '200' | '400' | '500' | '600' | '700' | '800';
+  family?: keyof Styling;
+  children: React.ReactNode;
+}
 
-const Text: React.FC<TextProps> = ({ children, type, ...props }) => {
-  const defaultPropsByTextType = useMemo<Omit<TextProps, 'children'>>(() => {
+const Text: React.FC<Props> = ({ children, type, ...props }) => {
+  const defaultPropsByTextType = useMemo<Omit<Props, 'children'>>(() => {
     switch (type) {
       case 'label':
         return {
-          size: 'SMALL',
+          size: 'SMALLER',
           color: 'DARK',
           family: 'MEDIUM',
           weight: '400',
@@ -37,7 +45,7 @@ const Text: React.FC<TextProps> = ({ children, type, ...props }) => {
   );
 };
 
-const StyledText = styled.Text<TextProps>`
+const StyledText = styled.Text<Props>`
   ${({ theme: { colors }, color, size, weight, type, family }) => css`
     color: ${colors[color || 'DARKEST']};
 

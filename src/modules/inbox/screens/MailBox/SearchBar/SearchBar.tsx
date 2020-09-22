@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, memo } from 'react';
+import React, { useState, useRef, memo } from 'react';
 import { TextInput, Dimensions, Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,6 +22,7 @@ import { DrawerParamList } from '@navigation/types';
 type Navigation = DrawerNavigationProp<DrawerParamList, 'Home'>;
 
 const SEARCH_BAR_HEIGHT = 50;
+
 const height =
   Platform.OS === 'android'
     ? ExtraDimensions.getRealWindowHeight()
@@ -47,7 +48,7 @@ const SearchBar = () => {
     return navigation.openDrawer();
   };
 
-  const renderIcon = useCallback((icon) => {
+  const renderIcon = (icon: string) => {
     let props = {};
     if (icon === 'menu')
       props = {
@@ -72,7 +73,7 @@ const SearchBar = () => {
         }}
       />
     );
-  }, []);
+  };
 
   return (
     <>
@@ -95,7 +96,14 @@ const SearchBar = () => {
           top: interpolation([0, 1], [4, 0]),
         }}
       >
-        <S.Content>
+        <S.Content
+          style={{
+            height: interpolation(
+              [0, 1],
+              [SEARCH_BAR_HEIGHT, SEARCH_BAR_HEIGHT + 6],
+            ),
+          }}
+        >
           <S.Row>
             <Pressable
               hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
@@ -111,7 +119,6 @@ const SearchBar = () => {
               placeholder="Search on mail"
               style={{
                 left: interpolation([0, 1], [0, 16]),
-                marginTop: interpolation([0, 1], [0, 4]),
               }}
             />
           </S.Row>
@@ -134,25 +141,24 @@ const S = {
 
     z-index: 2;
   `,
-  Content: styled.View`
-    height: ${SEARCH_BAR_HEIGHT}px;
-
+  Content: styled(Animated.View)`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
-    margin-right: ${({ theme: { metrics } }) => metrics.SMALL}px;
+    ${({ theme: { metrics } }) => css`
+      margin-right: ${metrics.SMALL}px;
+    `};
   `,
   TextInput: styled(Animated.createAnimatedComponent(TextInput)).attrs(
     ({ theme: { colors } }) => ({
       placeholderTextColor: colors.DARK,
     }),
   )`
+    flex: 1; 
+    
     ${({ theme: { metrics, colors } }) => css`
-      flex: 1;
-
-      margin-left: ${metrics.SMALLER}px;
-
+      margin: 0px ${metrics.SMALLER}px;
       font-size: ${fonts.sizing.LARGE}px;
       color: ${colors.DARK};
       font-family: ${fonts.styling.REGULAR};

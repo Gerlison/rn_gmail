@@ -11,15 +11,6 @@ import colors from '@styles/colors';
 
 export type Theme = typeof colors.LIGHT_THEME;
 
-export interface TextProps extends DefaultTextProps {
-  color?: keyof Theme;
-  type?: 'label' | 'title';
-  size?: keyof typeof fonts.sizing | number;
-  weight?: 'normal' | 'bold' | '200' | '400' | '500' | '600' | '700' | '800';
-  family?: keyof typeof fonts.styling;
-  children: React.ReactNode;
-}
-
 /**
  *
  * @Types
