@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Inbox from '@modules/inbox';
+import Compose from '@modules/compose';
 
 import CustomDrawer from '@core/Drawer';
 
@@ -39,8 +40,9 @@ const DrawerNavigator = () => (
 
 const MainNavigator = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="App" headerMode="none">
-      <Stack.Screen name="App" component={DrawerNavigator} />
+    <Stack.Navigator initialRouteName="Compose" headerMode="none">
+      <Stack.Screen name="Drawer" component={DrawerNavigator} />
+      <Stack.Screen name="Compose" component={Compose} />
     </Stack.Navigator>
   </NavigationContainer>
 );
