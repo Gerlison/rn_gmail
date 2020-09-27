@@ -7,5 +7,6 @@ export type DrawerParamList = {
 };
 
 export type RootStackParamList = {
-  App: undefined;
+  Drawer: undefined;
+  Compose: {};
 };

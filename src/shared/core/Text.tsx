@@ -62,6 +62,6 @@ const StyledText = styled.Text<Props>`
       letter-spacing: 1.5px;
     `}
   `}
-`;
+` as React.FC<Props>;
 
 export default memo(Text);

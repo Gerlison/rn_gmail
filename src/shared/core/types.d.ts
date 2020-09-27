@@ -39,8 +39,8 @@ export interface Mail {
   id: string;
   labelIds: string[];
   date: Date;
-  from: MailAuthor;
-  to: MailAuthor;
+  from: User;
+  to: User;
   subject: string;
   body: string;
 }
