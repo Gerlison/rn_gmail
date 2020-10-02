@@ -31,7 +31,7 @@ export default createSlice({
         date: new Date('2020/08/26'),
         labelIds: ['1', '4'],
         from: {
-          id: '2',
+          id: '3',
           name: 'Google',
           address: 'google@email.com',
         },
@@ -48,7 +48,7 @@ export default createSlice({
         date: new Date('2020/08/26'),
         labelIds: ['1', '4'],
         from: {
-          id: '2',
+          id: '3',
           name: 'Google',
           address: 'google@email.com',
         },
@@ -65,7 +65,7 @@ export default createSlice({
         date: new Date('2020/08/26'),
         labelIds: ['1', '4'],
         from: {
-          id: '2',
+          id: '3',
           name: 'Google',
           address: 'google@email.com',
         },
@@ -82,7 +82,7 @@ export default createSlice({
         date: new Date('2020/08/26'),
         labelIds: ['1', '4'],
         from: {
-          id: '2',
+          id: '3',
           name: 'Google',
           address: 'google@email.com',
         },

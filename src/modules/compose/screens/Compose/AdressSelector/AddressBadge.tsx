@@ -4,13 +4,19 @@ import styled, { css } from 'styled-components/native';
 import Flex from '@core/Flex';
 import Text from '@core/Text';
 
-const AddressBadge: React.FC = () => {
+import { User } from '@core/types';
+
+interface Props {
+  user: User;
+}
+
+const AddressBadge: React.FC<Props> = ({ user }) => {
   return (
     <S.Container>
       <S.Image />
       <Flex>
         <S.Text color="DARKER" numberOfLines={1}>
-          franciscojerlison1@gmail.com
+          {user.address}
         </S.Text>
       </Flex>
       <S.RoundContainer />

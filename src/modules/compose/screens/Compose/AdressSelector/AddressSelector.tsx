@@ -1,5 +1,9 @@
-import React, { memo, useCallback, useState } from 'react';
-import { Dimensions } from 'react-native';
+import React, { memo, useCallback, useMemo, useState } from 'react';
+import {
+  Dimensions,
+  NativeSyntheticEvent,
+  TextInputKeyPressEventData,
+} from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 import AddressBadge from './AddressBadge';
@@ -9,22 +13,55 @@ import TextInput from '@core/TextInput';
 
 import { COMPOSE_LABEL_SIZE } from '@modules/compose/helpers/constants';
 
+import { User } from '@core/types';
+
 const { width: windowWidth } = Dimensions.get('window');
 
 const AddressSelector: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [addresses, setAddresses] = useState<User[]>([]);
 
-  const onChangeText = useCallback((text) => {
+  const selectedAddresses = useMemo(
+    () => addresses.map(({ address }) => address),
+    [addresses],
+  );
+
+  const handleChangeText = useCallback((text) => {
     setSearchValue(text);
   }, []);
 
+  const handleAddAddress = useCallback((user: User) => {
+    setSearchValue('');
+    setAddresses((prev) => [...prev, user]);
+  }, []);
+
+  const handleRemoveAddress = useCallback(
+    ({ nativeEvent }: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
+      if (nativeEvent.key === 'Backspace' && !searchValue)
+        setAddresses((prev) => {
+          const prevClone = [...prev];
+          prevClone.pop();
+          return prevClone;
+        });
+    },
+    [searchValue],
+  );
+
   return (
     <S.Container>
-      {[1, 2].map(() => (
-        <AddressBadge />
+      {addresses.map((user) => (
+        <AddressBadge key={user.id} user={user} />
       ))}
-      <TextInput onChangeText={onChangeText} style={{ minWidth: 32 }} />
-      <AddressesList searchFor={searchValue} />
+      <S.TextInput
+        value={searchValue}
+        onChangeText={handleChangeText}
+        onKeyPress={handleRemoveAddress}
+      />
+      <AddressesList
+        searchFor={searchValue}
+        onClickAddress={handleAddAddress}
+        selectedAddresses={selectedAddresses}
+      />
     </S.Container>
   );
 };
@@ -38,6 +75,9 @@ const S = {
     ${({ theme: { metrics } }) => css`
       max-width: ${windowWidth - metrics.MEDIUM * 2 - COMPOSE_LABEL_SIZE}px;
     `}
+  `,
+  TextInput: styled(TextInput)`
+    width: 100%;
   `,
 };
 

@@ -1,6 +1,8 @@
 import React, { memo, useEffect, useMemo, useState } from 'react';
 import { Dimensions, FlatList } from 'react-native';
 import styled, { css } from 'styled-components/native';
+import Animated from 'react-native-reanimated';
+import { useTransition } from 'react-native-redash';
 
 import Text from '@core/Text';
 import Flex from '@core/Flex';
@@ -9,6 +11,7 @@ import Pressable from '@core/Pressable';
 import AuthorBadge from '@modules/inbox/components/AuthorBadge';
 
 import { searchTextInArray } from '@helpers/functions';
+import { useInterpolation } from '@helpers/hooks';
 
 import { useTypedSelector } from '@store/index';
 
@@ -18,11 +21,21 @@ import { User } from '@core/types';
 
 interface Props {
   searchFor: string;
+  selectedAddresses: string[];
+  onClickAddress: (arg0: User) => void;
 }
 
+const { useCode, eq, cond, call, onChange } = Animated;
 const { width: windowWidth } = Dimensions.get('window');
 
-const AddressesList: React.FC<Props> = ({ searchFor }) => {
+const AddressesList: React.FC<Props> = ({
+  searchFor,
+  onClickAddress,
+  selectedAddresses,
+}) => {
+  const animation = useTransition(!!searchFor);
+  const interpolation = useInterpolation(animation);
+
   const { mails } = useTypedSelector(({ mails }) => mails);
   const { loggedUser } = useTypedSelector(({ users }) => users);
 
@@ -31,12 +44,20 @@ const AddressesList: React.FC<Props> = ({ searchFor }) => {
   const authors = useMemo(
     () => [
       ...(mails || []).reduce((acc: User[], { from, to }) => {
-        acc.push(from);
-        acc.push(to);
+        if (!selectedAddresses.includes(from.address)) acc.push(from);
+        if (!selectedAddresses.includes(to.address)) acc.push(to);
         return acc;
       }, []),
     ],
-    [mails, loggedUser],
+    [mails, loggedUser, selectedAddresses],
+  );
+
+  const animatedContainerStyled = useMemo(
+    () => ({
+      opacity: interpolation([0, 1], [0, 1]),
+      transform: [{ translateY: interpolation([0, 1], [-5, 0]) }],
+    }),
+    [],
   );
 
   useEffect(() => {
@@ -46,28 +67,42 @@ const AddressesList: React.FC<Props> = ({ searchFor }) => {
       [...new Set(authors.map(({ address }) => address))],
       searchFor,
     );
-
     const searchedAuthors = searchedAddresses.map(
       (item) => authors.find(({ address }) => address === item) as User,
     );
-
     setResult(searchedAuthors || []);
   }, [searchFor, authors]);
 
-  if (!searchFor) return null;
+  useCode(
+    () => [
+      onChange(
+        animation,
+        cond(
+          eq(animation, 0),
+          call([], () => setResult([])),
+        ),
+      ),
+    ],
+    [],
+  );
+
+  if (!result.length) return null;
 
   return (
-    <S.Container>
-      <FlatList<User>
+    <S.Container style={animatedContainerStyled}>
+      <S.FlatList
         data={result}
-        keyExtractor={({ address }) => address}
+        keyExtractor={({ id }) => id}
+        keyboardDismissMode="none"
         renderItem={({ item }) => (
-          <S.Item>
+          <S.Item onPress={() => onClickAddress(item)}>
             <S.Divisor />
             <Flex flexDirection="row" align="center" justify="space-between">
               <Flex>
-                <S.Text>{item.name}</S.Text>
-                <Text size="SMALL">{item.address}</Text>
+                <S.Text numberOfLines={1}>{item.name}</S.Text>
+                <Text size="SMALL" numberOfLines={1}>
+                  {item.address}
+                </Text>
               </Flex>
               <AuthorBadge char={item.name[0]} />
             </Flex>
@@ -79,9 +114,8 @@ const AddressesList: React.FC<Props> = ({ searchFor }) => {
 };
 
 const S = {
-  Container: styled.View`
+  Container: styled(Animated.View)`
     width: ${windowWidth}px;
-    min-height: 100px;
 
     ${({ theme: { metrics } }) => css`
       left: -${metrics.MEDIUM + COMPOSE_LABEL_SIZE}px;
@@ -104,6 +138,9 @@ const S = {
     ${({ theme: { metrics } }) => css`
       margin-bottom: ${metrics.SMALLEST}px;
     `}
+  `,
+  FlatList: styled(FlatList as new () => FlatList<User>)`
+    width: 100%;
   `,
 };
 
