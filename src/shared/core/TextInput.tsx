@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
-import { TextInputProps } from 'react-native';
+import React, { forwardRef, memo } from 'react';
+import { TextInputProps, TextInput as RNTextInput } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 import fonts, { Sizing, Styling } from '@styles/fonts';
@@ -20,10 +20,12 @@ interface Props extends TextInputProps {
   fontFamily?: keyof Styling;
 }
 
-const TextInput: React.FC<Props> = (props) => <S.TextInput {...props} />;
+const TextInput = forwardRef<RNTextInput, Props>((props, ref) => (
+  <RNTextInput ref={ref} {...props} />
+));
 
 const S = {
-  TextInput: styled.TextInput.attrs(({ theme: { colors } }) => ({
+  TextInput: styled(TextInput).attrs(({ theme: { colors } }) => ({
     placeholderTextColor: colors.REGULAR,
   }))<Props>`
     ${({
@@ -42,7 +44,7 @@ const S = {
       font-family: ${fonts.styling[fontFamily || 'REGULAR']};
       font-weight: ${fontWeight || 400};
     `}
-  ` as React.FC<Props>,
+  `,
 };
 
-export default memo(TextInput);
+export default memo(S.TextInput);

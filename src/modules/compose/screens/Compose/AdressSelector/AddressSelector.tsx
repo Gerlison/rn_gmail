@@ -1,8 +1,10 @@
-import React, { memo, useCallback, useMemo, useState } from 'react';
+import React, { memo, useCallback, useMemo, useState, useRef } from 'react';
 import {
   Dimensions,
   NativeSyntheticEvent,
   TextInputKeyPressEventData,
+  TextInput as RNTextInput,
+  Pressable,
 } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
@@ -14,10 +16,28 @@ import TextInput from '@core/TextInput';
 import { COMPOSE_LABEL_SIZE } from '@modules/compose/helpers/constants';
 
 import { User } from '@core/types';
+import Text from '@core/Text';
 
 const { width: windowWidth } = Dimensions.get('window');
 
-const AddressSelector: React.FC = () => {
+type FocusState = {
+  to: boolean;
+  cc: boolean;
+  bcc: boolean;
+};
+
+interface Props {
+  id: keyof FocusState;
+  isFocused: boolean;
+  setFocusedSelector: React.Dispatch<React.SetStateAction<FocusState>>;
+}
+
+const AddressSelector: React.FC<Props> = ({
+  id,
+  isFocused,
+  setFocusedSelector,
+}) => {
+  const inputRef = useRef<RNTextInput>(null);
   const [searchValue, setSearchValue] = useState('');
   const [addresses, setAddresses] = useState<User[]>([]);
 
@@ -26,9 +46,27 @@ const AddressSelector: React.FC = () => {
     [addresses],
   );
 
-  const handleChangeText = useCallback((text) => {
-    setSearchValue(text);
-  }, []);
+  const selectedAddressesToList = useMemo(
+    () => (
+      <>
+        {(isFocused ? addresses : addresses.slice(0, 2)).map((user) => (
+          <AddressBadge key={user.id} user={user} />
+        ))}
+        {!isFocused && addresses.length > 2 && (
+          <Text size="LARGER" color="REGULAR">
+            {' '}
+            +{addresses.length - 2}
+          </Text>
+        )}
+      </>
+    ),
+    [addresses, isFocused],
+  );
+
+  const handleToggleFocus = useCallback(() => {
+    setSearchValue('');
+    setFocusedSelector((prev) => ({ ...prev, [id]: !prev[id] }));
+  }, [id]);
 
   const handleAddAddress = useCallback((user: User) => {
     setSearchValue('');
@@ -47,14 +85,20 @@ const AddressSelector: React.FC = () => {
     [searchValue],
   );
 
+  const handleFocusOnInput = useCallback(() => {
+    inputRef.current?.focus();
+  }, []);
+
   return (
-    <S.Container>
-      {addresses.map((user) => (
-        <AddressBadge key={user.id} user={user} />
-      ))}
-      <S.TextInput
+    <S.Container onPress={handleFocusOnInput}>
+      {selectedAddressesToList}
+
+      <TextInput
+        ref={inputRef}
+        onFocus={handleToggleFocus}
+        onBlur={handleToggleFocus}
         value={searchValue}
-        onChangeText={handleChangeText}
+        onChangeText={setSearchValue}
         onKeyPress={handleRemoveAddress}
       />
       <AddressesList
@@ -67,7 +111,8 @@ const AddressSelector: React.FC = () => {
 };
 
 const S = {
-  Container: styled.View`
+  Container: styled(Pressable)`
+    width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
@@ -75,9 +120,6 @@ const S = {
     ${({ theme: { metrics } }) => css`
       max-width: ${windowWidth - metrics.MEDIUM * 2 - COMPOSE_LABEL_SIZE}px;
     `}
-  `,
-  TextInput: styled(TextInput)`
-    width: 100%;
   `,
 };
 

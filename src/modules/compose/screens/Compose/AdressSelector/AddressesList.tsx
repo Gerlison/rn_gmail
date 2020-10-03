@@ -26,7 +26,7 @@ interface Props {
 }
 
 const { useCode, eq, cond, call, onChange } = Animated;
-const { width: windowWidth } = Dimensions.get('window');
+const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
 
 const AddressesList: React.FC<Props> = ({
   searchFor,
@@ -93,7 +93,7 @@ const AddressesList: React.FC<Props> = ({
       <S.FlatList
         data={result}
         keyExtractor={({ id }) => id}
-        keyboardDismissMode="none"
+        keyboardShouldPersistTaps="always"
         renderItem={({ item }) => (
           <S.Item onPress={() => onClickAddress(item)}>
             <S.Divisor />
@@ -115,14 +115,19 @@ const AddressesList: React.FC<Props> = ({
 
 const S = {
   Container: styled(Animated.View)`
-    width: ${windowWidth}px;
+    position: absolute;
 
-    ${({ theme: { metrics } }) => css`
+    ${({ theme: { metrics, colors } }) => css`
+      width: ${windowWidth}px;
+      height: ${windowHeight}px;
+      background-color: ${colors.BACKGROUND};
       left: -${metrics.MEDIUM + COMPOSE_LABEL_SIZE}px;
+      bottom: -${windowHeight + metrics.SMALL}px;
     `};
   `,
   Item: styled(Pressable)`
     ${({ theme: { metrics } }) => css`
+      margin-bottom: ${metrics.MEDIUM}px;
       padding-left: ${metrics.MEDIUM + COMPOSE_LABEL_SIZE}px;
     `};
   `,
@@ -130,7 +135,7 @@ const S = {
     height: 1px;
 
     ${({ theme: { metrics, colors } }) => css`
-      margin: ${metrics.MEDIUM}px 0px;
+      margin-bottom: ${metrics.MEDIUM}px;
       background-color: ${colors.LIGHTER};
     `}
   `,

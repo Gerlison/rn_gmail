@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import styled, { css } from 'styled-components/native';
 
 import Flex from '@core/Flex';
@@ -10,6 +10,12 @@ import TextInput from '@core/TextInput';
 import { COMPOSE_LABEL_SIZE } from '@modules/compose/helpers/constants';
 
 const Compose: React.FC = () => {
+  const [focusedSelector, setFocusedSelector] = useState({
+    to: false,
+    cc: false,
+    bcc: false,
+  });
+
   const headerButtons = useMemo(
     () => [
       {
@@ -25,19 +31,31 @@ const Compose: React.FC = () => {
       <S.SafeArea />
       <Header title="Compose" buttons={headerButtons} />
       <Flex flex={1}>
-        <S.Field>
+        <S.Field isFocused={focusedSelector.to}>
           <S.Label>To</S.Label>
-          <AddressSelector />
+          <AddressSelector
+            id="to"
+            isFocused={focusedSelector.to}
+            setFocusedSelector={setFocusedSelector}
+          />
         </S.Field>
 
-        <S.Field>
+        <S.Field isFocused={focusedSelector.cc}>
           <S.Label>Cc</S.Label>
-          <AddressSelector />
+          <AddressSelector
+            id="cc"
+            isFocused={focusedSelector.cc}
+            setFocusedSelector={setFocusedSelector}
+          />
         </S.Field>
 
-        <S.Field>
+        <S.Field isFocused={focusedSelector.bcc}>
           <S.Label>Bcc</S.Label>
-          <AddressSelector />
+          <AddressSelector
+            id="bcc"
+            isFocused={focusedSelector.bcc}
+            setFocusedSelector={setFocusedSelector}
+          />
         </S.Field>
 
         <S.Field>
@@ -55,13 +73,14 @@ const S = {
       background-color: ${colors.BACKGROUND};
     `}
   `,
-  Field: styled.View`
+  Field: styled.View<{ isFocused?: boolean }>`
     flex-direction: row;
     border-bottom-width: 1px;
 
-    ${({ theme: { metrics, colors } }) => css`
+    ${({ theme: { metrics, colors }, isFocused }) => css`
       padding: ${metrics.MEDIUM}px;
       border-color: ${colors.LIGHTER};
+      z-index: ${isFocused ? 2 : 0};
     `}
   `,
   Label: styled(Text).attrs({
