@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import styled, { css } from 'styled-components/native';
 
 import Flex from '@core/Flex';
@@ -82,4 +82,4 @@ const S = {
   `,
 };
 
-export default memo(Compose);
+export default Compose;

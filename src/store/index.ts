@@ -13,5 +13,5 @@ export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export default configureStore({
   reducer,
-  enhancers: __DEV__ ? [reactotron?.createEnhancer?.() as any] : undefined,
+  enhancers: __DEV__ ? [reactotron!.createEnhancer!()] : undefined,
 });
