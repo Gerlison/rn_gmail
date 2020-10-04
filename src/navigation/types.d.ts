@@ -4,6 +4,7 @@ export type DrawerParamList = {
   Home: {
     selectedLabel: MailLabel;
   };
+  Settings: undefined;
 };
 
 export type RootStackParamList = {
