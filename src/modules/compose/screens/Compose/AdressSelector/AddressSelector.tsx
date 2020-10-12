@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo, useState, useRef } from 'react';
+import React, { memo, useCallback, useMemo, useRef } from 'react';
 import {
   Dimensions,
   NativeSyntheticEvent,
@@ -9,80 +9,109 @@ import {
 import styled, { css } from 'styled-components/native';
 
 import AddressBadge from './AddressBadge';
-import AddressesList from './AddressesList';
 
 import TextInput from '@core/TextInput';
+import Text from '@core/Text';
 
 import { COMPOSE_LABEL_SIZE } from '@modules/compose/helpers/constants';
 
 import { User } from '@core/types';
-import Text from '@core/Text';
 
 const { width: windowWidth } = Dimensions.get('window');
 
-type FocusState = {
-  to: boolean;
-  cc: boolean;
-  bcc: boolean;
-};
+type FieldsDataState = {
+  id: string;
+  isFocused: boolean;
+  selectedAddresses: User[];
+}[];
 
 interface Props {
-  id: keyof FocusState;
+  id: string;
   isFocused: boolean;
-  setFocusedSelector: React.Dispatch<React.SetStateAction<FocusState>>;
+  searchValue: string;
+  selectedAddresses: User[];
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+  setFieldsData: React.Dispatch<React.SetStateAction<FieldsDataState>>;
 }
 
 const AddressSelector: React.FC<Props> = ({
   id,
   isFocused,
-  setFocusedSelector,
+  searchValue,
+  selectedAddresses,
+  setFieldsData,
+  setSearchValue,
 }) => {
   const inputRef = useRef<RNTextInput>(null);
-  const [searchValue, setSearchValue] = useState('');
-  const [addresses, setAddresses] = useState<User[]>([]);
-
-  const selectedAddresses = useMemo(
-    () => addresses.map(({ address }) => address),
-    [addresses],
-  );
 
   const selectedAddressesToList = useMemo(
     () => (
       <>
-        {(isFocused ? addresses : addresses.slice(0, 2)).map((user) => (
-          <AddressBadge key={user.id} user={user} />
-        ))}
-        {!isFocused && addresses.length > 2 && (
+        {(isFocused ? selectedAddresses : selectedAddresses.slice(0, 2)).map(
+          (user, index) => (
+            <AddressBadge key={user.id + index} user={user} />
+          ),
+        )}
+        {!isFocused && selectedAddresses.length > 2 && (
           <Text size="LARGER" color="REGULAR">
             {' '}
-            +{addresses.length - 2}
+            +{selectedAddresses.length - 2}
           </Text>
         )}
       </>
     ),
-    [addresses, isFocused],
+    [selectedAddresses, isFocused],
   );
 
   const handleToggleFocus = useCallback(() => {
     setSearchValue('');
-    setFocusedSelector((prev) => ({ ...prev, [id]: !prev[id] }));
-  }, [id]);
+    setFieldsData((prev) =>
+      prev.map((field) => ({
+        ...field,
+        isFocused: field.id === id ? !field.isFocused : field.isFocused,
+        selectedAddresses:
+          field.id === id && field.isFocused && searchValue
+            ? [
+                ...field.selectedAddresses,
+                { id: searchValue, address: searchValue, name: searchValue },
+              ]
+            : field.selectedAddresses,
+      })),
+    );
+  }, [id, searchValue]);
 
-  const handleAddAddress = useCallback((user: User) => {
-    setSearchValue('');
-    setAddresses((prev) => [...prev, user]);
-  }, []);
-
-  const handleRemoveAddress = useCallback(
+  const handleKeyPress = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
       if (nativeEvent.key === 'Backspace' && !searchValue)
-        setAddresses((prev) => {
-          const prevClone = [...prev];
-          prevClone.pop();
-          return prevClone;
-        });
+        return setFieldsData((prev) =>
+          prev.map((field) => ({
+            ...field,
+            selectedAddresses:
+              field.id === id && field.isFocused
+                ? field.selectedAddresses.slice(0, -1)
+                : field.selectedAddresses,
+          })),
+        );
+
+      if (nativeEvent.key === 'Enter' && searchValue)
+        setFieldsData((prev) =>
+          prev.map((field) => ({
+            ...field,
+            selectedAddresses:
+              field.id === id && !field.isFocused
+                ? [
+                    ...field.selectedAddresses,
+                    {
+                      id: searchValue,
+                      address: searchValue,
+                      name: searchValue,
+                    },
+                  ]
+                : field.selectedAddresses,
+          })),
+        );
     },
-    [searchValue],
+    [searchValue, id],
   );
 
   const handleFocusOnInput = useCallback(() => {
@@ -99,12 +128,7 @@ const AddressSelector: React.FC<Props> = ({
         onBlur={handleToggleFocus}
         value={searchValue}
         onChangeText={setSearchValue}
-        onKeyPress={handleRemoveAddress}
-      />
-      <AddressesList
-        searchFor={searchValue}
-        onClickAddress={handleAddAddress}
-        selectedAddresses={selectedAddresses}
+        onKeyPress={handleKeyPress}
       />
     </S.Container>
   );

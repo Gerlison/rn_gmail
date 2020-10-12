@@ -13,9 +13,12 @@ interface Props {
 const AddressBadge: React.FC<Props> = ({ user }) => {
   return (
     <S.Container>
-      <S.Image />
+      <S.Badge>
+        <Text color="WHITE">{user.address[0].toUpperCase()}</Text>
+      </S.Badge>
       <Flex>
         <S.Text color="DARKER" numberOfLines={1}>
+          {' '}
           {user.address}
         </S.Text>
       </Flex>
@@ -28,21 +31,24 @@ const S = {
   Container: styled.View`
     flex-direction: row;
     align-items: center;
-    margin: 7px 0px;
-  `,
-  Image: styled.View`
-    width: 35px;
-    height: 35px;
-    border-radius: 20px;
-    z-index: 1;
 
-    ${({ theme: { colors } }) => css`
-      background-color: ${colors.REGULAR};
+    ${({ theme: { metrics } }) => css`
+      margin-bottom: ${metrics.SMALLEST}px;
+      margin-right: ${metrics.SMALLEST}px;
     `}
+  `,
+  Badge: styled.View`
+    width: 31px;
+    height: 31px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: lightcoral;
+    z-index: 1;
   `,
   RoundContainer: styled.View`
     width: 100%;
-    height: 34px;
+    height: 30px;
     border-width: 1px;
     border-radius: 15px;
     position: absolute;

@@ -21,17 +21,17 @@ import { User } from '@core/types';
 
 interface Props {
   searchFor: string;
-  selectedAddresses: string[];
   onClickAddress: (arg0: User) => void;
+  selectorsPosition: number;
 }
 
 const { useCode, eq, cond, call, onChange } = Animated;
-const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
+const { width: windowWidth } = Dimensions.get('window');
 
 const AddressesList: React.FC<Props> = ({
   searchFor,
   onClickAddress,
-  selectedAddresses,
+  selectorsPosition,
 }) => {
   const animation = useTransition(!!searchFor);
   const interpolation = useInterpolation(animation);
@@ -44,12 +44,12 @@ const AddressesList: React.FC<Props> = ({
   const authors = useMemo(
     () => [
       ...(mails || []).reduce((acc: User[], { from, to }) => {
-        if (!selectedAddresses.includes(from.address)) acc.push(from);
-        if (!selectedAddresses.includes(to.address)) acc.push(to);
+        acc.push(from);
+        acc.push(to);
         return acc;
       }, []),
     ],
-    [mails, loggedUser, selectedAddresses],
+    [mails, loggedUser],
   );
 
   const animatedContainerStyled = useMemo(
@@ -89,7 +89,10 @@ const AddressesList: React.FC<Props> = ({
   if (!result.length) return null;
 
   return (
-    <S.Container style={animatedContainerStyled}>
+    <S.Container
+      style={animatedContainerStyled}
+      selectorsPosition={selectorsPosition}
+    >
       <S.FlatList
         data={result}
         keyExtractor={({ id }) => id}
@@ -114,15 +117,14 @@ const AddressesList: React.FC<Props> = ({
 };
 
 const S = {
-  Container: styled(Animated.View)`
+  Container: styled(Animated.View)<{ selectorsPosition: number }>`
     position: absolute;
+    bottom: 0px;
 
-    ${({ theme: { metrics, colors } }) => css`
+    ${({ theme: { colors }, selectorsPosition }) => css`
       width: ${windowWidth}px;
-      height: ${windowHeight}px;
       background-color: ${colors.BACKGROUND};
-      left: -${metrics.MEDIUM + COMPOSE_LABEL_SIZE}px;
-      bottom: -${windowHeight + metrics.SMALL}px;
+      top: ${selectorsPosition}px;
     `};
   `,
   Item: styled(Pressable)`
