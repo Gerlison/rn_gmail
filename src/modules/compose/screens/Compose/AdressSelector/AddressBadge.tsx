@@ -4,6 +4,8 @@ import styled, { css } from 'styled-components/native';
 import Flex from '@core/Flex';
 import Text from '@core/Text';
 
+import { ADDRESS_BADGE_SIZE } from '@modules/compose/helpers/constants';
+
 import { User } from '@core/types';
 
 interface Props {
@@ -38,23 +40,24 @@ const S = {
     `}
   `,
   Badge: styled.View`
-    width: 31px;
-    height: 31px;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
     background-color: lightcoral;
     z-index: 1;
+
+    width: ${ADDRESS_BADGE_SIZE + 1}px;
+    height: ${ADDRESS_BADGE_SIZE + 1}px;
   `,
   RoundContainer: styled.View`
     width: 100%;
-    height: 30px;
     border-width: 1px;
     border-radius: 15px;
     position: absolute;
 
     ${({ theme: { colors } }) => css`
       border-color: ${colors.LIGHT};
+      height: ${ADDRESS_BADGE_SIZE}px;
     `}
   `,
   Text: styled(Text)`

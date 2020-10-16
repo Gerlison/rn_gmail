@@ -20,11 +20,6 @@ const Compose: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [fieldsData, setFieldsData] = useState([
     {
-      id: 'from',
-      isFocused: false,
-      selectedAddresses: [] as User[],
-    },
-    {
       id: 'to',
       isFocused: false,
       selectedAddresses: [] as User[],
@@ -121,19 +116,18 @@ const S = {
     color: 'DARK',
   })`
     width: ${COMPOSE_LABEL_SIZE}px;
-    ${({ theme: { metrics } }) => css`
-      margin: 6px 0px;
-    `}
+    margin: 6px 0px;
   `,
   TextInput: styled(TextInput)`
     width: 100%;
+    margin: 6px 0px;
   `,
   BodyTextInput: styled(TextInput)`
     width: 100%;
     flex: 1;
 
     ${({ theme: { metrics } }) => css`
-      padding: ${metrics.MEDIUM}px;
+      padding: ${metrics.LARGE}px ${metrics.SMALL}px;
     `}
   `,
   KAView: styled.KeyboardAvoidingView.attrs({

@@ -13,7 +13,10 @@ import AddressBadge from './AddressBadge';
 import TextInput from '@core/TextInput';
 import Text from '@core/Text';
 
-import { COMPOSE_LABEL_SIZE } from '@modules/compose/helpers/constants';
+import {
+  ADDRESS_BADGE_SIZE,
+  COMPOSE_LABEL_SIZE,
+} from '@modules/compose/helpers/constants';
 
 import { User } from '@core/types';
 
@@ -92,27 +95,31 @@ const AddressSelector: React.FC<Props> = ({
                 : field.selectedAddresses,
           })),
         );
-
-      if (nativeEvent.key === 'Enter' && searchValue)
-        setFieldsData((prev) =>
-          prev.map((field) => ({
-            ...field,
-            selectedAddresses:
-              field.id === id && !field.isFocused
-                ? [
-                    ...field.selectedAddresses,
-                    {
-                      id: searchValue,
-                      address: searchValue,
-                      name: searchValue,
-                    },
-                  ]
-                : field.selectedAddresses,
-          })),
-        );
     },
     [searchValue, id],
   );
+
+  const handleSubmit = useCallback(() => {
+    if (!searchValue) return;
+
+    setSearchValue('');
+    setFieldsData((prev) =>
+      prev.map((field) => ({
+        ...field,
+        selectedAddresses:
+          field.id === id && field.isFocused
+            ? [
+                ...field.selectedAddresses,
+                {
+                  id: searchValue,
+                  address: searchValue,
+                  name: searchValue,
+                },
+              ]
+            : field.selectedAddresses,
+      })),
+    );
+  }, [searchValue, id]);
 
   const handleFocusOnInput = useCallback(() => {
     inputRef.current?.focus();
@@ -122,13 +129,15 @@ const AddressSelector: React.FC<Props> = ({
     <S.Container onPress={handleFocusOnInput}>
       {selectedAddressesToList}
 
-      <TextInput
+      <S.TextInput
         ref={inputRef}
+        blurOnSubmit={false}
+        value={searchValue}
         onFocus={handleToggleFocus}
         onBlur={handleToggleFocus}
-        value={searchValue}
         onChangeText={setSearchValue}
         onKeyPress={handleKeyPress}
+        onSubmitEditing={handleSubmit}
       />
     </S.Container>
   );
@@ -144,6 +153,11 @@ const S = {
     ${({ theme: { metrics } }) => css`
       max-width: ${windowWidth - metrics.MEDIUM * 2 - COMPOSE_LABEL_SIZE}px;
     `}
+  `,
+  TextInput: styled(TextInput)`
+    flex-grow: 1;
+
+    height: ${ADDRESS_BADGE_SIZE + 5}px;
   `,
 };
 

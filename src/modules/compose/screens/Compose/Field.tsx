@@ -20,8 +20,6 @@ const Field: React.FC<Props> = ({ id, children, selectorsPositionRef }) => {
       if (selectorsPositionRef && id) {
         selectorsPositionRef.current[id as keyof SelectorPositionObject] =
           layout.y + layout.height;
-
-        console.log(selectorsPositionRef.current);
       }
     },
     [selectorsPositionRef, id],
