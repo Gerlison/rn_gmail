@@ -46,7 +46,7 @@ const DrawerNavigator = () => (
 
 const MainNavigator = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="Compose" headerMode="none">
+    <Stack.Navigator initialRouteName="Drawer" headerMode="none">
       <Stack.Screen name="Drawer" component={DrawerNavigator} />
       <Stack.Screen name="Compose" component={Compose} />
     </Stack.Navigator>

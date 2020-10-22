@@ -1,33 +1,35 @@
-import { WINDOW_HEIGHT } from '@helpers/dimensions';
-
 const ICON_MULTIPLIER = 1.3;
 
-const getRealFontSize = (fontSize: number, standardScreenHeight = 680) => {
-  const heightPercent = (fontSize * WINDOW_HEIGHT) / standardScreenHeight;
-  return Math.round(heightPercent);
+// const getRealFontSize = (fontSize: number, standardScreenHeight = 680) => {
+//   const heightPercent = (fontSize * WINDOW_HEIGHT) / standardScreenHeight;
+//   return Math.round(heightPercent);
+// };
+
+const getRealFontSize = (fontSize: number) => {
+  return fontSize;
 };
 
 const getRealIconSize = (iconSize: number) =>
   getRealFontSize(iconSize) * ICON_MULTIPLIER;
 
 const sizing = {
-  SMALLEST: getRealFontSize(8),
-  SMALLER: getRealFontSize(10),
-  SMALL: getRealFontSize(12),
-  MEDIUM: getRealFontSize(14),
-  LARGE: getRealFontSize(16),
-  LARGER: getRealFontSize(18),
-  LARGEST: getRealFontSize(22),
+  SMALLEST: getRealFontSize(10),
+  SMALLER: getRealFontSize(12),
+  SMALL: getRealFontSize(14),
+  MEDIUM: getRealFontSize(16),
+  LARGE: getRealFontSize(18),
+  LARGER: getRealFontSize(22),
+  LARGEST: getRealFontSize(24),
 };
 
 const icon = {
-  SMALLEST: getRealIconSize(8),
-  SMALLER: getRealIconSize(10),
-  SMALL: getRealIconSize(12),
-  MEDIUM: getRealIconSize(14),
-  LARGE: getRealIconSize(16),
-  LARGER: getRealIconSize(18),
-  LARGEST: getRealIconSize(22),
+  SMALLEST: getRealIconSize(10),
+  SMALLER: getRealIconSize(12),
+  SMALL: getRealIconSize(14),
+  MEDIUM: getRealIconSize(16),
+  LARGE: getRealIconSize(18),
+  LARGER: getRealIconSize(19),
+  LARGEST: getRealIconSize(24),
 };
 
 const styling = {

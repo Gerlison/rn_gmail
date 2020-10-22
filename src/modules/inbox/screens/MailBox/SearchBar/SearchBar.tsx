@@ -93,7 +93,7 @@ const SearchBar = () => {
           shadowOpacity: interpolation([0, 0.999, 1], [1, 1, 0]),
           left: interpolation([0, 1], [16, 0]),
           right: interpolation([0, 1], [16, 0]),
-          top: interpolation([0, 1], [4, 0]),
+          top: interpolation([0, 1], [10, 0]),
         }}
       >
         <S.Content

@@ -48,7 +48,7 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
             <S.Text style={{ flex: 1 }} type="title">
               {mail.from.name}
             </S.Text>
-            <Text color="DARK" size="SMALL">
+            <Text color="DARK" size="MEDIUM">
               {mail.date.toLocaleDateString()}
             </Text>
           </S.Row>

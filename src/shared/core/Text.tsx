@@ -19,7 +19,7 @@ const Text: React.FC<Props> = ({ children, type, ...props }) => {
     switch (type) {
       case 'label':
         return {
-          size: 'SMALLER',
+          size: 'SMALL',
           color: 'DARK',
           family: 'MEDIUM',
           weight: '400',

@@ -8,7 +8,7 @@ const height =
 const width =
   Platform.OS === 'android' ? extraDimensions.getRealWindowWidth() : RNWidth;
 
-const standardLength = width > height ? width : height;
+const standardLength = Math.max(width, height);
 
 const offset =
   width > height ? 0 : Platform.OS === 'ios' ? 78 : StatusBar.currentHeight!;
