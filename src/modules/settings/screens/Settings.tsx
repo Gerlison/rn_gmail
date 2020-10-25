@@ -3,9 +3,11 @@ import styled, { css } from 'styled-components/native';
 
 import Header from '@core/Header';
 import Text from '@core/Text';
+import Flex from '@core/Flex';
 
 import { useTypedSelector } from '@store/index';
-import Flex from '@core/Flex';
+
+import { IPHONE_BOTTOM_OFFSET } from '@helpers/dimensions';
 
 const Settings: React.FC = () => {
   const { users } = useTypedSelector((state) => state.users);
@@ -66,6 +68,7 @@ const S = {
 
     ${({ theme: { metrics } }) => css`
       margin-top: ${metrics.LARGE}px;
+      margin-bottom: ${IPHONE_BOTTOM_OFFSET};
     `}
   `,
 };

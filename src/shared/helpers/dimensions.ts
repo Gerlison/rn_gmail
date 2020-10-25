@@ -1,4 +1,4 @@
-import { isIphoneX } from 'react-native-iphone-x-helper';
+import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
 import extraDimensions from 'react-native-extra-dimensions-android';
 import { Platform, StatusBar, Dimensions } from 'react-native';
 
@@ -27,3 +27,5 @@ export const WINDOW_WIDTH =
   (isIphoneX() || Platform.OS === 'android') && height < width
     ? width - offset
     : width;
+
+export const IPHONE_BOTTOM_OFFSET = getBottomSpace();
