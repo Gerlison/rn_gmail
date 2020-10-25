@@ -15,13 +15,12 @@ import Pressable from '@core/Pressable';
 import fonts from '@styles/fonts';
 
 import { useInterpolation } from '@helpers/hooks';
+import { SEARCH_BAR_HEIGHT } from '@modules/inbox/helpers/constants';
 
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { DrawerParamList } from '@navigation/types';
 
 type Navigation = DrawerNavigationProp<DrawerParamList, 'Home'>;
-
-const SEARCH_BAR_HEIGHT = 50;
 
 const height =
   Platform.OS === 'android'
@@ -171,7 +170,7 @@ const S = {
     flex-direction: row;
     align-items: center;
 
-    margin-horizontal: ${({ theme: { metrics } }) => metrics.SMALL}px;
+    margin: 0px ${({ theme: { metrics } }) => metrics.SMALL}px;
   `,
   Icon: styled(Animated.createAnimatedComponent(Icon))`
     ${({ theme: { colors } }) => css`
