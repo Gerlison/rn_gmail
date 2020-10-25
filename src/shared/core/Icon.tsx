@@ -45,6 +45,7 @@ const Icon: React.FC<IconProps> = ({
       name={name}
       size={typeof size === 'number' ? size : fonts.icon[size || 'MEDIUM']}
       color={colors[color || 'DARK']}
+      {...props}
     />
   );
 };
