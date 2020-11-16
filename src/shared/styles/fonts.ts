@@ -13,13 +13,13 @@ const getRealIconSize = (iconSize: number) =>
   getRealFontSize(iconSize) * ICON_MULTIPLIER;
 
 const sizing = {
-  SMALLEST: getRealFontSize(10),
-  SMALLER: getRealFontSize(12),
-  SMALL: getRealFontSize(14),
-  MEDIUM: getRealFontSize(16),
-  LARGE: getRealFontSize(18),
-  LARGER: getRealFontSize(22),
-  LARGEST: getRealFontSize(24),
+  SMALLEST: 10,
+  SMALLER: 12,
+  SMALL: 14,
+  MEDIUM: 16,
+  LARGE: 18,
+  LARGER: 22,
+  LARGEST: 24,
 };
 
 const icon = {
