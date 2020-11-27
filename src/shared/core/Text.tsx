@@ -19,7 +19,7 @@ const Text: React.FC<Props> = ({ children, type, ...props }) => {
     switch (type) {
       case 'label':
         return {
-          size: 'SMALLER',
+          size: 'SMALL',
           color: 'DARK',
           family: 'MEDIUM',
           weight: '400',
@@ -62,6 +62,6 @@ const StyledText = styled.Text<Props>`
       letter-spacing: 1.5px;
     `}
   `}
-`;
+` as React.FC<Props>;
 
 export default memo(Text);

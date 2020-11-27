@@ -1,26 +1,35 @@
-import { PixelRatio } from 'react-native';
+const ICON_MULTIPLIER = 1.3;
 
-const iconMultiplier = 1.3;
-const fontMultiplier = PixelRatio.get();
+// const getRealFontSize = (fontSize: number, standardScreenHeight = 680) => {
+//   const heightPercent = (fontSize * WINDOW_HEIGHT) / standardScreenHeight;
+//   return Math.round(heightPercent);
+// };
+
+const getRealFontSize = (fontSize: number) => {
+  return fontSize;
+};
+
+const getRealIconSize = (iconSize: number) =>
+  getRealFontSize(iconSize) * ICON_MULTIPLIER;
 
 const sizing = {
-  SMALLEST: 8 + fontMultiplier,
-  SMALLER: 10 + fontMultiplier,
-  SMALL: 12 + fontMultiplier,
-  MEDIUM: 14 + fontMultiplier,
-  LARGE: 16 + fontMultiplier,
-  LARGER: 18 + fontMultiplier,
-  LARGEST: 22 + fontMultiplier,
+  SMALLEST: 10,
+  SMALLER: 12,
+  SMALL: 14,
+  MEDIUM: 16,
+  LARGE: 18,
+  LARGER: 22,
+  LARGEST: 24,
 };
 
 const icon = {
-  SMALLEST: (8 + fontMultiplier) * iconMultiplier,
-  SMALLER: (10 + fontMultiplier) * iconMultiplier,
-  SMALL: (12 + fontMultiplier) * iconMultiplier,
-  MEDIUM: (14 + fontMultiplier) * iconMultiplier,
-  LARGE: (16 + fontMultiplier) * iconMultiplier,
-  LARGER: (18 + fontMultiplier) * iconMultiplier,
-  LARGEST: (22 + fontMultiplier) * iconMultiplier,
+  SMALLEST: getRealIconSize(10),
+  SMALLER: getRealIconSize(12),
+  SMALL: getRealIconSize(14),
+  MEDIUM: getRealIconSize(16),
+  LARGE: getRealIconSize(18),
+  LARGER: getRealIconSize(19),
+  LARGEST: getRealIconSize(24),
 };
 
 const styling = {

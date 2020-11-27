@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import styled from 'styled-components/native';
+import { useNavigation } from '@react-navigation/core';
+import { onScrollEvent } from 'react-native-redash';
+import Animated from 'react-native-reanimated';
 
 import MailList from './MailList';
 import SearchBar from './SearchBar';
+
+import ComposeButton from '@core/ComposeButton';
 
 import { MailLabel } from '@core/types';
 
@@ -10,13 +15,25 @@ interface Props {
   selectedLabel: MailLabel;
 }
 
+const { Value, set, useCode, sub, onChange } = Animated;
+
 const MailBox = ({ selectedLabel }: Props) => {
+  const { navigate } = useNavigation();
+
+  const scrollY = useRef(new Value(0)).current;
+
+  const navigateToCompose = useCallback(() => navigate('Compose'), []);
+
   return (
     <>
       <S.SafeArea />
       <S.Container>
-        <SearchBar />
-        <MailList selectedLabel={selectedLabel} />
+        <SearchBar scrollY={scrollY} />
+        <MailList
+          selectedLabel={selectedLabel}
+          onScroll={onScrollEvent({ y: scrollY })}
+        />
+        <ComposeButton onPress={navigateToCompose} scrollY={scrollY} />
       </S.Container>
     </>
   );

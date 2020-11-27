@@ -15,20 +15,23 @@ import Pressable from '@core/Pressable';
 import fonts from '@styles/fonts';
 
 import { useInterpolation } from '@helpers/hooks';
+import { SEARCH_BAR_HEIGHT } from '@modules/inbox/helpers/constants';
 
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { DrawerParamList } from '@navigation/types';
 
 type Navigation = DrawerNavigationProp<DrawerParamList, 'Home'>;
 
-const SEARCH_BAR_HEIGHT = 50;
+interface Props {
+  scrollY: Animated.Value<number>;
+}
 
 const height =
   Platform.OS === 'android'
     ? ExtraDimensions.getRealWindowHeight()
     : Dimensions.get('window').height;
 
-const SearchBar = () => {
+const SearchBar: React.FC<Props> = ({ scrollY }) => {
   const inputRef = useRef<{ getNode: () => TextInput }>(null);
   const navigation = useNavigation<Navigation>();
 
@@ -39,6 +42,7 @@ const SearchBar = () => {
     easing: Easing.linear,
   });
   const interpolation = useInterpolation(animation);
+  const scrollInterpolation = useInterpolation(scrollY);
 
   const onPressLeftButton = () => {
     if (focused) {
@@ -93,7 +97,12 @@ const SearchBar = () => {
           shadowOpacity: interpolation([0, 0.999, 1], [1, 1, 0]),
           left: interpolation([0, 1], [16, 0]),
           right: interpolation([0, 1], [16, 0]),
-          top: interpolation([0, 1], [4, 0]),
+          top: focused
+            ? interpolation([0, 1], [10, 0])
+            : scrollInterpolation(
+                [0, 2 * SEARCH_BAR_HEIGHT],
+                [10, 2 * -SEARCH_BAR_HEIGHT],
+              ),
         }}
       >
         <S.Content
@@ -171,7 +180,7 @@ const S = {
     flex-direction: row;
     align-items: center;
 
-    margin-horizontal: ${({ theme: { metrics } }) => metrics.SMALL}px;
+    margin: 0px ${({ theme: { metrics } }) => metrics.SMALL}px;
   `,
   Icon: styled(Animated.createAnimatedComponent(Icon))`
     ${({ theme: { colors } }) => css`

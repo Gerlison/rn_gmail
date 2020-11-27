@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
-import { FlatList } from 'react-native';
+import React, { useState, memo } from 'react';
+import {
+  FlatList,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+} from 'react-native';
 import styled, { css } from 'styled-components';
+import Animated from 'react-native-reanimated';
 
 import MailListItem from './MailListItem';
 
@@ -8,13 +13,21 @@ import Text from '@core/Text';
 
 import { useTypedSelector } from '@store/index';
 
+import { SEARCH_BAR_HEIGHT } from '@modules/inbox/helpers/constants';
+
 import { MailLabel, Mail } from '@core/types';
 
 interface Props {
   selectedLabel: MailLabel;
+  onScroll: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+  onScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
 }
 
-const MailList = ({ selectedLabel }: Props) => {
+const MailList: React.FC<Props> = ({
+  selectedLabel,
+  onScroll,
+  onScrollEnd,
+}) => {
   const { mails } = useTypedSelector((state) => state.mails);
 
   const [selectedMails, setSelectedMails] = useState<{
@@ -22,12 +35,15 @@ const MailList = ({ selectedLabel }: Props) => {
   }>({});
 
   return (
-    <FlatList<Mail>
+    <S.FlatList
+      bounces={false}
+      onScroll={onScroll}
+      onScrollEndDrag={onScrollEnd}
+      scrollEventThrottle={8}
       data={mails?.filter(({ labelIds }) =>
         labelIds.includes(selectedLabel.id),
       )}
       keyExtractor={({ id }) => id}
-      contentContainerStyle={{ paddingTop: 77 }}
       ListHeaderComponent={<S.Text type="label">{selectedLabel.name}</S.Text>}
       renderItem={({ item }) => (
         <MailListItem
@@ -47,6 +63,13 @@ const S = {
       margin-bottom: ${metrics.SMALLEST}px;
     `}
   `,
+  FlatList: styled(
+    Animated.createAnimatedComponent(FlatList) as new () => FlatList<Mail>,
+  ).attrs(({ theme: { metrics } }) => ({
+    contentContainerStyle: {
+      paddingTop: metrics.LARGEST + SEARCH_BAR_HEIGHT,
+    },
+  }))``,
 };
 
-export default MailList;
+export default memo(MailList);

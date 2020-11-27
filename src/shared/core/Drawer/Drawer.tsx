@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, memo } from 'react';
 import styled, { css } from 'styled-components/native';
 import {
+  DrawerContentComponentProps,
   DrawerContentScrollView,
-  DrawerNavigationProp,
 } from '@react-navigation/drawer';
 
 import DrawerOption from './DrawerOption';
@@ -12,13 +12,10 @@ import Text from '@core/Text';
 import { useTypedSelector } from '@store/index';
 
 import { MailLabel } from '@core/types';
-import { DrawerParamList } from '@navigation/types';
 
-interface Props {
-  navigation: DrawerNavigationProp<DrawerParamList, 'Home'>;
-}
+type Props = DrawerContentComponentProps;
 
-const Drawer = ({ navigation }: Props) => {
+const Drawer: React.FC<Props> = ({ state, navigation, descriptors }) => {
   const { labels } = useTypedSelector((state) => state.labels);
 
   const [selectedOption, setSelectedOption] = useState(labels?.[0].id);
@@ -31,6 +28,21 @@ const Drawer = ({ navigation }: Props) => {
       });
       navigation.closeDrawer();
     },
+    [],
+  );
+
+  const getRouteLabel = useCallback(
+    (route) => ({
+      id: route.key,
+      name: route.name,
+      cosmetic: {
+        backgroundColor: 'transparent',
+        icon: descriptors[route.key].options.title!,
+        textColor: '',
+      },
+      mailTotal: 0,
+      mailUnread: 0,
+    }),
     [],
   );
 
@@ -47,6 +59,14 @@ const Drawer = ({ navigation }: Props) => {
           label={label}
           focused={selectedOption === label.id}
           onPress={onPressOption(label)}
+        />
+      ))}
+      {state.routes.slice(1).map((route) => (
+        <DrawerOption
+          key={route.key}
+          label={getRouteLabel(route)}
+          focused={false}
+          onPress={() => navigation.navigate(route.name, route.params)}
         />
       ))}
     </DrawerContentScrollView>
@@ -69,4 +89,4 @@ const S = {
   `,
 };
 
-export default Drawer;
+export default memo(Drawer);
