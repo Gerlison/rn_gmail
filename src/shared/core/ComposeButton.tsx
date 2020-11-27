@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useRef } from 'react';
 import { Platform } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import Animated from 'react-native-reanimated';
@@ -9,41 +9,56 @@ import Text from './Text';
 import Flex from './Flex';
 
 import { IPHONE_BOTTOM_OFFSET } from '@helpers/dimensions';
+import { useInterpolation } from '@helpers/hooks';
+import { runTiming } from '@helpers/functions';
 
 interface Props {
   onPress: () => void;
   scrollY: Animated.Value<number>;
 }
 
-const { useCode, onChange, call } = Animated;
+const {
+  useCode,
+  cond,
+  Value,
+  sub,
+  abs,
+  set,
+  Clock,
+  greaterOrEq,
+  greaterThan,
+} = Animated;
 
 const ComposeButton: React.FC<Props> = ({ onPress, scrollY }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const clock = useRef(new Clock()).current;
+  const scrollOffset = useRef(new Value(0)).current;
+  const animation = useRef(new Value(0)).current;
+  const aux = useRef(new Value(0)).current;
+  const animationInterpolate = useInterpolation(animation);
 
   useCode(
     () => [
-      onChange(
-        scrollY,
-        call([scrollY], ([value]) => {
-          if (value > 0 && !isCollapsed) {
-            setIsCollapsed(true);
-          } else if (value < 0 && isCollapsed) {
-            setIsCollapsed(false);
-          }
-        }),
-      ),
+      cond(greaterOrEq(abs(sub(scrollY, scrollOffset)), 10), [
+        cond(
+          greaterThan(sub(scrollY, scrollOffset), 0),
+          set(aux, 1),
+          set(aux, 0),
+        ),
+        set(scrollOffset, scrollY),
+      ]),
+      set(animation, runTiming(clock, animation, aux)),
     ],
-    [isCollapsed],
+    [],
   );
 
   return (
-    <S.Container>
+    <S.Container style={{ width: animationInterpolate([0, 1], [53.5, 143.5]) }}>
       <S.Touchable onPress={onPress}>
         <S.Icon name="pencil-outline" color="DANGER" />
-        <Flex>
-          <Text color="DANGER" weight="500">
+        <Flex background="TRANSPARENT" flexDirection="row">
+          <S.Text color="DANGER" weight="500">
             Compose
-          </Text>
+          </S.Text>
         </Flex>
       </S.Touchable>
     </S.Container>
@@ -66,19 +81,19 @@ const S = {
   `,
   Icon: styled(Icon)`
     ${({ theme: { metrics } }) => css`
-      padding-right: ${metrics.MEDIUM}px;
+      padding: ${metrics.MEDIUM}px;
     `}
   `,
   Touchable: styled(Pressable)`
-    width: 56px;
     height: 56px;
     flex-direction: row;
     align-items: center;
     overflow: hidden;
-
+  `,
+  Text: styled(Text)`
+    width: 90px;
     ${({ theme: { metrics } }) => css`
-      padding: ${metrics.MEDIUM}px;
-      padding-right: ${metrics.LARGER}px;
+      margin-right: ${metrics.LARGER}px;
     `}
   `,
 };

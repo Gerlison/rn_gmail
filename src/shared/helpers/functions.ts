@@ -1,3 +1,15 @@
+import Animated, { Easing } from 'react-native-reanimated';
+
+const {
+  cond,
+  Value,
+  set,
+  clockRunning,
+  startClock,
+  stopClock,
+  timing,
+} = Animated;
+
 export const removeAccents = (value: string) =>
   value
     .toLowerCase()
@@ -29,4 +41,37 @@ export const searchTextInArray = (list: string[], valueToCompare: string) => {
   });
 
   return filteredList;
+};
+
+export const runTiming = (
+  clock: Animated.Clock,
+  value: Animated.Value<number>,
+  dest: number | Animated.Value<number>,
+) => {
+  const state = {
+    finished: new Value(0),
+    position: new Value(0),
+    time: new Value(0),
+    frameTime: new Value(0),
+  };
+
+  const config = {
+    duration: 200,
+    toValue: new Value(0),
+    easing: Easing.inOut(Easing.ease),
+  };
+
+  return [
+    cond(clockRunning(clock), 0, [
+      set(state.finished, 0),
+      set(state.time, 0),
+      set(state.position, value),
+      set(state.frameTime, 0),
+      set(config.toValue, dest),
+      startClock(clock),
+    ]),
+    timing(clock, state, config),
+    cond(state.finished, stopClock(clock)),
+    state.position,
+  ];
 };
