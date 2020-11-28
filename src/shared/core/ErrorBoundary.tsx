@@ -4,10 +4,6 @@ import styled from 'styled-components/native';
 
 import Text from '@core/Text';
 
-import { sizing } from '@styles/fonts';
-
-import { Styled } from '@core/types';
-
 interface State {
   hasError: boolean;
   error: null | Error;
@@ -54,16 +50,16 @@ class ErrorBoundary extends Component<{}, State> {
   }
 }
 
-const StyledScrollView = styled.ScrollView.attrs({
+const StyledScrollView = styled.ScrollView.attrs(({ theme: { metrics } }) => ({
   contentContainerStyle: {
     flexGrow: 1,
     justifyContent: 'center',
-    padding: sizing.MEDIUM,
+    padding: metrics.MEDIUM,
   },
-})``;
+}))``;
 
-const StyledStatusBar = styled.StatusBar.attrs(({ theme }: Styled) => ({
-  backgroundColor: theme.BACKGROUND,
+const StyledStatusBar = styled.StatusBar.attrs(({ theme: { colors } }) => ({
+  backgroundColor: colors.BACKGROUND,
   barStyle: 'dark-content',
 }))``;
 

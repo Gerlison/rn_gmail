@@ -1,101 +1,103 @@
-import React, { useContext, useCallback } from 'react';
-import { Pressable, Platform } from 'react-native';
-import styled, { ThemeContext } from 'styled-components/native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import React, { useCallback, memo } from 'react';
+import styled, { css } from 'styled-components/native';
+import { NavigationProp, useNavigation } from '@react-navigation/core';
+import moment from 'moment';
 
 import Text from '@core/Text';
+import Icon from '@core/Icon';
+import Pressable from '@core/Pressable';
+import Flex from '@core/Flex';
 
-import { spacing } from '@styles/metrics';
-import { sizing } from '@styles/fonts';
+import { Mail } from '@core/types';
+import AuthorBadge from '@modules/inbox/components/AuthorBadge';
 
-import { Styled } from '@core/types';
-import { Mail } from '@modules/inbox/types';
+import { InboxParamList } from '@modules/inbox';
 
 interface Props {
   mail: Mail;
   isSelected: boolean;
-  setSelectedMails: React.Dispatch<React.SetStateAction<{}>>;
+  setSelectedMails: React.Dispatch<
+    React.SetStateAction<{ [key: string]: boolean }>
+  >;
 }
 
-const MailListItem = ({
-  mail: { id, labelIds, payload, date },
-  isSelected,
-  setSelectedMails,
-}: Props) => {
-  const theme = useContext(ThemeContext);
+const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
+  const { navigate } = useNavigation<
+    NavigationProp<InboxParamList, 'MailBox'>
+  >();
 
   const toggleMailSelection = useCallback(() => {
     setSelectedMails((prev) => ({
       ...prev,
-      [id]: !prev[id],
+      [mail.id]: !prev[mail.id],
     }));
   }, []);
 
   return (
-    <Pressable onLongPress={toggleMailSelection}>
-      <S.Container isSelected={isSelected}>
-        <Pressable onPress={toggleMailSelection}>
-          <S.Badge isSelected={isSelected}>
-            {isSelected ? (
-              <Icon name="check" size={sizing.icon.LARGE} color={theme.WHITE} />
-            ) : (
-              <S.VerticalCenteredText size="LARGEST" color="WHITE">
-                {payload.from.name.charAt(0)}
-              </S.VerticalCenteredText>
-            )}
-          </S.Badge>
-        </Pressable>
+    <S.Container isSelected={isSelected}>
+      <S.Touchable
+        onPress={() => navigate('MailView', { mail })}
+        onLongPress={toggleMailSelection}
+      >
+        <AuthorBadge
+          onPress={toggleMailSelection}
+          isSelected={isSelected}
+          char={mail.from.name.charAt(0)}
+        />
 
-        <S.View>
-          <S.TitleRow>
-            {labelIds.includes('2') && (
-              <Icon
-                name="label-variant"
-                size={sizing.icon.LARGE}
-                color={theme.QUATERNARY}
-              />
+        <Flex flex={1} background="TRANSPARENT">
+          <S.Row>
+            {mail.labelIds.includes('2') && (
+              <Icon name="label-variant" size="LARGE" color="QUATERNARY" />
             )}
             <S.Text style={{ flex: 1 }} type="title">
-              {payload.from.name}
+              {mail.from.name}
             </S.Text>
-            <Text size="SMALL">{date.toLocaleDateString()}</Text>
-          </S.TitleRow>
+            <Text color="DARK" size="MEDIUM">
+              {moment(mail.date).format('DD MMM')}
+            </Text>
+          </S.Row>
 
-          <S.DescriptionRow>
-            <S.View>
-              <S.Text>{payload.subject}</S.Text>
-              <S.Text>{payload.body}</S.Text>
-            </S.View>
+          <S.Row>
+            <Flex flex={1} background="TRANSPARENT">
+              <S.Text>{mail.subject}</S.Text>
+              <S.Text>{mail.body}</S.Text>
+            </Flex>
             <Icon
-              name={`star${labelIds.includes('1') ? '' : '-outline'}`}
-              size={sizing.icon.LARGE}
-              color={labelIds.includes('1') ? theme.QUATERNARY : theme.REGULAR}
+              onPress={() => {}}
+              name={`star${mail.labelIds.includes('1') ? '' : '-outline'}`}
+              size="LARGE"
+              color={mail.labelIds.includes('1') ? 'QUATERNARY' : 'REGULAR'}
             />
-          </S.DescriptionRow>
-        </S.View>
-      </S.Container>
-    </Pressable>
+          </S.Row>
+        </Flex>
+      </S.Touchable>
+    </S.Container>
   );
 };
 
 const S = {
-  Container: styled.View<Styled<{ isSelected: boolean }>>`
+  Container: styled.View<{ isSelected: boolean }>`
     width: 100%;
-    flex-direction: row;
-    margin-left: ${spacing.SMALLEST}px;
-    margin-bottom: ${spacing.SMALLEST}px;
-    padding: ${spacing.MEDIUM}px;
-    padding-left: ${spacing.MEDIUM - spacing.SMALLEST}px;
     border-radius: 10px;
-    background-color: ${({ theme, isSelected }) =>
-      isSelected ? `${theme.PRIMARY}20` : theme.WHITE};
+    overflow: hidden;
+
+    ${({ theme: { colors, metrics }, isSelected }) => css`
+      margin-left: ${metrics.SMALLEST}px;
+      margin-bottom: ${metrics.SMALLEST}px;
+      background-color: ${isSelected
+        ? `${colors.PRIMARY}20`
+        : colors.BACKGROUND};
+    `}
   `,
-  TitleRow: styled.View`
+  Touchable: styled(Pressable)`
     flex-direction: row;
-    align-items: flex-end;
-    margin-bottom: ${spacing.SMALLEST}px;
+
+    ${({ theme: { metrics } }) => css`
+      padding: ${metrics.SMALL}px;
+    `}
   `,
-  DescriptionRow: styled.View`
+  Row: styled.View`
     flex-direction: row;
     align-items: flex-end;
   `,
@@ -103,24 +105,8 @@ const S = {
     numberOfLines: 1,
     color: 'DARK',
   })`
-    margin-right: ${spacing.SMALLER}px;
-  `,
-  Badge: styled.View<Styled<{ isSelected: boolean }>>`
-    width: 42px;
-    height: 42px;
-    align-items: center;
-    justify-content: center;
-    margin-right: ${spacing.MEDIUM}px;
-    border-radius: 20px;
-    background-color: ${({ isSelected, theme }) =>
-      isSelected ? theme.PRIMARY : 'lightcoral'};
-  `,
-  View: styled.View`
-    flex: 1;
-  `,
-  VerticalCenteredText: styled(Text)`
-    bottom: ${Platform.OS === 'ios' ? -1.5 : 0}px;
+    margin-right: ${({ theme: { metrics } }) => metrics.SMALLER}px;
   `,
 };
 
-export default MailListItem;
+export default memo(MailListItem);

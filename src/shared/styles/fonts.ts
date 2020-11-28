@@ -1,28 +1,36 @@
-const iconMultiplier = 1.3;
+const ICON_MULTIPLIER = 1.3;
 
-export const sizing = {
-  SMALLEST: 8,
-  SMALLER: 11,
+const getRealIconSize = (iconSize: number) => iconSize * ICON_MULTIPLIER;
+
+const sizing = {
+  SMALLEST: 10,
+  SMALLER: 12,
   SMALL: 14,
   MEDIUM: 16,
   LARGE: 18,
   LARGER: 22,
   LARGEST: 24,
-
-  icon: {
-    SMALLEST: 8 * iconMultiplier,
-    SMALLER: 11 * iconMultiplier,
-    SMALL: 14 * iconMultiplier,
-    MEDIUM: 16 * iconMultiplier,
-    LARGE: 18 * iconMultiplier,
-    LARGER: 22 * iconMultiplier,
-    LARGEST: 24 * iconMultiplier,
-  },
 };
 
-export const styling = {
-  ROBOTO_LIGHT: 'Roboto-Light',
-  ROBOTO_REGULAR: 'Roboto-Regular',
-  ROBOTO_MEDIUM: 'Roboto-Medium',
-  ROBOTO_BOLD: 'Roboto-Bold',
+const icon = {
+  SMALLEST: getRealIconSize(10),
+  SMALLER: getRealIconSize(12),
+  SMALL: getRealIconSize(14),
+  MEDIUM: getRealIconSize(16),
+  LARGE: getRealIconSize(18),
+  LARGER: getRealIconSize(19),
+  LARGEST: getRealIconSize(24),
 };
+
+const styling = {
+  LIGHT: 'Roboto-Light',
+  REGULAR: 'Roboto-Regular',
+  MEDIUM: 'Roboto-Medium',
+  BOLD: 'Roboto-Bold',
+};
+
+export type Sizing = typeof sizing;
+export type Icon = typeof icon;
+export type Styling = typeof styling;
+
+export default { sizing, icon, styling };

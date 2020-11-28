@@ -1,28 +1,49 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import styled from 'styled-components/native';
+import { useNavigation } from '@react-navigation/core';
+import { onScrollEvent } from 'react-native-redash';
+import { Value } from 'react-native-reanimated';
 
 import MailList from './MailList';
 import SearchBar from './SearchBar';
 
-import { Styled } from '@core/types';
+import ComposeButton from '@core/ComposeButton';
 
-const MailBox = () => {
+import { MailLabel } from '@core/types';
+
+interface Props {
+  selectedLabel: MailLabel;
+}
+
+const MailBox = ({ selectedLabel }: Props) => {
+  const { navigate } = useNavigation();
+
+  const scrollY = useRef(new Value(0)).current;
+
+  const navigateToCompose = useCallback(() => navigate('Compose'), []);
+
   return (
-    <S.Container>
+    <>
       <S.SafeArea />
-      <SearchBar />
-      <MailList />
-    </S.Container>
+      <S.Container>
+        <SearchBar scrollY={scrollY} />
+        <MailList
+          selectedLabel={selectedLabel}
+          onScroll={onScrollEvent({ y: scrollY })}
+        />
+        <ComposeButton onPress={navigateToCompose} scrollY={scrollY} />
+      </S.Container>
+    </>
   );
 };
 
 const S = {
-  SafeArea: styled.SafeAreaView<Styled>`
-    background-color: ${({ theme }) => theme.WHITE};
+  SafeArea: styled.SafeAreaView`
+    background-color: ${({ theme: { colors } }) => colors.BACKGROUND};
   `,
-  Container: styled.View<Styled>`
+  Container: styled.View`
     flex: 1;
-    background-color: ${({ theme }) => theme.WHITE};
+    background-color: ${({ theme: { colors } }) => colors.BACKGROUND};
   `,
 };
 

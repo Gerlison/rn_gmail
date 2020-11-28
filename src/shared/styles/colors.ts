@@ -1,4 +1,4 @@
-export const LIGHT_THEME = {
+const LIGHT_THEME = {
   PRIMARY_LIGHT: '',
   PRIMARY: '#206ADB',
   PRIMARY_DARK: '#0E1A34',
@@ -22,9 +22,11 @@ export const LIGHT_THEME = {
   ERROR: '',
   DANGER: '#E26C6C',
   WARNING: '',
+
+  TRANSPARENT: 'transparent',
 };
 
-export const DARK_THEME = {
+const DARK_THEME = {
   PRIMARY_LIGHT: '',
   PRIMARY: '#C9D1D3',
   PRIMARY_DARK: '#0E1A34',
@@ -48,4 +50,8 @@ export const DARK_THEME = {
   ERROR: '',
   DANGER: '#E26C6C',
   WARNING: '',
+
+  TRANSPARENT: 'transparent',
 };
+
+export default { LIGHT_THEME, DARK_THEME };

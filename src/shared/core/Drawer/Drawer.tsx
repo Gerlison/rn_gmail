@@ -1,8 +1,7 @@
-import React, { useCallback, useState } from 'react';
-import styled from 'styled-components/native';
+import React, { useCallback, useState, memo } from 'react';
+import styled, { css } from 'styled-components/native';
 import {
   DrawerContentComponentProps,
-  DrawerContentOptions,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 
@@ -10,72 +9,16 @@ import DrawerOption from './DrawerOption';
 
 import Text from '@core/Text';
 
-import { MailLabel } from '@modules/inbox/types';
-import { Styled } from '@core/types';
-import { spacing } from '@styles/metrics';
+import { useTypedSelector } from '@store/index';
 
-type Props = DrawerContentComponentProps<DrawerContentOptions>;
+import { MailLabel } from '@core/types';
 
-const LABELS: MailLabel[] = [
-  {
-    id: '1',
-    name: 'Primary',
-    mailTotal: 0,
-    mailUnread: 0,
-    cosmetic: {
-      icon: 'inbox',
-      textColor: '#E04444',
-      backgroundColor: '#E0444420',
-    },
-  },
-  {
-    id: '2',
-    name: 'Social',
-    mailTotal: 0,
-    mailUnread: 0,
-    cosmetic: {
-      icon: 'account-multiple-outline',
-      textColor: '#4473E0',
-      backgroundColor: '#4473E020',
-    },
-  },
-  {
-    id: '3',
-    name: 'Promotions',
-    mailTotal: 0,
-    mailUnread: 0,
-    cosmetic: {
-      icon: 'tag-multiple-outline',
-      textColor: '#23A923',
-      backgroundColor: '#23A92320',
-    },
-  },
-  {
-    id: '4',
-    name: 'Updates',
-    mailTotal: 0,
-    mailUnread: 0,
-    cosmetic: {
-      icon: 'alert-circle-outline',
-      textColor: '#FF8C00',
-      backgroundColor: '#FF8C0020',
-    },
-  },
-  {
-    id: '5',
-    name: 'Forums',
-    mailTotal: 0,
-    mailUnread: 0,
-    cosmetic: {
-      icon: 'message-text-outline',
-      textColor: '#A74BD7',
-      backgroundColor: '#A74BD720',
-    },
-  },
-];
+type Props = DrawerContentComponentProps;
 
-const Drawer = ({ navigation }: Props) => {
-  const [selectedOption, setSelectedOption] = useState(LABELS[0].id);
+const Drawer: React.FC<Props> = ({ state, navigation, descriptors }) => {
+  const { labels } = useTypedSelector((state) => state.labels);
+
+  const [selectedOption, setSelectedOption] = useState(labels?.[0].id);
 
   const onPressOption = useCallback(
     (label: MailLabel) => () => {
@@ -88,6 +31,21 @@ const Drawer = ({ navigation }: Props) => {
     [],
   );
 
+  const getRouteLabel = useCallback(
+    (route) => ({
+      id: route.key,
+      name: route.name,
+      cosmetic: {
+        backgroundColor: 'transparent',
+        icon: descriptors[route.key].options.title!,
+        textColor: '',
+      },
+      mailTotal: 0,
+      mailUnread: 0,
+    }),
+    [],
+  );
+
   return (
     <DrawerContentScrollView>
       <S.Title>
@@ -95,7 +53,7 @@ const Drawer = ({ navigation }: Props) => {
           Gmail
         </Text>
       </S.Title>
-      {LABELS.map((label) => (
+      {labels?.map((label) => (
         <DrawerOption
           key={label.id}
           label={label}
@@ -103,22 +61,32 @@ const Drawer = ({ navigation }: Props) => {
           onPress={onPressOption(label)}
         />
       ))}
+      {state.routes.slice(1).map((route) => (
+        <DrawerOption
+          key={route.key}
+          label={getRouteLabel(route)}
+          focused={false}
+          onPress={() => navigation.navigate(route.name, route.params)}
+        />
+      ))}
     </DrawerContentScrollView>
   );
 };
 
 const S = {
-  SafeArea: styled.SafeAreaView<Styled>`
-    background-color: ${({ theme }) => theme.WHITE};
+  SafeArea: styled.SafeAreaView`
+    background-color: ${({ theme: { colors } }) => colors.WHITE};
   `,
-  Title: styled.View<Styled>`
-    width: 100%;
-    color: #e04444;
-    padding: ${spacing.MEDIUM}px;
-    margin-bottom: ${spacing.MEDIUM}px;
-    border-bottom-width: 0.5px;
-    border-color: ${({ theme }) => theme.LIGHT};
+  Title: styled.View`
+    ${({ theme: { metrics, colors } }) => css`
+      width: 100%;
+      color: #e04444;
+      padding: ${metrics.MEDIUM}px;
+      margin-bottom: ${metrics.MEDIUM}px;
+      border-bottom-width: 0.5px;
+      border-color: ${colors.LIGHT};
+    `}
   `,
 };
 
-export default Drawer;
+export default memo(Drawer);

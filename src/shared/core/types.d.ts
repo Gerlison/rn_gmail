@@ -1,29 +1,34 @@
 import React from 'react';
-import {
-  TouchableWithoutFeedbackProps,
-  TextProps as DefaultTextProps,
-  TextInputProps,
-  TouchableOpacityProps,
-  ImageProps as DefaultImageProps,
-  ActivityIndicatorProps,
-} from 'react-native';
-import { styling, sizing } from '@styles/fonts';
-import { Theme, ThemeState } from '@store/ducks/Theme/types';
+import { TextProps as DefaultTextProps } from 'react-native';
+import fonts from '@styles/fonts';
+import colors from '@styles/colors';
 
-/**
- *
- * @Core
- * Typing for core components
- */
+export type Theme = typeof colors.LIGHT_THEME;
 
-export type Styled<T = {}> = T & {
-  theme: Theme & { currentTheme: string };
-};
+export interface User {
+  id: string;
+  name: string;
+  address: string;
+}
 
-export interface TextProps extends DefaultTextProps {
-  color?: keyof Theme;
-  type?: 'text' | 'label' | 'title';
-  size?: keyof typeof sizing | number;
-  weight?: keyof typeof styling;
-  children?: React.ReactNode;
+export interface MailLabel {
+  id: string;
+  name: string;
+  mailTotal: number;
+  mailUnread: number;
+  cosmetic: {
+    icon: string;
+    textColor: string;
+    backgroundColor: string;
+  };
+}
+
+export interface Mail {
+  id: string;
+  labelIds: string[];
+  date: Date;
+  from: User;
+  to: User;
+  subject: string;
+  body: string;
 }
