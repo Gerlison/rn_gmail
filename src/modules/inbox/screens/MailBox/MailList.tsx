@@ -15,6 +15,8 @@ import { useTypedSelector } from '@store/index';
 
 import { SEARCH_BAR_HEIGHT } from '@modules/inbox/helpers/constants';
 
+import Dimensions from '@helpers/dimensions';
+
 import { MailLabel, Mail } from '@core/types';
 
 interface Props {
@@ -68,6 +70,7 @@ const S = {
   ).attrs(({ theme: { metrics } }) => ({
     contentContainerStyle: {
       paddingTop: metrics.LARGEST + SEARCH_BAR_HEIGHT,
+      paddingBottom: Dimensions.BOTTOM_OFFSET,
     },
   }))``,
 };

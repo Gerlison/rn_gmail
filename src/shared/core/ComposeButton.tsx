@@ -8,7 +8,7 @@ import Icon from './Icon';
 import Text from './Text';
 import Flex from './Flex';
 
-import { IPHONE_BOTTOM_OFFSET } from '@helpers/dimensions';
+import Dimensions from '@helpers/dimensions';
 import { useInterpolation } from '@helpers/hooks';
 import { runTiming } from '@helpers/functions';
 
@@ -75,7 +75,7 @@ const S = {
     ${({ theme: { metrics, colors } }) => css`
       background-color: ${colors.BACKGROUND};
       right: ${metrics.MEDIUM}px;
-      bottom: ${metrics.MEDIUM + IPHONE_BOTTOM_OFFSET}px;
+      bottom: ${metrics.MEDIUM + Dimensions.BOTTOM_OFFSET}px;
       overflow: ${Platform.OS === 'android' ? 'hidden' : 'visible'};
     `}
   `,
