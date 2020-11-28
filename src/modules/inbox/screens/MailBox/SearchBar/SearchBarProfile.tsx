@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components/native';
+import React, { memo } from 'react';
+import styled, { css } from 'styled-components/native';
 
 import Text from '@core/Text';
 
@@ -30,17 +30,18 @@ const S = {
     overflow: hidden;
   `,
   Profile: styled.View`
-    width: ${PROFILE_SIZE}px;
-    height: ${PROFILE_SIZE}px;
-
     justify-content: center;
     align-items: center;
-
     border-radius: 20px;
-    background-color: ${({ theme: { colors } }) => colors.TERTIARY};
-
     position: absolute;
+
+    ${({ theme: { colors } }) =>
+      css`
+        width: ${PROFILE_SIZE}px;
+        height: ${PROFILE_SIZE}px;
+        background-color: ${colors.TERTIARY};
+      `};
   `,
 };
 
-export default SearchBarProfile;
+export default memo(SearchBarProfile);

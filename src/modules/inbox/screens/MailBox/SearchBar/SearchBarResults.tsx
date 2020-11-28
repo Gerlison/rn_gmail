@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { FlatList } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import Animated from 'react-native-reanimated';
@@ -78,4 +78,4 @@ const S = {
   `,
 };
 
-export default SearchBarResults;
+export default memo(SearchBarResults);

@@ -6,7 +6,7 @@ interface UsersState {
   users: User[] | null;
 }
 
-export default createSlice({
+const userSlice = createSlice({
   name: 'users',
   initialState: {
     loggedUser: {
@@ -24,3 +24,5 @@ export default createSlice({
   } as UsersState,
   reducers: {},
 });
+
+export default userSlice.reducer;

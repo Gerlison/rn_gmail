@@ -2,7 +2,7 @@ import React, { useCallback, useRef } from 'react';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/core';
 import { onScrollEvent } from 'react-native-redash';
-import Animated from 'react-native-reanimated';
+import { Value } from 'react-native-reanimated';
 
 import MailList from './MailList';
 import SearchBar from './SearchBar';
@@ -14,8 +14,6 @@ import { MailLabel } from '@core/types';
 interface Props {
   selectedLabel: MailLabel;
 }
-
-const { Value, set, useCode, sub, onChange } = Animated;
 
 const MailBox = ({ selectedLabel }: Props) => {
   const { navigate } = useNavigation();

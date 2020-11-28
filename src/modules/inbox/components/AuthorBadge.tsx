@@ -32,13 +32,14 @@ const AuthorBadge: React.FC<Props> = ({ isSelected, char, onPress }) => {
 
 const S = {
   Container: styled(Pressable)<{ isSelected?: boolean }>`
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+
     ${({ theme: { colors, metrics }, isSelected }) => css`
-      width: 40px;
-      height: 40px;
-      align-items: center;
-      justify-content: center;
       margin-right: ${metrics.MEDIUM}px;
-      border-radius: 20px;
       background-color: ${isSelected ? colors.PRIMARY : 'lightcoral'};
     `}
   `,

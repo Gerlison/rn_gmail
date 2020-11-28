@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useMemo, useRef } from 'react';
 import {
-  Dimensions,
   NativeSyntheticEvent,
   TextInputKeyPressEventData,
   TextInput as RNTextInput,
@@ -17,10 +16,9 @@ import {
   ADDRESS_BADGE_SIZE,
   COMPOSE_LABEL_SIZE,
 } from '@modules/compose/helpers/constants';
+import Dimensions from '@helpers/dimensions';
 
 import { User } from '@core/types';
-
-const { width: windowWidth } = Dimensions.get('window');
 
 type FieldsDataState = {
   id: string;
@@ -66,19 +64,25 @@ const AddressSelector: React.FC<Props> = ({
     [selectedAddresses, isFocused],
   );
 
+  const addNewAddressToField = (
+    field: FieldsDataState[0],
+    id: string,
+    searchValue: string,
+  ) =>
+    field.id === id && field.isFocused && searchValue
+      ? [
+          ...field.selectedAddresses,
+          { id: searchValue, address: searchValue, name: searchValue },
+        ]
+      : field.selectedAddresses;
+
   const handleToggleFocus = useCallback(() => {
     setSearchValue('');
     setFieldsData((prev) =>
       prev.map((field) => ({
         ...field,
         isFocused: field.id === id ? !field.isFocused : field.isFocused,
-        selectedAddresses:
-          field.id === id && field.isFocused && searchValue
-            ? [
-                ...field.selectedAddresses,
-                { id: searchValue, address: searchValue, name: searchValue },
-              ]
-            : field.selectedAddresses,
+        selectedAddresses: addNewAddressToField(field, id, searchValue),
       })),
     );
   }, [id, searchValue]);
@@ -106,17 +110,7 @@ const AddressSelector: React.FC<Props> = ({
     setFieldsData((prev) =>
       prev.map((field) => ({
         ...field,
-        selectedAddresses:
-          field.id === id && field.isFocused
-            ? [
-                ...field.selectedAddresses,
-                {
-                  id: searchValue,
-                  address: searchValue,
-                  name: searchValue,
-                },
-              ]
-            : field.selectedAddresses,
+        selectedAddresses: addNewAddressToField(field, id, searchValue),
       })),
     );
   }, [searchValue, id]);
@@ -151,7 +145,9 @@ const S = {
     align-items: center;
 
     ${({ theme: { metrics } }) => css`
-      max-width: ${windowWidth - metrics.MEDIUM * 2 - COMPOSE_LABEL_SIZE}px;
+      max-width: ${Dimensions.WINDOW_WIDTH -
+      metrics.MEDIUM * 2 -
+      COMPOSE_LABEL_SIZE}px;
     `}
   `,
   TextInput: styled(TextInput)`

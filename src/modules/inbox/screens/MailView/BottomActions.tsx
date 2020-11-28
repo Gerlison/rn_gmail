@@ -1,30 +1,37 @@
 import React, { memo } from 'react';
 import styled, { css } from 'styled-components/native';
+import { NavigationProp, useNavigation } from '@react-navigation/core';
 
 import Flex from '@core/Flex';
 import Text from '@core/Text';
 import Icon from '@core/Icon';
 import Pressable from '@core/Pressable';
 
+import { RootStackParamList } from '@navigation/types';
+
 const BottomActions: React.FC = () => {
+  const { navigate } = useNavigation<
+    NavigationProp<RootStackParamList, 'Drawer'>
+  >();
+
   return (
     <Flex width="100%" flexDirection="row">
       <S.ButtonContainer>
-        <S.Button onPress={() => {}}>
+        <S.Button onPress={() => navigate('Compose')}>
           <Icon color="DARK" name="reply" />
           <S.Text color="DARK">Reply</S.Text>
         </S.Button>
       </S.ButtonContainer>
 
       <S.ButtonContainer hasMargin>
-        <S.Button onPress={() => {}}>
+        <S.Button onPress={() => navigate('Compose')}>
           <Icon color="DARK" name="reply-all" />
           <S.Text color="DARK">Reply all</S.Text>
         </S.Button>
       </S.ButtonContainer>
 
       <S.ButtonContainer>
-        <S.Button onPress={() => {}}>
+        <S.Button onPress={() => navigate('Compose')}>
           <Icon color="DARK" name="share" />
           <S.Text color="DARK">Forward</S.Text>
         </S.Button>

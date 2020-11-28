@@ -3,7 +3,7 @@ import colors from '@styles/colors';
 
 const { LIGHT_THEME, DARK_THEME } = colors;
 
-export default createSlice({
+const themeSlice = createSlice({
   name: 'theme',
   initialState: {
     theme: LIGHT_THEME,
@@ -16,3 +16,5 @@ export default createSlice({
     }),
   },
 });
+
+export default themeSlice.reducer;
