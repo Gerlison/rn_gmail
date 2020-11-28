@@ -1,16 +1,6 @@
 const ICON_MULTIPLIER = 1.3;
 
-// const getRealFontSize = (fontSize: number, standardScreenHeight = 680) => {
-//   const heightPercent = (fontSize * WINDOW_HEIGHT) / standardScreenHeight;
-//   return Math.round(heightPercent);
-// };
-
-const getRealFontSize = (fontSize: number) => {
-  return fontSize;
-};
-
-const getRealIconSize = (iconSize: number) =>
-  getRealFontSize(iconSize) * ICON_MULTIPLIER;
+const getRealIconSize = (iconSize: number) => iconSize * ICON_MULTIPLIER;
 
 const sizing = {
   SMALLEST: 10,
