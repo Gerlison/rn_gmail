@@ -9,5 +9,5 @@ export type DrawerParamList = {
 
 export type RootStackParamList = {
   Drawer: undefined;
-  Compose: {};
+  Compose: undefined;
 };

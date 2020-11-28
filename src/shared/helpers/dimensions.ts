@@ -1,31 +1,45 @@
-import { isIphoneX, getBottomSpace } from 'react-native-iphone-x-helper';
+import {
+  isIphoneX,
+  getBottomSpace,
+  getStatusBarHeight,
+} from 'react-native-iphone-x-helper';
 import extraDimensions from 'react-native-extra-dimensions-android';
-import { Platform, StatusBar, Dimensions } from 'react-native';
+import { Platform, StatusBar, Dimensions as RNDimensions } from 'react-native';
 
-const { height: RNHeight, width: RNWidth } = Dimensions.get('window');
+const { height: RNHeight, width: RNWidth } = RNDimensions.get('window');
+
 const height =
   Platform.OS === 'android' ? extraDimensions.getRealWindowHeight() : RNHeight;
 const width =
   Platform.OS === 'android' ? extraDimensions.getRealWindowWidth() : RNWidth;
 
-const standardLength = Math.max(width, height);
+const standardVerticalLength = Math.max(width, height);
+const isPhoneInLandscape = width > height;
+const isPhoneInPortrait = width < height;
 
-const offset =
-  width > height ? 0 : Platform.OS === 'ios' ? 78 : StatusBar.currentHeight!;
+const offset = isPhoneInLandscape
+  ? 0
+  : Platform.OS === 'ios'
+  ? getStatusBarHeight()
+  : StatusBar.currentHeight!;
 
-export const WINDOW_PORTRAIT_HEIGHT =
-  isIphoneX() || Platform.OS === 'android'
-    ? standardLength - offset
-    : standardLength;
+const Dimensions = Platform.select({
+  android: {
+    WINDOW_PORTRAIT_HEIGHT: standardVerticalLength - offset,
+    WINDOW_HEIGHT: isPhoneInPortrait ? height - offset : height,
+    WINDOW_WIDTH: isPhoneInLandscape ? width - offset : width,
+    BOTTOM_OFFSET: 0,
+    STATUS_BAR_HEIGHT: StatusBar.currentHeight!,
+  },
+  ios: {
+    WINDOW_PORTRAIT_HEIGHT: isIphoneX()
+      ? standardVerticalLength - offset
+      : standardVerticalLength,
+    WINDOW_HEIGHT: isIphoneX() && isPhoneInPortrait ? height - offset : height,
+    WINDOW_WIDTH: isIphoneX() && isPhoneInLandscape ? width - offset : width,
+    BOTTOM_OFFSET: getBottomSpace(),
+    STATUS_BAR_HEIGHT: getStatusBarHeight(),
+  },
+})!;
 
-export const WINDOW_HEIGHT =
-  (isIphoneX() || Platform.OS === 'android') && height > width
-    ? height - offset
-    : height;
-
-export const WINDOW_WIDTH =
-  (isIphoneX() || Platform.OS === 'android') && height < width
-    ? width - offset
-    : width;
-
-export const IPHONE_BOTTOM_OFFSET = getBottomSpace();
+export default Dimensions;

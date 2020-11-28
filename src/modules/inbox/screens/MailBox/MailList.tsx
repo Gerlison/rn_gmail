@@ -15,19 +15,16 @@ import { useTypedSelector } from '@store/index';
 
 import { SEARCH_BAR_HEIGHT } from '@modules/inbox/helpers/constants';
 
+import Dimensions from '@helpers/dimensions';
+
 import { MailLabel, Mail } from '@core/types';
 
 interface Props {
   selectedLabel: MailLabel;
   onScroll: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
-  onScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
 }
 
-const MailList: React.FC<Props> = ({
-  selectedLabel,
-  onScroll,
-  onScrollEnd,
-}) => {
+const MailList: React.FC<Props> = ({ selectedLabel, onScroll }) => {
   const { mails } = useTypedSelector((state) => state.mails);
 
   const [selectedMails, setSelectedMails] = useState<{
@@ -38,7 +35,6 @@ const MailList: React.FC<Props> = ({
     <S.FlatList
       bounces={false}
       onScroll={onScroll}
-      onScrollEndDrag={onScrollEnd}
       scrollEventThrottle={8}
       data={mails?.filter(({ labelIds }) =>
         labelIds.includes(selectedLabel.id),
@@ -68,6 +64,7 @@ const S = {
   ).attrs(({ theme: { metrics } }) => ({
     contentContainerStyle: {
       paddingTop: metrics.LARGEST + SEARCH_BAR_HEIGHT,
+      paddingBottom: Dimensions.BOTTOM_OFFSET,
     },
   }))``,
 };

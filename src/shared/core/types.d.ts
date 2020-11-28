@@ -3,19 +3,7 @@ import { TextProps as DefaultTextProps } from 'react-native';
 import fonts from '@styles/fonts';
 import colors from '@styles/colors';
 
-/**
- *
- * @Components
- * Typing for core components
- */
-
 export type Theme = typeof colors.LIGHT_THEME;
-
-/**
- *
- * @Types
- * Types for data
- */
 
 export interface User {
   id: string;

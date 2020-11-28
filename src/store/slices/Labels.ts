@@ -5,7 +5,7 @@ interface LabelsState {
   labels: MailLabel[] | null;
 }
 
-export default createSlice({
+const labelSlice = createSlice({
   name: 'labels',
   initialState: {
     labels: [
@@ -68,3 +68,5 @@ export default createSlice({
   } as LabelsState,
   reducers: {},
 });
+
+export default labelSlice.reducer;

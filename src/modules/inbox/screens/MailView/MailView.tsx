@@ -18,11 +18,17 @@ import Pressable from '@core/Pressable';
 
 import LabelBadge from '@modules/inbox/components/LabelBadge';
 
+import { MailLabel } from '@core/types';
 import { InboxParamList } from '@modules/inbox';
 
-const MailView = () => {
-  const { params } = useRoute<RouteProp<InboxParamList, 'MailView'>>();
+interface Props {
+  selectedLabel: MailLabel;
+}
 
+const MailView: React.FC<Props> = ({ selectedLabel }) => {
+  const {
+    params: { mail },
+  } = useRoute<RouteProp<InboxParamList, 'MailView'>>();
   const [scrollState, setScrollState] = useState(0);
 
   const headerButtons = useMemo(
@@ -59,7 +65,7 @@ const MailView = () => {
           <Flex background="TRANSPARENT">
             <S.Title>
               <S.Subject size="LARGEST">
-                Assunto urgentíssimo! <LabelBadge>Inbox</LabelBadge>
+                {mail.subject} <LabelBadge>{selectedLabel.name}</LabelBadge>
               </S.Subject>
 
               <Pressable
@@ -70,13 +76,9 @@ const MailView = () => {
               </Pressable>
             </S.Title>
 
-            <Author
-              from="Robson Silva"
-              to="me"
-              date={new Date('09/17/2020 5:21')}
-            />
+            <Author from={mail.from.name} to="me" date={mail.date} />
 
-            <Text>Ta ficando massa</Text>
+            <Text>{mail.body}</Text>
           </Flex>
 
           <BottomActions />

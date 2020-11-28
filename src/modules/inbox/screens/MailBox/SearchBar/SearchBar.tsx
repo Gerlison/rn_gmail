@@ -1,11 +1,10 @@
 import React, { useState, useRef, memo } from 'react';
-import { TextInput, Dimensions, Platform } from 'react-native';
+import { TextInput } from 'react-native';
 import styled, { css } from 'styled-components/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/core';
 import Animated, { Easing } from 'react-native-reanimated';
 import { useTimingTransition, interpolateColor } from 'react-native-redash';
-import ExtraDimensions from 'react-native-extra-dimensions-android';
 
 import SearchBarResults from './SearchBarResults';
 import SearchBarProfile from './SearchBarProfile';
@@ -14,8 +13,9 @@ import Pressable from '@core/Pressable';
 
 import fonts from '@styles/fonts';
 
-import { useInterpolation } from '@helpers/hooks';
 import { SEARCH_BAR_HEIGHT } from '@modules/inbox/helpers/constants';
+import { useInterpolation } from '@helpers/hooks';
+import Dimensions from '@helpers/dimensions';
 
 import { DrawerNavigationProp } from '@react-navigation/drawer';
 import { DrawerParamList } from '@navigation/types';
@@ -25,11 +25,6 @@ type Navigation = DrawerNavigationProp<DrawerParamList, 'Home'>;
 interface Props {
   scrollY: Animated.Value<number>;
 }
-
-const height =
-  Platform.OS === 'android'
-    ? ExtraDimensions.getRealWindowHeight()
-    : Dimensions.get('window').height;
 
 const SearchBar: React.FC<Props> = ({ scrollY }) => {
   const inputRef = useRef<{ getNode: () => TextInput }>(null);
@@ -92,7 +87,10 @@ const SearchBar: React.FC<Props> = ({ scrollY }) => {
       />
       <S.Container
         style={{
-          height: interpolation([0, 1], [SEARCH_BAR_HEIGHT, height]),
+          height: interpolation(
+            [0, 1],
+            [SEARCH_BAR_HEIGHT, Dimensions.WINDOW_HEIGHT],
+          ),
           borderRadius: interpolation([0, 1], [8, 0]),
           shadowOpacity: interpolation([0, 0.999, 1], [1, 1, 0]),
           left: interpolation([0, 1], [16, 0]),
@@ -159,28 +157,15 @@ const S = {
       margin-right: ${metrics.SMALL}px;
     `};
   `,
-  TextInput: styled(Animated.createAnimatedComponent(TextInput)).attrs(
-    ({ theme: { colors } }) => ({
-      placeholderTextColor: colors.DARK,
-    }),
-  )`
-    flex: 1; 
-    
-    ${({ theme: { metrics, colors } }) => css`
-      margin: 0px ${metrics.SMALLER}px;
-      font-size: ${fonts.sizing.LARGE}px;
-      color: ${colors.DARK};
-      font-family: ${fonts.styling.REGULAR};
-    `}
-  `,
   Row: styled.View`
-    height: ${SEARCH_BAR_HEIGHT}px;
-
     flex: 1;
     flex-direction: row;
     align-items: center;
 
-    margin: 0px ${({ theme: { metrics } }) => metrics.SMALL}px;
+    ${({ theme: { metrics } }) => css`
+      height: ${SEARCH_BAR_HEIGHT}px;
+      margin: 0px ${metrics.SMALL}px;
+    `}
   `,
   Icon: styled(Animated.createAnimatedComponent(Icon))`
     ${({ theme: { colors } }) => css`
@@ -194,6 +179,20 @@ const S = {
     bottom: 0;
     left: 0;
     right: 0;
+  `,
+  TextInput: styled(Animated.createAnimatedComponent(TextInput)).attrs(
+    ({ theme: { colors } }) => ({
+      placeholderTextColor: colors.DARK,
+    }),
+  )`
+    flex: 1; 
+    
+    ${({ theme: { metrics, colors } }) => css`
+      margin: 0px ${metrics.SMALLER}px;
+      font-size: ${fonts.sizing.LARGE}px;
+      color: ${colors.DARK};
+      font-family: ${fonts.styling.REGULAR};
+    `}
   `,
 };
 

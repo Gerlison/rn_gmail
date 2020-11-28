@@ -1,6 +1,7 @@
 import React, { useCallback, memo } from 'react';
 import styled, { css } from 'styled-components/native';
-import { useNavigation } from '@react-navigation/core';
+import { NavigationProp, useNavigation } from '@react-navigation/core';
+import moment from 'moment';
 
 import Text from '@core/Text';
 import Icon from '@core/Icon';
@@ -9,6 +10,8 @@ import Flex from '@core/Flex';
 
 import { Mail } from '@core/types';
 import AuthorBadge from '@modules/inbox/components/AuthorBadge';
+
+import { InboxParamList } from '@modules/inbox';
 
 interface Props {
   mail: Mail;
@@ -19,7 +22,9 @@ interface Props {
 }
 
 const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
-  const navigation = useNavigation();
+  const { navigate } = useNavigation<
+    NavigationProp<InboxParamList, 'MailBox'>
+  >();
 
   const toggleMailSelection = useCallback(() => {
     setSelectedMails((prev) => ({
@@ -31,7 +36,7 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
   return (
     <S.Container isSelected={isSelected}>
       <S.Touchable
-        onPress={() => navigation.navigate('MailView')}
+        onPress={() => navigate('MailView', { mail })}
         onLongPress={toggleMailSelection}
       >
         <AuthorBadge
@@ -49,7 +54,7 @@ const MailListItem = ({ mail, isSelected, setSelectedMails }: Props) => {
               {mail.from.name}
             </S.Text>
             <Text color="DARK" size="MEDIUM">
-              {mail.date.toLocaleDateString()}
+              {moment(mail.date).format('DD MMM')}
             </Text>
           </S.Row>
 
