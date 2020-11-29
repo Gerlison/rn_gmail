@@ -1,4 +1,4 @@
-# Scrum Board
+# RN_GMAIL
 
 [![GitHub](https://img.shields.io/github/license/Gerlison/rjs_scrum_board)](https://github.com/Gerlison/rn_gmail/blob/master/docs/LICENSE)
 
